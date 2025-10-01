@@ -23,16 +23,14 @@
   margin: 0 auto;
 }
 
-/* This is now the single container for the card and its border */
 .tilt-wrapper {
   flex: 0 1 300px;
   position: relative;
-  padding: 3px; /* This padding creates the border thickness */
+  padding: 3px;
   border-radius: 15px;
   z-index: 1;
 }
 
-/* This pseudo-element IS the animated gradient border */
 .tilt-wrapper::before {
   content: '';
   position: absolute;
@@ -50,17 +48,17 @@
   100% { background-position: 0% 50%; }
 }
 
-/* We removed .project-rect and now style the inner card directly */
 .project-title-card {
   background: #1a1a2e;
   width: 100%;
   min-height: 220px;
-  padding: 2rem; /* Increased padding */
-  border-radius: 12px; /* Inner radius to show the border */
+  padding: 2rem;
+  border-radius: 12px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .project-title-card h3 {
@@ -68,5 +66,5 @@
   font-size: 1.5rem;
   color: var(--secondary-color);
   margin: 0;
-  text-align: center; /* Centered text looks better with this design */
+  text-align: center;
 }

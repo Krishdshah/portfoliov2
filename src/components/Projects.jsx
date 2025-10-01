@@ -65,6 +65,7 @@ function Projects() {
             <Tilt
               options={tiltOptions}
               onClick={() => openModal(project)}
+              style={{}}
             >
               <div className="project-rect">
                 <div className="project-title-card">
