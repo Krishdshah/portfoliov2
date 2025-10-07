@@ -1,0 +1,30 @@
+/* src/components/Footer.css */
+.footer-container {
+  padding: 2rem;
+  background-color: #05050a; /* A slightly darker shade than the body */
+  text-align: center;
+  border-top: 1px solid rgba(0, 247, 255, 0.2); /* Subtle top border */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.copyright-text {
+  margin: 0;
+  color: rgba(224, 224, 224, 0.6); /* Lighter grey text */
+  font-size: 0.9rem;
+}

@@ -1,9 +1,7 @@
-// src/components/ProjectModal.jsx
 import Modal from 'react-modal';
 import './ProjectModal.css';
 import { FaTimes, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
-// This line is important for accessibility
 Modal.setAppElement('#root');
 
 function ProjectModal({ isOpen, onRequestClose, project }) {
@@ -23,6 +21,13 @@ function ProjectModal({ isOpen, onRequestClose, project }) {
       <div className="modal-content">
         <h2 className="modal-title">{project.title}</h2>
         <p className="modal-description">{project.description}</p>
+
+        <div className="tech-stack">
+          {project.techStack && project.techStack.map((tech) => (
+            <span key={tech} className="tech-tag">{tech}</span>
+          ))}
+        </div>
+
         <div className="modal-links">
           <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
             <FaExternalLinkAlt /> Live Demo

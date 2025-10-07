@@ -1,9 +1,13 @@
-// src/components/Navbar.jsx
 import { useState } from 'react';
 import './Navbar.css';
+import { FaDesktop, FaTerminal } from 'react-icons/fa';
 
-function Navbar() {
+function Navbar({ setView, currentView }) {
   const [isOpen, setIsOpen] = useState(false);
+  const isTerminalView = currentView === 'terminal';
+  const toggleView = () => {
+    setView(isTerminalView ? 'scrolling' : 'terminal');
+  };
 
   return (
     <nav className="navbar">
@@ -15,10 +19,15 @@ function Navbar() {
         <a href="#toolkit">Toolkit</a>
         <a href="#contact">Contact</a>
       </div>
-      <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div className="navbar-right">
+        <button className="view-toggle-btn" onClick={toggleView} title="Toggle View">
+          {isTerminalView ? <FaDesktop /> : <FaTerminal />}
+        </button>
+        <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   );

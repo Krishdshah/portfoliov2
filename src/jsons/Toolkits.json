@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Programming Languages",
+    "skills": [
+      { "name": "JavaScript", "iconName": "FaJsSquare" },
+      { "name": "Python", "iconName": "FaPython" },
+      { "name": "Java", "iconName": "FaJava" },
+      { "name": "Dart", "iconName": "SiDart" }
+    ]
+  },
+  {
+    "title": "AI & Machine Learning",
+    "skills": [
+      { "name": "NumPy", "iconName": "FaBrain" },
+      { "name": "Pandas", "iconName": "FaBrain" },
+      { "name": "Scikit-learn", "iconName": "FaBrain" },
+      { "name": "TensorFlow", "iconName": "FaBrain" },
+      { "name": "XGBoost", "iconName": "FaBrain" }
+    ]
+  },
+  {
+    "title": "Frameworks & Libraries",
+    "skills": [
+      { "name": "React", "iconName": "FaReact" },
+      { "name": "Node.js", "iconName": "FaNodeJs" },
+      { "name": "Express", "iconName": "SiExpress" },
+      { "name": "Flutter", "iconName": "SiFlutter" }
+    ]
+  },
+  {
+    "title": "Tools & Platforms",
+    "skills": [
+      { "name": "Git", "iconName": "FaGitAlt" },
+      { "name": "GitHub", "iconName": "FaGithub" },
+      { "name": "VS Code", "iconName": "BiLogoVisualStudio" },
+      { "name": "Vercel", "iconName": "SiVercel" },
+      { "name": "Render", "iconName": "SiRender" },
+      { "name": "MySQL", "iconName": "SiMysql" }
+    ]
+  },
+  {
+    "title": "AI Development Tools",
+    "skills": [
+      { "name": "ChatGPT", "iconName": "FaRobot" },
+      { "name": "Google Gemini", "iconName": "FaRobot" },
+      { "name": "Claude", "iconName": "FaRobot" },
+      { "name": "Cursor", "iconName": "FaRobot" }
+    ]
+  }
+]

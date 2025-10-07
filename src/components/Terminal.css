@@ -1,0 +1,62 @@
+/* src/components/Terminal.css */
+.terminal-window {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 20, 0.8);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.terminal-output {
+  flex-grow: 1; /* Allows this section to fill available space */
+}
+
+.line.command {
+  color: var(--primary-color);
+}
+.line.command::before {
+  content: "C:\\Users\\Krish> ";
+  color: var(--text-color);
+}
+.line.error {
+  color: #ff4d4d; /* A standard red for errors */
+}
+
+.terminal-input-form {
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.terminal-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary-color);
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: 0.5rem;
+}
+
+.terminal-link {
+  color: var(--secondary-color); /* Make links yellow */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.terminal-link:hover {
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}

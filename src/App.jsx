@@ -1,36 +1,25 @@
-// src/App.jsx
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Education from './components/Education';
-import Projects from './components/Projects';
-import Toolkit from './components/Toolkit';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import AnimatedSection from './components/AnimatedSection'; 
+import { useState } from 'react';
+import TerminalApp from './TerminalApp';
+import ScrollingApp from './ScrollingApp';
+import Preloader from './components/Preloader'; // Import the Preloader
+import './index.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true); // State to manage loading
+  const [view, setView] = useState('scrolling'); 
+
+  // If the app is loading, show the preloader
+  if (isLoading) {
+    return <Preloader onLoaded={() => setIsLoading(false)} />;
+  }
+
+  // Once loading is complete, show the selected portfolio version
   return (
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <AnimatedSection id="about">
-        <About />
-      </AnimatedSection>
-      <AnimatedSection id="education">
-        <Education />
-      </AnimatedSection>
-      <AnimatedSection id="projects">
-        <Projects />
-      </AnimatedSection>
-      <AnimatedSection id="toolkit">
-        <Toolkit />
-      </AnimatedSection>
-      <AnimatedSection id="contact">
-        <Contact />
-      </AnimatedSection>
-      <Footer />
-    </div>
+    <>
+      {view === 'terminal' ? 
+        <TerminalApp setView={setView} currentView={view} /> : 
+        <ScrollingApp setView={setView} currentView={view} />}
+    </>
   );
 }
 

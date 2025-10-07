@@ -4,7 +4,7 @@ import RevolvingIcons from './RevolvingIcons';
 import './Hero.css';
 
 function Hero() {
-  const fullName = 'Krish Shah';
+  const fullName = 'Krish D Shah';
   const [typedName, setTypedName] = useState('');
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function Hero() {
         </h1>
       </div>
       <p className="hero-subtitle">
-        Cybersecurity Enthusiast & Full Stack Developer
+        AI Enthusiast & Developer
       </p>
       <a href="#projects" className="cta-button">View My Work</a>
     </div>

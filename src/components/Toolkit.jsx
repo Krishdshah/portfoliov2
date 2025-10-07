@@ -1,83 +1,49 @@
-// src/components/Toolkit.jsx
 import './Toolkit.css';
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaSass, FaGitAlt, FaGithub, FaPython, FaJava } from 'react-icons/fa';
-import { SiVercel, SiRender, SiFlutter, SiDart, SiMysql} from 'react-icons/si';
+import { FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaPython, FaJava, FaRobot, FaBrain } from 'react-icons/fa';
+import { SiVercel, SiRender, SiFlutter, SiDart, SiMysql, SiExpress } from 'react-icons/si';
 import { BiLogoVisualStudio } from "react-icons/bi";
-import { SiAndroidstudio } from "react-icons/si";
-//import { SiPandas, SiNumpy, SiScikitlearn, SiTensorflow, SiXgboost} from 'react-icons/si';
+import skillData from '../jsons/Toolkits.json';
 
-const skillCategories = [
-  {
-    title: 'Programming Languages',
-    skills: [
-      { name: 'HTML5', icon: <FaHtml5 size={45} /> },
-      { name: 'CSS3', icon: <FaCss3Alt size={45} /> },
-      { name: 'JavaScript', icon: <FaJsSquare size={45} /> },
-      { name: 'Python', icon: <FaPython size={45} /> },
-      { name: 'Java', icon: <FaJava size={45} /> },
-      { name: 'Dart', icon: <SiDart size={45} /> },
-    ],
-  },
-  {
-    title: 'Frameworks & Libraries',
-    skills: [
-      { name: 'React', icon: <FaReact size={45} /> },
-      { name: 'Node.js', icon: <FaNodeJs size={45} /> },
-      { name: 'Flutter', icon: <SiFlutter size={45} /> },
-    ],
-  },
-  {
-    title: 'Tools & Platforms',
-    skills: [
-      { name: 'Git', icon: <FaGitAlt size={45} /> },
-      { name: 'GitHub', icon: <FaGithub size={45} /> },
-      { name: 'Vercel', icon: <SiVercel size={45} /> },
-      { name: 'Render', icon: <SiRender size={45} /> },
-      { name: 'MySQL', icon: <SiMysql size={45} /> },
-      { name: 'VS Code', icon: <BiLogoVisualStudio size={45} /> },
-      { name: 'Android Studio', icon: <SiAndroidstudio size={45} /> },
-    ],
-  },
-  /**{
-    title: 'AI & Machine Learning',
-    skills: [
-      { name: 'NumPy', icon: <SiNumpy size={45} /> },
-      { name: 'Pandas', icon: <SiPandas size={45} /> },
-      { name: 'Scikit-learn', icon: <SiScikitlearn size={45} /> },
-      { name: 'TensorFlow', icon: <SiTensorflow size={45} /> },
-      { name: 'XGBoost', icon: <SiXgboost size={45} /> },
-    ],
-  },*/
-  /**{
-    title: 'AI Development Tools',
-    skills: [
-      { name: 'ChatGPT', icon: <SiChatgpt size={45} /> },
-      { name: 'Google Gemini', icon: <SiGooglegemini size={45} /> },
-      { name: 'Claude', icon: <SiClaude size={45} /> },
-      { name: 'Cursor', icon: <SiCursor size={45} /> },
-    ],
-  },*/
-];
+const iconMap = {
+  FaJsSquare: <FaJsSquare size={40} />,
+  FaPython: <FaPython size={40} />,
+  FaJava: <FaJava size={40} />,
+  SiDart: <SiDart size={40} />,
+  FaBrain: <FaBrain size={40} />,
+  FaReact: <FaReact size={40} />,
+  FaNodeJs: <FaNodeJs size={40} />,
+  SiExpress: <SiExpress size={40} />,
+  SiFlutter: <SiFlutter size={40} />,
+  FaGitAlt: <FaGitAlt size={40} />,
+  FaGithub: <FaGithub size={40} />,
+  BiLogoVisualStudio: <BiLogoVisualStudio size={40} />,
+  SiVercel: <SiVercel size={40} />,
+  SiRender: <SiRender size={40} />,
+  SiMysql: <SiMysql size={40} />,
+  FaRobot: <FaRobot size={40} />,
+};
 
 function Toolkit() {
   return (
-    <section className="toolkit-container">
-      <h2 className="toolkit-title">// MY_TOOLKIT</h2>
-      <div className="skills-list">
-        {skillCategories.map((category) => (
-          <div className="category-row" key={category.title}>
-            <h3>{category.title}</h3>
-            <div className="icons-container">
+    <div className="toolkit-view">
+      <h2 className="toolkit-main-title">// TECHNICAL_TOOLKIT</h2>
+      <div className="categories-container">
+        {/* CORRECTED: Use skillData from the JSON import */}
+        {skillData.map((category) => (
+          <div className="skill-category" key={category.title}>
+            <h3 className="category-title">{category.title}</h3>
+            <div className="skills-grid">
               {category.skills.map((skill) => (
-                <div className="skill-icon" key={skill.name} title={skill.name}>
-                  {skill.icon}
+                <div className="skill-item" key={skill.name}>
+                  {iconMap[skill.iconName]}
+                  <span>{skill.name}</span>
                 </div>
               ))}
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Sign Sync",
+    "description": "\"SignSync\" is an ML-powered system that converts sign language gestures into text and speech, promoting communication for the deaf and speech-impaired. It enhances accessibility in education, healthcare, customer support, and public services.",
+    "techStack": ["Python", "OpenCV", "Machine Learning", "TensorFlow"],
+    "liveUrl": "#",
+    "codeUrl": "https://github.com/Laksh718/SignLang-To-Text-And-Speech"
+  },
+  {
+    "id": 2,
+    "title": "Portfolio Website",
+    "description": "A fully responsive and visually engaging portfolio website built to showcase my projects, skills, and experiences. Designed with a clean UI and dark theme, it reflects my personal brand and enables easy navigation across sections.",
+    "techStack": ["React", "Vite", "CSS3", "Framer Motion", "Three.js"],
+    "liveUrl": "https://thekrishdshah.vercel.app/",
+    "codeUrl": "https://github.com/Krishdshah/portfoliov2"
+  },
+  {
+    "id": 3,
+    "title": "Sudoku Checker",
+    "description": "This is a Python-based Sudoku Checker that verifies whether a given Sudoku puzzle is correctly solved. It checks if each row, column, and 3x3 subgrid contains all digits from 1 to 9 without any repetition.",
+    "techStack": ["Python", "Algorithm"],
+    "liveUrl": "#",
+    "codeUrl": "https://github.com/Krishdshah/SUDOKU-CHECKER"
+  },
+  {
+    "id": 4,
+    "title": "Airline Ticket Booking Software",
+    "description": "This project is a Python-based application that enables users to search for and book airline tickets effortlessly. With a user-friendly interface built using Tkinter, the backend is powered by MySQL, ensuring efficient data storage and retrieval.",
+    "techStack": ["Python", "Tkinter", "MySQL"],
+    "liveUrl": "#",
+    "codeUrl": "https://github.com/Krishdshah/Airline-ticket-booking"
+  },
+  {
+    "id": 5,
+    "title": "Aaruush Virtual Assistant (A.V.A.) 25",
+    "description": "Contributed to building AVA, an AI-powered chatbot for the Aaruush tech fest, utilizing RAG and ChromaDB to streamline information access for all attendees and inquiries.",
+    "techStack": ["Python", "LangChain", "ChromaDB", "MiniLM Transformers", "FastAPI", "React.js"],
+    "liveUrl": "https://www.aaruush.org/ava",
+    "codeUrl": "#"
+  }
+]
