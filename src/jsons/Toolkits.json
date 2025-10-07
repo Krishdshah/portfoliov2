@@ -46,5 +46,41 @@
       { "name": "Claude", "iconName": "FaRobot" },
       { "name": "Cursor", "iconName": "FaRobot" }
     ]
+  },
+  {
+    "title": "Computer Science Fundamentals",
+    "skills": [
+      { "name": "Data Structures & Algorithms", "iconName": "FaCode" },
+      { "name": "Operating Systems", "iconName": "FaMicrochip" },
+      { "name": "Database Management Systems", "iconName": "FaDatabase" },
+      { "name": "Computer Networks", "iconName": "FaNetworkWired" }
+    ]
+  },
+  {
+    "title": "UI/UX & Design",
+    "skills": [
+      { "name": "Figma", "iconName": "FaFigma" },
+      { "name": "Canva", "iconName": "SiCanva" },
+      { "name": "Tailwind CSS", "iconName": "SiTailwindcss" },
+      { "name": "Material UI", "iconName": "SiMui" }
+    ]
+  },
+  {
+    "title": "Data Science & Visualization",
+    "skills": [
+      { "name": "Matplotlib", "iconName": "SiPython" },
+      { "name": "Seaborn", "iconName": "SiPython" },
+      { "name": "Plotly", "iconName": "SiPlotly" },
+      { "name": "Power BI", "iconName": "SiPowerbi" }
+    ]
+  },
+  {
+    "title": "Emerging Technologies and Interests",
+    "skills": [
+      { "name": "Blockchain", "iconName": "FaCube" },
+      { "name": "Solidity", "iconName": "SiSolidity" },
+      { "name": "Web3.js", "iconName": "SiWeb3Dotjs" },
+      { "name": "LLMs & Prompt Engineering", "iconName": "FaBrain" }
+    ]
   }
 ]

@@ -76,3 +76,37 @@
   overflow: hidden;
 }
 .footer-panel { grid-area: footer; }
+
+@media (max-width: 768px) {
+  .app-grid-container {
+    /* Switch to a single column layout */
+    grid-template-columns: 1fr;
+    /* Adjust rows and define new areas for a vertical stack */
+    grid-template-rows: 60px 150px 1fr 150px; /* Header, Nav, Main, Footer */
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer";
+  }
+
+  .grid-panel {
+    padding: 0.5rem; /* Reduce padding on smaller screens */
+  }
+
+  .main-panel {
+    padding: 1rem;
+  }
+
+  /* Adjust footer for mobile */
+  .footer-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .system-stats {
+    text-align: center;
+  }
+}
