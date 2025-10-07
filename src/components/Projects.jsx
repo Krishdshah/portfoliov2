@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Tilt from 'react-vanilla-tilt'; // 1. Make sure Tilt is imported
 import './Projects.css';
 import ProjectModal from './ProjectModal';
-import projectData from '../jsons/projects.json';
+import projectData from '../jsons/Projects.json';
 
 
 function Projects() {
