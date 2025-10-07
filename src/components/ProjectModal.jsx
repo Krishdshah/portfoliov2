@@ -21,7 +21,7 @@ function ProjectModal({ isOpen, onRequestClose, project }) {
       <div className="modal-content">
         <h2 className="modal-title">{project.title}</h2>
         <p className="modal-description">{project.description}</p>
-
+        
         <div className="tech-stack">
           {project.techStack && project.techStack.map((tech) => (
             <span key={tech} className="tech-tag">{tech}</span>
@@ -29,12 +29,27 @@ function ProjectModal({ isOpen, onRequestClose, project }) {
         </div>
 
         <div className="modal-links">
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-            <FaExternalLinkAlt /> Live Demo
-          </a>
-          <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-            <FaGithub /> Source Code
-          </a>
+          {/* --- UPDATED LOGIC FOR LIVE DEMO LINK --- */}
+          {project.liveUrl && project.liveUrl !== '#' ? (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              <FaExternalLinkAlt /> Live Demo
+            </a>
+          ) : (
+            <button className="modal-link-disabled" disabled>
+              <FaExternalLinkAlt /> Not Available
+            </button>
+          )}
+
+          {/* --- UPDATED LOGIC FOR SOURCE CODE LINK --- */}
+          {project.codeUrl && project.codeUrl !== '#' ? (
+            <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
+              <FaGithub /> Source Code
+            </a>
+          ) : (
+            <button className="modal-link-disabled" disabled>
+              <FaGithub /> Not Available
+            </button>
+          )}
         </div>
       </div>
     </Modal>
