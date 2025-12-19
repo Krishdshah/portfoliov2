@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/Navbar"; 
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ 
@@ -10,8 +11,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Krish D Shah | Systems & AI Engineer",
-  description: "Portfolio of Krish D Shah. Building scalable agentic systems.",
+  title: "Krish D Shah | Software Engineer",
+  description: "Portfolio of Krish D Shah.",
 };
 
 export default function RootLayout({
@@ -22,6 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-brand-dark text-gray-300`}>
+        <Navbar />
+        
         {children}
       </body>
     </html>
