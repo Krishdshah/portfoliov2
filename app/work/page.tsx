@@ -28,8 +28,8 @@ const projects = [
     description: "An AI-powered enterprise agent built with Google ADK and Gemini API. Handles financial queries and automates support workflows.",
     tags: ["Python", "Google ADK", "Gemini API"],
     links: {
-      github: "https://github.com/yourusername/fintech-agent",
-      demo: "#"
+      github: "https://github.com/archeeetah/GenAI.git",
+      demo: "https://genai-mjy8.vercel.app/"
     }
   },
   {
@@ -59,15 +59,15 @@ const projects = [
       demo: "#"
     }
   },
-  {
-    title: "Padhlo Mitra",
-    description: "An education-focused platform helping students organize study materials and track progress. Built for the student community.",
-    tags: ["Next.js", "Firebase", "Tailwind CSS"],
-    links: {
-      github: "https://github.com/yourusername/padhlo-mitra",
-      demo: "#"
-    }
-  }
+  // {
+  //   title: "Padhlo Mitra",
+  //   description: "An education-focused platform helping students organize study materials and track progress. Built for the student community.",
+  //   tags: ["Next.js", "Firebase", "Tailwind CSS"],
+  //   links: {
+  //     github: "https://github.com/Krishdshah/PadhloMitra.git",
+  //     demo: "https://padhlo-mitra.vercel.app/"
+  //   }
+  // }
 ];
 
 export default function Work() {
