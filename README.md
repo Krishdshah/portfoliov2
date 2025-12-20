@@ -1,69 +1,36 @@
-# Krish Shah - Personal Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This repository contains the source code for my personal portfolio website, designed with a modern "Cyber AI" aesthetic. It's a fully responsive, single-page application built with React to showcase my skills, projects, and educational background in the fields of AI, ML, and Full Stack Development.
+## Getting Started
 
+First, run the development server:
 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## ✨ Features
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Modern UI/UX**: A dark-themed, futuristic design with neon accents and glowing effects.
-- **Interactive Animations**: Includes a 3D revolving icon orbit (Three.js), a typewriter effect for text reveals, and scroll-triggered fade-in animations (Framer Motion).
-- **Fully Responsive**: Optimized for a seamless experience on both desktop and mobile devices.
-- **Component-Based**: Built with a clean, scalable React architecture.
-- **Dynamic Content**: Project and education data are mapped from arrays, making content updates easy.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
----
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🛠️ Tech Stack & Dependencies
+## Learn More
 
-This project was built using the following technologies and libraries:
+To learn more about Next.js, take a look at the following resources:
 
-- **Core**: HTML5, CSS3, JavaScript (ES6+)
-- **Framework**: React 18
-- **Build Tool**: Vite
-- **3D Graphics & Animation**:
-  - `three`
-  - `@react-three/fiber`
-  - `@react-three/drei`
-- **Component Animations**:
-  - `framer-motion`
-- **Scroll Animations**:
-  - `react-intersection-observer`
-- **Icons**:
-  - `react-icons`
-- **Modals**:
-  - `react-modal`
-- **3D Tilt Effect**:
-  - `react-vanilla-tilt`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 🚀 Getting Started
+## Deploy on Vercel
 
-To run this project locally, follow these steps:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
-    ```
-
-2.  **Install all dependencies:**
-    This command will install all the libraries listed in the `package.json` file.
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server:**
-    This will start the application on a local server, usually `http://localhost:5173`.
-    ```bash
-    npm run dev
-    ```
-
-4.  **Build for production:**
-    When you're ready to deploy, this command will create an optimized `dist` folder.
-    ```bash
-    npm run build
-    ```
-
----
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
