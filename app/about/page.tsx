@@ -55,7 +55,7 @@ export default function About() {
                 <span className="text-sm text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-full">2024 – 2028</span>
               </div>
               <p className="text-gray-400">SRM Institute of Science and Technology</p>
-              <p className="text-sm text-gray-500 mt-2">Current GPA: 10.0</p>
+              <p className="text-sm text-gray-500 mt-2">Current GPA: 9.91</p>
             </div>
 
             {/* Degree 2
