@@ -53,7 +53,7 @@ const achievements = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-brand-dark p-6 md:p-12 text-gray-300 pb-32">
+    <div className="min-h-screen bg-brand-dark p-4 md:p-12 text-gray-300 pb-24">
       
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-12">
