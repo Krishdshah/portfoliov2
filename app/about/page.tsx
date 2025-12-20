@@ -29,7 +29,7 @@ export default function About() {
           className="text-lg leading-relaxed text-gray-400"
         >
           I am a Computer Science undergraduate with a dual focus on <b>AI/ML Systems</b> and <b>Full Stack Engineering</b>. 
-          I don't just build models; I build the infrastructure that makes them useful. Currently scaling my skills at SRM IST and IIT Madras.
+          I don't just build models; I build the infrastructure that makes them useful. Currently scaling my skills at SRM IST.
         </motion.p>
       </div>
 
@@ -87,21 +87,21 @@ export default function About() {
             <div className="relative">
               <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-brand-dark bg-brand-accent" />
               <h3 className="text-xl font-bold text-white">Business Analyst Intern</h3>
-              <p className="text-brand-accent text-sm mb-2">Healthcare Communication Startup • Dec 2025 – Present</p>
+              <p className="text-brand-accent text-sm mb-2">MedGency • Dec 2025 – Present</p>
               <p className="text-gray-400">
                 Conducting competitor research and analyzing market gaps to optimize product strategy.
               </p>
             </div>
 
             {/* Job 2 */}
-            <div className="relative">
+            {/* <div className="relative">
               <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-brand-dark bg-gray-600" />
-              <h3 className="text-xl font-bold text-white">Mentor & Contributor</h3>
+              <h3 className="text-xl font-bold text-white">Contributor</h3>
               <p className="text-brand-accent text-sm mb-2">Open Source & Student Organizations</p>
               <p className="text-gray-400">
                 Mentoring juniors in AI/ML concepts and contributing to open-source repositories (fixing headers, optimizing components).
               </p>
-            </div>
+            </div> */}
             
           </div>
         </motion.section>
