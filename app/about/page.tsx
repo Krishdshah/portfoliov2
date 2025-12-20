@@ -1,12 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Book, Code, Briefcase, ArrowLeft } from 'lucide-react';
+// Added 'Rocket' to the imports here
+import { Book, Code, Briefcase, ArrowLeft, Trophy, Award, Star, Crown, Rocket } from 'lucide-react';
 import Link from 'next/link';
+
+// --- 1. ACHIEVEMENTS DATA ---
+const achievements = [
+  {
+    title: "1st Place - Hacktrix 25",
+    org: "REACH + Techvantage.ai",
+    date: "2025",
+    icon: Trophy,
+    color: "text-yellow-400"
+  },
+  {
+    title: "Regional Winner (Chennai)",
+    org: "NASA Space Apps Challenge",
+    date: "Oct 2025",
+    icon: Rocket, // Now using the standard Rocket icon
+    color: "text-blue-400"
+  },
+  {
+    title: "2nd Place Winner",
+    org: "ACM SIGAI Hackathon",
+    date: "2025",
+    icon: Award,
+    color: "text-purple-400"
+  },
+  {
+    title: "3rd Place - Ideathon 2.0",
+    org: "Cintel Association (SRMIST)",
+    date: "Oct 2025",
+    icon: Star,
+    color: "text-orange-400"
+  },
+  {
+    title: "Top 6 Finalist",
+    org: "CredX AI Challenge 2025",
+    date: "2025",
+    icon: Crown,
+    color: "text-green-400"
+  },
+  {
+    title: "Top 3 Winner",
+    org: "Entrepreneurship 101",
+    date: "2025",
+    icon: Star,
+    color: "text-pink-400"
+  }
+];
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-brand-dark p-6 md:p-12 text-gray-300">
+    <div className="min-h-screen bg-brand-dark p-4 md:p-12 text-gray-300 pb-24">
       
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-12">
@@ -57,18 +104,8 @@ export default function About() {
               <p className="text-gray-400">SRM Institute of Science and Technology</p>
               <p className="text-sm text-gray-500 mt-2">Current GPA: 9.91</p>
             </div>
-
-            {/* Degree 2
-            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-bold text-xl text-white">BS in Data Science & Applications</h3>
-                <span className="text-sm text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-full">Ongoing</span>
-              </div>
-              <p className="text-gray-400">Indian Institute of Technology, Madras (IITM)</p>
-            </div> */}
           </div>
         </motion.section>
-
 
         {/* SECTION 2: EXPERIENCE */}
         <motion.section 
@@ -92,20 +129,9 @@ export default function About() {
                 Conducting competitor research and analyzing market gaps to optimize product strategy.
               </p>
             </div>
-
-            {/* Job 2 */}
-            {/* <div className="relative">
-              <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-brand-dark bg-gray-600" />
-              <h3 className="text-xl font-bold text-white">Contributor</h3>
-              <p className="text-brand-accent text-sm mb-2">Open Source & Student Organizations</p>
-              <p className="text-gray-400">
-                Mentoring juniors in AI/ML concepts and contributing to open-source repositories (fixing headers, optimizing components).
-              </p>
-            </div> */}
             
           </div>
         </motion.section>
-
 
         {/* SECTION 3: SKILLS */}
         <motion.section 
@@ -123,6 +149,38 @@ export default function About() {
               <div key={index} className="bg-white/5 border border-white/5 p-4 rounded-xl text-center hover:border-brand-accent/50 transition-colors">
                 <span className="text-gray-300 font-medium">{skill}</span>
               </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* --- SECTION 4: ACHIEVEMENTS --- */}
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Trophy className="text-brand-accent" />
+            <h2 className="text-2xl font-display font-bold text-white">Achievements</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {achievements.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 hover:border-brand-accent/30 transition-all duration-300 group"
+              >
+                <div className={`mb-4 p-3 rounded-xl bg-white/5 w-fit ${item.color} group-hover:scale-110 transition-transform`}>
+                  <item.icon size={24} />
+                </div>
+                <h3 className="font-bold text-white leading-tight mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-400 mb-1">{item.org}</p>
+                <span className="text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded">{item.date}</span>
+              </motion.div>
             ))}
           </div>
         </motion.section>
