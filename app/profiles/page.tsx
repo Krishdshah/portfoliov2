@@ -40,11 +40,11 @@ const profiles = [
     handle: "thekdshah",
     url: "https://leetcode.com/u/thekdshah/",
     icon: Code,
-    color: "text-[#FFA116]", // Official LeetCode Orange
+    color: "text-[#FFA116]", 
     borderColor: "group-hover:border-[#FFA116]", 
     shadow: "group-hover:shadow-[0_0_20px_rgba(255,161,22,0.3)]",
     bgGradient: "from-orange-900/30 to-black/80",
-    stats: "DSA & Algo",
+    stats: "DSA and Coding",
     tags: ["dsa", "problems", "logic"]
   },
   {
@@ -70,7 +70,7 @@ const profiles = [
     borderColor: "group-hover:border-[#20BEFF]", 
     shadow: "group-hover:shadow-[0_0_20px_rgba(32,190,255,0.3)]",
     bgGradient: "from-cyan-900/30 to-black/80",
-    stats: "Data Science",
+    stats: "AI | ML | DS",
     tags: ["data", "ml", "models"]
   },
   {

@@ -72,7 +72,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <div className="min-h-screen bg-brand-dark p-4 md:p-12 pb-24">
+    <div className="min-h-screen bg-transparent p-4 md:p-12 pb-24">
       <div className="max-w-6xl mx-auto mb-12">
         <Link href="/" className="inline-flex items-center text-gray-400 hover:text-white mb-6 transition-colors">
           <ArrowLeft size={20} className="mr-2" />
