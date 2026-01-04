@@ -6,8 +6,9 @@ import { motion } from 'framer-motion';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Work', path: '/work' },
+  { name: 'Projects', path: '/projects' },
   { name: 'About', path: '/about' },
+  { name: 'Profiles', path: '/profiles' },
 ];
 
 export default function Navbar() {
@@ -15,11 +16,6 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4 md:pt-6 pointer-events-none px-4">
-      
-      {/* MOBILE FIX: 
-         1. max-w-full ensures it doesn't break small screens.
-         2. no-scrollbar utility (if you have it) or just overflow hidden.
-      */}
       <nav className="pointer-events-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-1 py-1 md:px-2 md:py-2 flex items-center shadow-lg max-w-full overflow-x-auto">
         
         {navLinks.map((link) => {

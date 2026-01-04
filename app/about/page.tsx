@@ -76,7 +76,7 @@ const openSourcePrograms = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-brand-dark p-4 md:p-12 text-gray-300 pb-24">
+    <div className="min-h-screen bg-transparent p-4 md:p-12 text-gray-300 pb-24">
       
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-12">
