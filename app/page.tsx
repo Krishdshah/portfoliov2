@@ -5,8 +5,6 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    // FIX 1: Reverted to 'flex-grow' so it fits perfectly between Navbar and Footer on Desktop.
-    // We utilize 'flex-col' to ensure centering works in the available space.
     <div className="relative flex-grow flex flex-col items-center justify-center p-4 md:p-6 overflow-hidden bg-brand-dark">
       
       {/* Background Blurs */}
@@ -18,8 +16,6 @@ export default function Home() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        // FIX 2: Added 'md:min-h-[600px]' to restore the grand feel on laptop screens.
-        // Kept 'w-full max-w-7xl' to ensure it doesn't stretch too wide on ultra-wide monitors.
         className="w-full max-w-7xl md:min-h-[600px] bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center"
       >
         
@@ -53,7 +49,7 @@ export default function Home() {
             transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row flex-wrap gap-4 pt-2 justify-center lg:justify-start"
           >
-            <a href="/work" className="px-6 py-3 md:px-8 md:py-4 bg-white text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+            <a href="/projects" className="px-6 py-3 md:px-8 md:py-4 bg-white text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
               My Projects
               <ArrowRight size={20} />
             </a>
