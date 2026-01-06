@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const menuItems = [
   { id: 'home', icon: Home, label: 'Home', href: '/', color: 'bg-blue-500' },
-  { id: 'work', icon: FolderGit2, label: 'Projects', href: '/work', color: 'bg-purple-500' },
+  { id: 'work', icon: FolderGit2, label: 'Projects', href: '/projects', color: 'bg-purple-500' },
   { id: 'github', icon: Github, label: 'GitHub', href: 'https://github.com/Krishdshah', color: 'bg-gray-700', external: true },
   { id: 'linkedin', icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thekrishdshah/', color: 'bg-blue-700', external: true },
   { id: 'about', icon: User, label: 'About', href: '/about', color: 'bg-green-600' },
