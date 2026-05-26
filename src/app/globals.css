@@ -1,0 +1,11 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #050816;
+  color: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}

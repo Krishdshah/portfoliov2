@@ -1,116 +1,65 @@
-'use client';
-
-import { ArrowRight, Code2, Rocket } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative flex-grow flex flex-col items-center justify-center p-4 md:p-6 overflow-hidden bg-brand-dark">
-      
-      {/* Background Blurs */}
-      <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-brand-accent/20 rounded-full blur-[80px] md:blur-[128px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-[80px] md:blur-[128px] pointer-events-none translate-x-1/2 translate-y-1/2" />
-
-      {/* Main Glass Card */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-7xl md:min-h-[600px] bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center"
-      >
-        
-        {/* LEFT SIDE: Text Content */}
-        <div className="z-10 space-y-6 order-2 lg:order-1 text-center lg:text-left">
-          <div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              // Mobile: text-4xl | Laptop/Desktop: text-7xl (Restored original size)
-              className="font-display font-bold text-4xl md:text-5xl lg:text-7xl text-white leading-tight"
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={100}
+          height={20}
+          priority
+        />
+        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+            To get started, edit the page.tsx file.
+          </h1>
+          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+            Looking for a starting point or more instructions? Head over to{" "}
+            <a
+              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
             >
-              Hi! I’m <br />
-              <span className="text-brand-accent">Krish.</span>
-            </motion.h2>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-4 md:mt-6 text-base md:text-lg text-gray-400 max-w-md mx-auto lg:mx-0 leading-relaxed"
+              Templates
+            </a>{" "}
+            or the{" "}
+            <a
+              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
             >
-              I am a Software Engineer and AI enthusiast. I build modern websites and intelligent applications using React, Python, and Next.js.
-            </motion.p>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-4 pt-2 justify-center lg:justify-start"
+              Learning
+            </a>{" "}
+            center.
+          </p>
+        </div>
+        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+          <a
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <a href="/projects" className="px-6 py-3 md:px-8 md:py-4 bg-white text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-              My Projects
-              <ArrowRight size={20} />
-            </a>
-            
-            <a href="/about" className="px-6 py-3 md:px-8 md:py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              Contact Me
-            </a>
-          </motion.div>
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={16}
+              height={16}
+            />
+            Deploy Now
+          </a>
+          <a
+            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Documentation
+          </a>
         </div>
-
-        {/* RIGHT SIDE: Image Area */}
-        <div className="relative order-1 lg:order-2 flex justify-center items-center">
-            
-            {/* The Image Container */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              // Mobile: w-60 | Laptop: w-80 (Restored original size)
-              className="relative z-10 w-60 h-64 md:w-80 md:h-96 bg-gray-800 rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl"
-            >
-              <img 
-                src="/me.jpg" 
-                alt="Krish D Shah" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </motion.div>
-
-            {/* Badge 1: Projects */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 md:-bottom-6 md:left-0 z-20 bg-brand-dark/90 backdrop-blur-md border border-white/20 p-3 rounded-2xl flex items-center gap-3 shadow-xl scale-90 md:scale-100"
-            >
-              <div className="bg-brand-accent/20 p-2 rounded-lg text-brand-accent">
-                <Code2 size={20} />
-              </div>
-              <div>
-                <div className="text-lg font-bold text-white">10+</div>
-                <div className="text-[10px] text-gray-400">Projects</div>
-              </div>
-            </motion.div>
-
-             {/* Badge 2: Open to Work */}
-             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              className="absolute -top-4 -right-4 md:top-6 md:-right-4 z-20 bg-brand-dark/90 backdrop-blur-md border border-white/20 p-3 rounded-2xl flex items-center gap-3 shadow-xl scale-90 md:scale-100"
-            >
-              <div className="bg-green-500/20 p-2 rounded-lg text-green-400">
-                <Rocket size={20} />
-              </div>
-              <div>
-                <div className="text-[10px] text-gray-400">Status</div>
-                <div className="text-xs font-bold text-white">Open to Work</div>
-              </div>
-            </motion.div>
-
-        </div>
-
-      </motion.div>
+      </main>
     </div>
   );
 }
