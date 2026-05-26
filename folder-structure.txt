@@ -1,0 +1,109 @@
+portfoliov2
+├── .env.local
+├── .git/
+├── .gitignore
+├── .next/
+├── AGENTS.md
+├── app
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── CLAUDE.md
+├── docs
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── node_modules/
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── audio
+│   │   ├── ambient
+│   │   ├── transitions
+│   │   └── ui
+│   ├── file.svg
+│   ├── fonts
+│   │   ├── GeistMono-Regular.ttf
+│   │   ├── Satoshi-Bold.otf
+│   │   ├── Satoshi-Medium.otf
+│   │   └── Satoshi-Regular.otf
+│   ├── globe.svg
+│   ├── icons
+│   ├── images
+│   │   ├── experiments
+│   │   ├── gallery
+│   │   ├── hackathons
+│   │   ├── textures
+│   │   └── ui
+│   ├── models
+│   │   ├── holograms
+│   │   ├── objects
+│   │   └── room
+│   ├── next.svg
+│   ├── resume
+│   │   └── krish_d_shah_resume.pdf
+│   ├── shaders
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── src
+│   ├── animations
+│   ├── app
+│   │   ├── api
+│   │   │   └── route.ts
+│   │   ├── archive
+│   │   │   └── page.tsx
+│   │   ├── contact
+│   │   │   └── page.tsx
+│   │   ├── dossier
+│   │   │   └── page.tsx
+│   │   ├── experiments
+│   │   │   └── page.tsx
+│   │   ├── fonts.ts
+│   │   ├── gallery
+│   │   │   └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── missions
+│   │   │   └── page.tsx
+│   │   ├── origin
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── room
+│   │   │   └── page.tsx
+│   │   └── timeline
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── archive
+│   │   ├── dossier
+│   │   │   ├── page.tsx
+│   │   │   └── pdf-viewer.tsx
+│   │   ├── experiments
+│   │   ├── gallery
+│   │   ├── hero
+│   │   ├── missions
+│   │   ├── navigation
+│   │   ├── origin
+│   │   ├── providers
+│   │   ├── room
+│   │   ├── shared
+│   │   ├── timeline
+│   │   └── ui
+│   ├── data
+│   │   ├── archive.json
+│   │   ├── experiments.json
+│   │   ├── gallery.json
+│   │   ├── hackathons.json
+│   │   ├── identity.json
+│   │   ├── navigation.json
+│   │   └── timeline.json
+│   ├── hooks
+│   ├── lib
+│   ├── shaders
+│   ├── store
+│   ├── styles
+│   ├── systems
+│   └── types
+└── tsconfig.json
