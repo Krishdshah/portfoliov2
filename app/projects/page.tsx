@@ -44,7 +44,57 @@ const flagshipProjects = [
       git: "#" // No public repo link provided in your data
     },
     stats: "Reduced Support Tix"
-  }
+  },
+  {
+  id: "janrakshak",
+  title: "JanRakshak",
+  tagline: "AI-Powered Public Safety & Emergency Response Platform",
+  problem: "Citizens often face delays in reporting emergencies, accessing public safety resources, and receiving timely assistance during critical situations.",
+  solution: "Developed a digital public-safety platform that streamlines incident reporting, emergency communication, and citizen-authority coordination through a centralized and accessible interface.",
+  stackFlow: [
+    { tool: "Citizen", icon: Globe },
+    { tool: "Web Platform", icon: Cpu },
+    { tool: "AI Processing", icon: Zap },
+    { tool: "Response System", icon: Terminal },
+  ],
+  tech: [
+    "React",
+    "Firebase",
+    "JavaScript",
+    "Cloud Functions",
+    "Firestore"
+  ],
+  links: {
+    demo: "https://janrakshak.web.app/",
+    git: "#"
+  },
+  stats: "Public Safety Automation"
+},
+  {
+  id: "loksetu",
+  title: "LokSetu",
+  tagline: "Citizen-Government Digital Bridge",
+  problem: "Millions of citizens struggle to access government schemes, submit grievances, understand eligibility requirements, and navigate bureaucratic processes.",
+  solution: "Built a citizen engagement platform that centralizes government scheme discovery, grievance registration, volunteer participation, document assistance, and public-service communication into a single digital ecosystem.",
+  stackFlow: [
+    { tool: "Citizen", icon: Globe },
+    { tool: "LokSetu Portal", icon: Cpu },
+    { tool: "Scheme & Grievance Engine", icon: Zap },
+    { tool: "Government Authorities", icon: Terminal },
+  ],
+  tech: [
+    "React",
+    "Firebase",
+    "JavaScript",
+    "Firestore",
+    "Progressive Web App"
+  ],
+  links: {
+    demo: "https://loksetu.web.app/",
+    git: "#"
+  },
+  stats: "Digital Governance Platform"
+}
 ];
 
 // --- 2. STANDARD PROJECTS (Grid) ---
