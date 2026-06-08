@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: '#0B0F14',
-          accent: '#3B82F6',
+          dark: '#030712', // Obsidian black
+          accent: '#3B82F6', // Blue accent
         }
       },
       fontFamily: {

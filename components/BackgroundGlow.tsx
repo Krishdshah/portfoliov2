@@ -1,11 +1,11 @@
 export default function BackgroundGlow() {
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-       {/* Top Left Blob */}
-       <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-brand-accent/20 rounded-full blur-[80px] md:blur-[128px] -translate-x-1/2 -translate-y-1/2" />
+       {/* Top Left Drift Blob */}
+       <div className="absolute top-10 left-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-[100px] md:blur-[150px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
        
-       {/* Bottom Right Blob */}
-       <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-[80px] md:blur-[128px] translate-x-1/2 translate-y-1/2" />
+       {/* Bottom Right Drift Blob */}
+       <div className="absolute bottom-10 right-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-purple-500/5 rounded-full blur-[100px] md:blur-[150px] translate-x-1/2 translate-y-1/2 animate-pulse-slow" style={{ animationDelay: '3s' }} />
     </div>
   );
 }

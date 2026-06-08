@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Krish D Shah | Software Engineer",
-  description: "Portfolio of Krish D Shah.",
+  description: "Portfolio of Krish D Shah - Computer Science Undergraduate, AI/ML Specialist, and Full Stack Developer.",
 };
 
 export default function RootLayout({
@@ -24,14 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-brand-dark text-gray-300 flex flex-col min-h-screen`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-brand-dark text-gray-300 flex flex-col min-h-screen font-sans`}>
         
         <BackgroundGlow />
         
         <Navbar />
         
-        <main className="flex-grow flex flex-col"> 
+        <main className="flex-grow flex flex-col pt-20"> 
           {children}
         </main>
         

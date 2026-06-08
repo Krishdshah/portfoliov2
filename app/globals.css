@@ -3,17 +3,98 @@
 @tailwind utilities;
 
 :root {
-  --background: #0B0F14;
-  --foreground: #E5E7EB;
+  --background: #030712; /* Rich deep obsidian gray/black */
+  --foreground: #f3f4f6;
+  --accent: #3b82f6;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
+/* Glassmorphism Design System */
 @layer components {
-  .glass-panel {
-    @apply bg-white/5 backdrop-blur-[16px] border border-white/10 rounded-2xl;
+  .glass-card {
+    @apply bg-slate-950/40 backdrop-blur-xl border border-white/5 rounded-3xl transition-all duration-300;
   }
+  
+  .glass-card-hover {
+    @apply hover:bg-slate-900/50 hover:border-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.02)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400;
+  }
+}
+
+/* Custom Keyframe Animations */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2.5s infinite;
+  content: '';
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1) translate(5%, 5%);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 10s ease-in-out infinite;
 }
