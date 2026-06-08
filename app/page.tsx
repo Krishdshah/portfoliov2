@@ -151,20 +151,6 @@ export default function Home() {
               </div>
             </motion.div>
 
-             {/* Badge 2: Open to Work */}
-             <motion.div 
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              className="absolute -top-4 -right-4 md:top-6 md:-right-6 z-20 bg-slate-950/90 backdrop-blur-xl border border-white/10 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xl scale-90 md:scale-100"
-            >
-              <div className="bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400 border border-emerald-500/20">
-                <Rocket size={20} />
-              </div>
-              <div className="text-left">
-                <div className="text-[10px] text-slate-500 font-mono leading-none">CURRENT GPA</div>
-                <div className="text-sm font-bold text-white mt-1">9.91 / B.Tech</div>
-              </div>
-            </motion.div>
 
         </div>
 

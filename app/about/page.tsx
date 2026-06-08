@@ -86,7 +86,7 @@ const timelineData = [
     type: 'experience',
     title: "Business Analyst Intern",
     subtitle: "MedGency",
-    date: "Dec 2025 – Present",
+    date: "Dec 2025 – March 2026",
     desc: "Conducting competitor research, validating feature roadmaps, and analyzing market gaps to optimize SaaS product strategy.",
     icon: Briefcase,
     color: "border-blue-500/20 text-blue-400 bg-blue-500/10"
