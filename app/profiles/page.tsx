@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Added 'Database' (Kaggle) and 'Code' (LeetCode) to imports
-import { ArrowLeft, Github, Linkedin, Twitter, Mail, ExternalLink, PenTool, Hash, Search, Puzzle, BookOpen, Database, Code } from 'lucide-react';
+import { ArrowLeft, Github, Linkedin, Twitter, Mail, ExternalLink, PenTool, Hash, Search, Puzzle, BookOpen, Database, Code, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
-// --- DATA: PROFILES (Added Kaggle & LeetCode) ---
+// --- DATA: PROFILES ---
 const profiles = [
   {
     id: "github",
@@ -14,10 +13,10 @@ const profiles = [
     handle: "@Krishdshah",
     url: "https://github.com/Krishdshah",
     icon: Github,
-    color: "text-white", 
-    borderColor: "group-hover:border-white/80", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]",
-    bgGradient: "from-gray-800/80 to-black/80",
+    color: "text-white group-hover:text-white", 
+    borderColor: "group-hover:border-white/30", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]",
+    glowColor: "rgba(255,255,255,0.02)",
     stats: "Code & OSS",
     tags: ["code", "dev", "git"]
   },
@@ -27,10 +26,10 @@ const profiles = [
     handle: "/in/thekrishdshah",
     url: "https://in.linkedin.com/in/thekrishdshah",
     icon: Linkedin,
-    color: "text-[#0077b5]", 
-    borderColor: "group-hover:border-[#0077b5]", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(0,119,181,0.4)]",
-    bgGradient: "from-[#0077b5]/20 to-black/80",
+    color: "text-[#0A66C2] group-hover:text-white", 
+    borderColor: "group-hover:border-[#0A66C2]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(10,102,194,0.1)]",
+    glowColor: "rgba(10,102,194,0.05)",
     stats: "Network",
     tags: ["work", "social", "job"]
   },
@@ -40,25 +39,12 @@ const profiles = [
     handle: "thekdshah",
     url: "https://leetcode.com/u/thekdshah/",
     icon: Code,
-    color: "text-[#FFA116]", 
-    borderColor: "group-hover:border-[#FFA116]", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(255,161,22,0.3)]",
-    bgGradient: "from-orange-900/30 to-black/80",
-    stats: "DSA and Coding",
+    color: "text-[#FFA116] group-hover:text-white", 
+    borderColor: "group-hover:border-[#FFA116]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(255,161,22,0.1)]",
+    glowColor: "rgba(255,161,22,0.05)",
+    stats: "DSA & Problem Solving",
     tags: ["dsa", "problems", "logic"]
-  },
-  {
-    id: "medium",
-    name: "Medium",
-    handle: "@thekrishdshahbhs", 
-    url: "https://medium.com/@thekrishdshahbhs", 
-    icon: PenTool,
-    color: "text-yellow-400", 
-    borderColor: "group-hover:border-yellow-400", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(250,204,21,0.3)]",
-    bgGradient: "from-yellow-900/30 to-black/80",
-    stats: "Stories",
-    tags: ["writing", "blog", "articles"]
   },
   {
     id: "kaggle",
@@ -66,12 +52,25 @@ const profiles = [
     handle: "krishdshah",
     url: "https://www.kaggle.com/krishdshah",
     icon: Database,
-    color: "text-[#20BEFF]", 
-    borderColor: "group-hover:border-[#20BEFF]", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(32,190,255,0.3)]",
-    bgGradient: "from-cyan-900/30 to-black/80",
-    stats: "AI | ML | DS",
+    color: "text-[#20BEFF] group-hover:text-white", 
+    borderColor: "group-hover:border-[#20BEFF]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(32,190,255,0.1)]",
+    glowColor: "rgba(32,190,255,0.05)",
+    stats: "AI | ML Models & Datasets",
     tags: ["data", "ml", "models"]
+  },
+  {
+    id: "medium",
+    name: "Medium",
+    handle: "@thekrishdshahbhs", 
+    url: "https://medium.com/@thekrishdshahbhs", 
+    icon: PenTool,
+    color: "text-[#FFC017] group-hover:text-white", 
+    borderColor: "group-hover:border-[#FFC017]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(255,192,23,0.1)]",
+    glowColor: "rgba(255,192,23,0.05)",
+    stats: "Tech Writing",
+    tags: ["writing", "blog", "articles"]
   },
   {
     id: "devto",
@@ -79,11 +78,11 @@ const profiles = [
     handle: "@thekrishdshah", 
     url: "https://dev.to/thekrishdshah", 
     icon: BookOpen,
-    color: "text-indigo-400", 
-    borderColor: "group-hover:border-indigo-400", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(129,140,248,0.3)]",
-    bgGradient: "from-indigo-900/30 to-black/80",
-    stats: "Tech Blogs",
+    color: "text-[#A5B4FC] group-hover:text-white", 
+    borderColor: "group-hover:border-[#A5B4FC]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(165,180,252,0.1)]",
+    glowColor: "rgba(165,180,252,0.05)",
+    stats: "Developer Insights",
     tags: ["writing", "blog", "articles"]
   },
   {
@@ -92,11 +91,11 @@ const profiles = [
     handle: "krishdshah", 
     url: "https://marketplace.visualstudio.com/publishers/krishdshah", 
     icon: Puzzle,
-    color: "text-orange-500", 
-    borderColor: "group-hover:border-orange-500", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]",
-    bgGradient: "from-orange-900/30 to-black/80",
-    stats: "Extensions",
+    color: "text-[#F97316] group-hover:text-white", 
+    borderColor: "group-hover:border-[#F97316]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.1)]",
+    glowColor: "rgba(249,115,22,0.05)",
+    stats: "VS Code Tooling",
     tags: ["extensions", "vscode", "tools"]
   },
   {
@@ -105,24 +104,24 @@ const profiles = [
     handle: "@ikrishshah",
     url: "https://x.com/ikrishshah", 
     icon: Twitter,
-    color: "text-sky-400", 
-    borderColor: "group-hover:border-sky-400", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(56,189,248,0.3)]",
-    bgGradient: "from-sky-900/30 to-black/80",
-    stats: "Thoughts",
+    color: "text-[#38BDF8] group-hover:text-white", 
+    borderColor: "group-hover:border-[#38BDF8]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]",
+    glowColor: "rgba(56,189,248,0.05)",
+    stats: "Tech Discussions",
     tags: ["social", "tweets", "news"]
   },
   {
     id: "email",
     name: "Email",
-    handle: "Contact Me",
+    handle: "thekrishdshahbhs@gmail.com",
     url: "mailto:thekrishdshahbhs@gmail.com",
     icon: Mail,
-    color: "text-red-400", 
-    borderColor: "group-hover:border-red-400", 
-    shadow: "group-hover:shadow-[0_0_20px_rgba(248,113,113,0.3)]",
-    bgGradient: "from-red-900/30 to-black/80",
-    stats: "Inquiry",
+    color: "text-[#F87171] group-hover:text-white", 
+    borderColor: "group-hover:border-[#F87171]/45", 
+    shadow: "group-hover:shadow-[0_0_30px_rgba(248,113,113,0.1)]",
+    glowColor: "rgba(248,113,113,0.05)",
+    stats: "Collaboration & Inquiries",
     tags: ["contact", "mail", "message"]
   }
 ];
@@ -139,43 +138,43 @@ export default function Profiles() {
     );
   });
 
-  const cutCornerStyle = {
-    clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)"
-  };
-
   return (
-    <div className="min-h-screen bg-brand-dark p-4 md:p-12 text-gray-300 pb-32">
+    <div className="min-h-screen bg-transparent p-4 md:p-12 text-slate-300 pb-32 relative">
       
+      {/* Background radial blurs */}
+      <div className="absolute top-10 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* 1. HEADER */}
       <div className="max-w-4xl mx-auto mb-12">
-        <Link href="/" className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
-          <ArrowLeft size={20} className="mr-2" />
-          Back to Home
+        <Link href="/" className="inline-flex items-center text-slate-500 hover:text-white mb-8 transition-colors font-mono text-sm">
+          <ArrowLeft size={16} className="mr-2" />
+          BACK_TO_HOME
         </Link>
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <motion.h1 
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
-              className="font-display font-bold text-4xl md:text-5xl text-white mb-2"
+              className="font-display font-extrabold text-4xl md:text-5xl text-white mb-3"
             >
               Command Center
             </motion.h1>
-            <p className="text-gray-400">My digital footprint.</p>
+            <p className="text-slate-400 font-sans">Access my digital channels, open-source code repositories, and technical writings.</p>
           </div>
 
-          {/* Search Input */}
-          <div className="relative w-full md:w-72">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
-              <Search size={18} />
+          {/* Glowing Command Search Bar */}
+          <div className="relative w-full md:w-80">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+              <Search size={16} />
             </div>
             <input
               type="text"
-              placeholder="Filter (e.g. 'data')..."
+              placeholder="Filter by skill, tag, platform..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 text-white pl-10 pr-4 py-3 rounded-none focus:outline-none focus:border-brand-accent/50 transition-all placeholder:text-gray-600 font-mono text-sm"
-              style={{ clipPath: "polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px)" }} 
+              className="w-full bg-slate-900 border border-white/5 text-white pl-11 pr-4 py-3 rounded-2xl focus:outline-none focus:border-blue-500/40 focus:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all placeholder:text-slate-600 font-sans text-sm"
             />
           </div>
         </div>
@@ -184,86 +183,76 @@ export default function Profiles() {
       {/* 2. PROFILES LIST */}
       <div className="max-w-4xl mx-auto space-y-4">
         <AnimatePresence mode='popLayout'>
-          {filteredProfiles.map((profile) => (
-            <motion.a
-              layout
-              key={profile.id}
-              href={profile.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className={`
-                group relative block w-full
-                transition-all duration-300
-              `}
-              style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.5))" }} 
-            >
-              
-              {/* Main Content Container */}
-              <div 
-                className="relative h-24 md:h-28 w-full bg-black/40 backdrop-blur-md" 
-                style={cutCornerStyle}
+          {filteredProfiles.map((profile, index) => {
+            const Icon = profile.icon;
+            return (
+              <motion.a
+                layout
+                key={profile.id}
+                href={profile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, delay: index * 0.03 }}
+                className={`
+                  group relative block w-full bg-slate-950/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 md:p-6
+                  hover:bg-slate-900/10 hover:scale-[1.01] transition-all duration-300 shadow-md ${profile.borderColor} ${profile.shadow}
+                `}
+                style={{
+                  '--hover-glow': profile.glowColor
+                } as any}
               >
-                
-                {/* 1. Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${profile.bgGradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                {/* 2. The Border */}
+                {/* Custom inner glow background on hover */}
                 <div 
-                  className={`absolute inset-0 border border-white/10 ${profile.borderColor} transition-colors duration-300 z-20 pointer-events-none`} 
-                  style={cutCornerStyle} 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 10% 50%, ${profile.glowColor} 0%, transparent 50%)`
+                  }}
                 />
 
-                {/* 3. The Glow Effect */}
-                <div className={`absolute inset-0 ${profile.shadow} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10`} style={cutCornerStyle} />
-
-                {/* 4. Content */}
-                <div className="relative z-30 h-full flex items-center justify-between px-6 md:px-10">
+                <div className="relative z-10 flex items-center justify-between">
                   
-                  {/* Left: Icon + Text */}
-                  <div className="flex items-center gap-6">
-                    {/* Icon Box */}
+                  {/* Left content */}
+                  <div className="flex items-center gap-5">
+                    {/* Icon frame */}
                     <div className={`
-                      p-3 bg-black/50 border border-white/10 
-                      ${profile.color} group-hover:scale-110 transition-transform duration-300
-                    `}
-                    style={{ clipPath: "polygon(30% 0, 100% 0, 100% 100%, 0 100%, 0 30%)" }}
-                    >
-                      <profile.icon size={28} />
+                      p-3 rounded-xl bg-slate-900 border border-white/5 
+                      ${profile.color} group-hover:bg-white/[0.04] group-hover:border-white/10 group-hover:scale-105 transition-all duration-300
+                    `}>
+                      <Icon size={22} />
                     </div>
 
-                    <div>
-                      <h2 className={`font-display font-bold text-2xl text-white group-hover:tracking-wider transition-all duration-300`}>
+                    <div className="text-left">
+                      <h2 className="font-display font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
                         {profile.name}
                       </h2>
-                      <div className="flex items-center gap-3 text-xs md:text-sm font-mono text-gray-500 group-hover:text-gray-400">
-                        <span className="flex items-center gap-1">
-                          <Hash size={12} /> {profile.handle.replace('@','').replace('/in/','')}
+                      <div className="flex flex-wrap items-center gap-2 mt-1 text-xs md:text-sm font-sans text-slate-500 group-hover:text-slate-400">
+                        <span className="flex items-center gap-0.5 font-mono text-[11px] bg-slate-900/60 px-1.5 py-0.5 rounded border border-white/5">
+                          <Hash size={10} /> {profile.handle.replace('@','').replace('/in/','')}
                         </span>
-                        <span className="text-gray-700">|</span>
-                        <span className={`${profile.color} opacity-80`}>{profile.stats}</span>
+                        <span className="hidden md:inline text-slate-700">|</span>
+                        <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{profile.stats}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right: Arrow */}
-                  <div className="text-gray-600 group-hover:text-white transform group-hover:translate-x-2 group-hover:-translate-y-1 transition-all duration-300">
-                    <ExternalLink size={24} />
+                  {/* Right content */}
+                  <div className="text-slate-600 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300">
+                    <ExternalLink size={18} />
                   </div>
-                </div>
 
-              </div>
-            </motion.a>
-          ))}
+                </div>
+              </motion.a>
+            );
+          })}
         </AnimatePresence>
         
         {/* Empty State */}
         {filteredProfiles.length === 0 && (
-          <div className="text-center py-12 text-gray-500 font-mono">
-             {`// NO_SIGNALS_FOUND for "${query}"`}
+          <div className="text-center py-16 text-slate-600 font-mono text-sm border border-dashed border-white/5 rounded-2xl">
+             {`// NO_SIGNALS_FOUND_FOR: "${query}"`}
           </div>
         )}
       </div>

@@ -1,112 +1,156 @@
 'use client';
 
-import { ArrowRight, Code2, Rocket } from 'lucide-react';
+import { ArrowRight, Code2, Rocket, Sparkles, Cpu, Terminal, ArrowUpRight, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
+  const focusAreas = [
+    { icon: Cpu, title: 'AI Systems', desc: 'Agentic workflows & RAG pipelines' },
+    { icon: Terminal, title: 'Full Stack', desc: 'High-performance React & Python services' },
+    { icon: Sparkles, title: 'Dev Experience', desc: 'Custom VS Code tooling & extensions' }
+  ];
+
   return (
-    <div className="relative flex-grow flex flex-col items-center justify-center p-4 md:p-6 overflow-hidden bg-brand-dark">
+    <div className="relative flex-grow flex flex-col items-center justify-center p-4 md:p-8 overflow-hidden bg-brand-dark">
       
       {/* Background Blurs */}
-      <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-brand-accent/20 rounded-full blur-[80px] md:blur-[128px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-[80px] md:blur-[128px] pointer-events-none translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-10 left-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-blue-600/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none -translate-x-1/3 -translate-y-1/3 animate-pulse-slow" />
+      <div className="absolute bottom-10 right-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-purple-600/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none translate-x-1/3 translate-y-1/3 animate-pulse-slow" style={{ animationDelay: '2s' }} />
 
       {/* Main Glass Card */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-7xl md:min-h-[600px] bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="w-full max-w-6xl bg-slate-950/45 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 md:p-14 relative shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center overflow-hidden"
       >
         
-        {/* LEFT SIDE: Text Content */}
-        <div className="z-10 space-y-6 order-2 lg:order-1 text-center lg:text-left">
-          <div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
+        {/* Subtle grid pattern background overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+        {/* LEFT SIDE: Text Content (Col-span 7) */}
+        <div className="z-10 space-y-8 order-2 lg:order-1 text-center lg:text-left lg:col-span-7">
+          <div className="space-y-4">
+            
+            {/* Status tag */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-semibold mx-auto lg:mx-0"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              AVAILABLE FOR NEW OPPORTUNITIES
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              // Mobile: text-4xl | Laptop/Desktop: text-7xl (Restored original size)
-              className="font-display font-bold text-4xl md:text-5xl lg:text-7xl text-white leading-tight"
+              className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight"
             >
-              Hi! I’m <br />
-              <span className="text-brand-accent">Krish.</span>
-            </motion.h2>
+              Hi, I’m <br className="hidden md:block"/>
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Krish D Shah.</span>
+            </motion.h1>
             
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-4 md:mt-6 text-base md:text-lg text-gray-400 max-w-md mx-auto lg:mx-0 leading-relaxed"
+              className="text-base md:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans"
             >
-              I am a Software Engineer and AI enthusiast. I build modern websites and intelligent applications using React, Python, and Next.js.
+              I am a Software Engineer and AI developer crafting robust, production-grade applications that bridge smart models with scalable infrastructure.
             </motion.p>
           </div>
 
+          {/* Focus Areas Grid */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-4 pt-2 justify-center lg:justify-start"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-left"
           >
-            <a href="/projects" className="px-6 py-3 md:px-8 md:py-4 bg-white text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-              My Projects
-              <ArrowRight size={20} />
+            {focusAreas.map((item, i) => (
+              <div 
+                key={i}
+                className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-white/[0.04] transition-all group"
+              >
+                <div className="p-2 w-fit bg-slate-900 rounded-xl border border-white/5 text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+                  <item.icon size={16} />
+                </div>
+                <h3 className="font-semibold text-white text-sm leading-tight mb-1">{item.title}</h3>
+                <p className="text-xs text-slate-500 leading-normal">{item.desc}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row flex-wrap gap-4 pt-2 justify-center lg:justify-start items-center"
+          >
+            <a href="/projects" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-blue-500/20 active:scale-95">
+              Explore Projects
+              <ArrowRight size={18} />
             </a>
             
-            <a href="/about" className="px-6 py-3 md:px-8 md:py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              Contact Me
+            <a href="/about" className="w-full sm:w-auto px-8 py-4 bg-white/[0.03] border border-white/10 text-white font-semibold rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+              About & Contact
+            </a>
+
+            <a 
+              href="/resume" 
+              target="_blank"
+              className="w-full sm:w-auto px-6 py-4 bg-transparent text-slate-400 font-semibold rounded-2xl hover:text-white transition-colors flex items-center justify-center gap-1.5"
+            >
+              <FileText size={16} />
+              Resume
+              <ArrowUpRight size={14} className="opacity-60" />
             </a>
           </motion.div>
         </div>
 
-        {/* RIGHT SIDE: Image Area */}
-        <div className="relative order-1 lg:order-2 flex justify-center items-center">
+        {/* RIGHT SIDE: Image Area (Col-span 5) */}
+        <div className="relative order-1 lg:order-2 flex justify-center items-center lg:col-span-5 py-4">
             
-            {/* The Image Container */}
+            {/* The Image Container with tilt glow */}
             <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              // Mobile: w-60 | Laptop: w-80 (Restored original size)
-              className="relative z-10 w-60 h-64 md:w-80 md:h-96 bg-gray-800 rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="relative z-10 w-60 h-64 md:w-72 md:h-[22rem] bg-slate-900 rounded-[2.5rem] overflow-hidden border-2 border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group"
             >
               <img 
                 src="/me.jpg" 
                 alt="Krish D Shah" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
             </motion.div>
+
+            {/* Glowing Backdrop Behind Image */}
+            <div className="absolute w-60 h-64 md:w-72 md:h-[22rem] bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-[2.5rem] blur-2xl -z-10 group-hover:scale-105 transition-transform duration-500" />
 
             {/* Badge 1: Projects */}
             <motion.div 
-              animate={{ y: [0, -10, 0] }}
+              animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 md:-bottom-6 md:left-0 z-20 bg-brand-dark/90 backdrop-blur-md border border-white/20 p-3 rounded-2xl flex items-center gap-3 shadow-xl scale-90 md:scale-100"
+              className="absolute -bottom-2 -left-4 md:bottom-2 md:-left-6 z-20 bg-slate-950/90 backdrop-blur-xl border border-white/10 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xl scale-90 md:scale-100"
             >
-              <div className="bg-brand-accent/20 p-2 rounded-lg text-brand-accent">
+              <div className="bg-blue-500/10 p-2.5 rounded-xl text-blue-400 border border-blue-500/20">
                 <Code2 size={20} />
               </div>
-              <div>
-                <div className="text-lg font-bold text-white">10+</div>
-                <div className="text-[10px] text-gray-400">Projects</div>
+              <div className="text-left">
+                <div className="text-lg font-bold text-white leading-none">10+</div>
+                <div className="text-[10px] text-slate-500 mt-1 font-mono">SHIPPED PROJECTS</div>
               </div>
             </motion.div>
 
-             {/* Badge 2: Open to Work */}
-             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              className="absolute -top-4 -right-4 md:top-6 md:-right-4 z-20 bg-brand-dark/90 backdrop-blur-md border border-white/20 p-3 rounded-2xl flex items-center gap-3 shadow-xl scale-90 md:scale-100"
-            >
-              <div className="bg-green-500/20 p-2 rounded-lg text-green-400">
-                <Rocket size={20} />
-              </div>
-              <div>
-                <div className="text-[10px] text-gray-400">Status</div>
-                <div className="text-xs font-bold text-white">Open to Work</div>
-              </div>
-            </motion.div>
 
         </div>
 
