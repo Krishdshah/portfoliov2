@@ -6,12 +6,62 @@ import { Grid, X, Home, FolderGit2, Github, User, Mail, Linkedin } from 'lucide-
 import Link from 'next/link';
 
 const menuItems = [
-  { id: 'home', icon: Home, label: 'Home', href: '/', color: 'bg-blue-500' },
-  { id: 'work', icon: FolderGit2, label: 'Projects', href: '/projects', color: 'bg-purple-500' },
-  { id: 'github', icon: Github, label: 'GitHub', href: 'https://github.com/Krishdshah', color: 'bg-slate-600', external: true },
-  { id: 'linkedin', icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/thekrishdshah/', color: 'bg-sky-600', external: true },
-  { id: 'about', icon: User, label: 'About', href: '/about', color: 'bg-emerald-600' },
-  { id: 'contact', icon: Mail, label: 'Contact', href: 'mailto:thekrishdshahbhs@gmail.com', color: 'bg-rose-500' },
+  { 
+    id: 'home', 
+    icon: Home, 
+    label: 'Home', 
+    href: '/', 
+    textColor: 'text-blue-400 group-hover:text-blue-300',
+    borderGlow: 'from-blue-500/40 to-blue-300/10 group-hover:from-blue-500 group-hover:to-blue-300',
+    glowColor: 'rgba(59, 130, 246, 0.4)'
+  },
+  { 
+    id: 'work', 
+    icon: FolderGit2, 
+    label: 'Projects', 
+    href: '/projects', 
+    textColor: 'text-purple-400 group-hover:text-purple-300',
+    borderGlow: 'from-purple-500/40 to-purple-300/10 group-hover:from-purple-500 group-hover:to-purple-300',
+    glowColor: 'rgba(168, 85, 247, 0.4)'
+  },
+  { 
+    id: 'github', 
+    icon: Github, 
+    label: 'GitHub', 
+    href: 'https://github.com/Krishdshah', 
+    external: true, 
+    textColor: 'text-slate-300 group-hover:text-white',
+    borderGlow: 'from-slate-500/30 to-slate-400/10 group-hover:from-slate-300 group-hover:to-white',
+    glowColor: 'rgba(255, 255, 255, 0.15)'
+  },
+  { 
+    id: 'linkedin', 
+    icon: Linkedin, 
+    label: 'LinkedIn', 
+    href: 'https://www.linkedin.com/in/thekrishdshah/', 
+    external: true, 
+    textColor: 'text-sky-400 group-hover:text-sky-300',
+    borderGlow: 'from-sky-500/40 to-sky-300/10 group-hover:from-sky-500 group-hover:to-sky-300',
+    glowColor: 'rgba(14, 165, 233, 0.4)'
+  },
+  { 
+    id: 'about', 
+    icon: User, 
+    label: 'About', 
+    href: '/about', 
+    textColor: 'text-emerald-400 group-hover:text-emerald-300',
+    borderGlow: 'from-emerald-500/40 to-emerald-300/10 group-hover:from-emerald-500 group-hover:to-emerald-300',
+    glowColor: 'rgba(16, 185, 129, 0.4)'
+  },
+  { 
+    id: 'contact', 
+    icon: Mail, 
+    label: 'Contact', 
+    href: 'mailto:thekrishdshahbhs@gmail.com', 
+    textColor: 'text-rose-400 group-hover:text-rose-300',
+    borderGlow: 'from-rose-500/40 to-rose-300/10 group-hover:from-rose-500 group-hover:to-rose-300',
+    glowColor: 'rgba(244, 63, 94, 0.4)'
+  },
 ];
 
 export default function HexMenu() {
@@ -73,14 +123,29 @@ export default function HexMenu() {
                       className="group w-full h-full flex flex-col items-center justify-center text-slate-300 transition-all duration-300 hover:scale-105"
                       style={{ clipPath: hexClipPath }}
                     >
-                      {/* Brand Hover Highlight Color */}
-                      <div className={`absolute inset-0 ${item.color} opacity-5 group-hover:opacity-20 transition-opacity duration-300`} />
+                      {/* Glow Backdrop */}
+                      <div 
+                        className="absolute inset-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl pointer-events-none -z-10"
+                        style={{
+                          background: `radial-gradient(circle, ${item.glowColor} 0%, transparent 70%)`
+                        }}
+                      />
+
+                      {/* The colored border outline (uses clip-path card showing through gap) */}
+                      <div 
+                        className={`absolute inset-0 bg-gradient-to-br ${item.borderGlow} opacity-30 group-hover:opacity-100 transition-all duration-300`} 
+                        style={{ clipPath: hexClipPath }} 
+                      />
                       
                       {/* Translucent Obsidian Glass base */}
-                      <div className="absolute inset-[1px] bg-slate-900/80 backdrop-blur-md group-hover:bg-slate-900/60 border border-white/5 transition-colors duration-300" style={{ clipPath: hexClipPath }} />
+                      <div 
+                        className="absolute inset-[1.5px] bg-slate-950/90 backdrop-blur-md group-hover:bg-slate-900/80 transition-colors duration-300" 
+                        style={{ clipPath: hexClipPath }} 
+                      />
                       
+                      {/* Inner contents */}
                       <div className="relative z-10 flex flex-col items-center gap-2">
-                        <item.icon size={20} className="text-slate-400 group-hover:text-white transition-colors" />
+                        <item.icon size={20} className={`${item.textColor} transition-all duration-300 group-hover:scale-110`} />
                         <span className="text-[9px] uppercase tracking-widest font-mono font-bold text-slate-500 group-hover:text-white transition-colors">
                           {item.label}
                         </span>

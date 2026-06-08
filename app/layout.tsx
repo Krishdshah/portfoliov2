@@ -5,12 +5,18 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HexMenu from "../components/HexMenu"; 
 import BackgroundGlow from "../components/BackgroundGlow";
+import Background3D from "../components/Background3D";
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: '--font-inter',
+  preload: false 
+});
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"], 
   variable: '--font-space', 
-  weight: ['300', '400', '500', '600', '700'] 
+  weight: ['300', '400', '500', '600', '700'],
+  preload: false
 });
 
 export const metadata: Metadata = {
@@ -27,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-brand-dark text-gray-300 flex flex-col min-h-screen font-sans`}>
         
+        <Background3D />
         <BackgroundGlow />
         
         <Navbar />
