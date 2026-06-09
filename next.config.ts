@@ -6,7 +6,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/resume",
-        destination: "https://drive.google.com/file/d/1eJ3ZMSIYaTh_CEfM5kCQGJSp5xJWo7N-/view?usp=drive_link",
+        destination: "/Krish_Resume_Intern_1.pdf",
+        permanent: false,
+      },
+      {
+        source: "/resume1",
+        destination: "/Krish_Resume_Intern_1.pdf",
         permanent: false,
       },
     ];

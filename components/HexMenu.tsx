@@ -57,7 +57,7 @@ const menuItems = [
     id: 'contact', 
     icon: Mail, 
     label: 'Contact', 
-    href: 'mailto:thekrishdshahbhs@gmail.com', 
+    href: '#', 
     textColor: 'text-rose-400 group-hover:text-rose-300',
     borderGlow: 'from-rose-500/40 to-rose-300/10 group-hover:from-rose-500 group-hover:to-rose-300',
     glowColor: 'rgba(244, 63, 94, 0.4)'
@@ -119,7 +119,16 @@ export default function HexMenu() {
                     <Link 
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
-                      onClick={() => setIsOpen(false)}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      onClick={(e) => {
+                        if (item.id === 'contact') {
+                          e.preventDefault();
+                          const user = "thekrishdshahbhs";
+                          const domain = "gmail.com";
+                          window.location.href = `mailto:${user}@${domain}`;
+                        }
+                        setIsOpen(false);
+                      }}
                       className="group w-full h-full flex flex-col items-center justify-center text-slate-300 transition-all duration-300 hover:scale-105"
                       style={{ clipPath: hexClipPath }}
                     >
