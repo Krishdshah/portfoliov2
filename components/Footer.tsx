@@ -35,7 +35,13 @@ export default function Footer() {
           </a>
           
           <a 
-            href="mailto:thekrishdshahbhs@gmail.com" 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              const user = "thekrishdshahbhs";
+              const domain = "gmail.com";
+              window.location.href = `mailto:${user}@${domain}`;
+            }}
             className="text-slate-500 hover:text-[#EF4444] transition-all hover:scale-110 duration-200"
             aria-label="Email"
           >
