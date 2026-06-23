@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Book, Code, Briefcase, ArrowLeft, Trophy, Award, Star, Crown, Rocket, GitPullRequest, Globe, CheckCircle2, ChevronRight, GraduationCap } from 'lucide-react';
+import { Book, Code, Briefcase, ArrowLeft, Trophy, Award, Star, Crown, Rocket, GitPullRequest, Globe, CheckCircle2, ChevronRight, GraduationCap, Brain, Terminal } from 'lucide-react';
 import Link from 'next/link';
+import EarnedBadges from '@/components/EarnedBadges';
 
 // --- DATA: ACHIEVEMENTS ---
 const achievements = [
@@ -105,16 +106,89 @@ const timelineData = [
 // --- DATA: SKILLS CATEGORIES ---
 const skillCategories = [
   {
-    title: "Languages",
-    skills: ["Python", "C / C++", "Java", "SQL", "JavaScript", "TypeScript"]
+    title: "Programming Languages",
+    icon: Code,
+    color: "text-blue-400 border-blue-500/10",
+    gridClass: "md:col-span-1",
+    skills: [
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+      { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" }
+    ]
   },
   {
-    title: "AI & ML Stack",
-    skills: ["TensorFlow", "ChromaDB", "LangChain", "Google ADK", "Data Modeling"]
+    title: "AI & Machine Learning Stack",
+    icon: Brain,
+    color: "text-purple-400 border-purple-500/10",
+    gridClass: "md:col-span-2 md:row-span-2",
+    skills: [
+      { name: "PyTorch", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+      { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "Scikit-Learn", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
+      { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+      { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+      { name: "OpenCV", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+      { name: "LangChain", logo: null },
+      { name: "LangGraph", logo: null },
+      { name: "LlamaIndex", logo: null },
+      { name: "Hugging Face", logo: null },
+      { name: "Prompt Engineering", logo: null },
+      { name: "RAG Systems", logo: null },
+      { name: "AI Agents", logo: null },
+      { name: "Vector Databases", logo: null }
+    ]
   },
   {
-    title: "Web Technologies",
-    skills: ["React.js", "Next.js", "FastAPI", "Firebase", "MongoDB", "Tailwind CSS"]
+    title: "Tools & Deployment",
+    icon: Terminal,
+    color: "text-blue-400 border-blue-500/10",
+    gridClass: "md:col-span-1",
+    skills: [
+      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitHub Actions", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "Netlify", logo: null },
+      { name: "CI / CD", logo: null },
+      { name: "MLOps", logo: null }
+    ]
+  },
+  {
+    title: "Full Stack Web Development",
+    icon: Globe,
+    color: "text-emerald-400 border-emerald-500/10",
+    gridClass: "md:col-span-3",
+    skills: [
+      { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+      { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "REST APIs", logo: null },
+      { name: "System Design", logo: null }
+    ]
+  },
+  {
+    title: "CS Coursework & Core",
+    icon: Book,
+    color: "text-rose-400 border-rose-500/10",
+    gridClass: "md:col-span-3",
+    skills: [
+      { name: "Data Structures & Algorithms (DSA)", logo: null },
+      { name: "Database Management Systems (DBMS)", logo: null },
+      { name: "Computer Organization & Architecture (COA)", logo: null },
+      { name: "Operating Systems (OS)", logo: null },
+      { name: "Computer Networks (CN)", logo: null },
+      { name: "Object Oriented Programming (OOPs)", logo: null },
+      { name: "Software Engineering (SE)", logo: null }
+    ]
   }
 ];
 
@@ -202,32 +276,56 @@ export default function AboutClient() {
             <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Technical Arsenal</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {skillCategories.map((cat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.02] rounded-full blur-xl pointer-events-none" />
-                <h3 className="font-bold text-white text-sm font-mono tracking-wider uppercase mb-4 text-blue-400 border-b border-white/5 pb-2">
-                  {cat.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill, index) => (
-                    <span 
-                      key={index} 
-                      className="bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 rounded-lg px-3 py-1.5 text-xs text-slate-300 font-semibold transition-colors duration-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {skillCategories.map((cat, i) => {
+              const CategoryIcon = cat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className={`bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:border-white/10 transition-colors ${cat.gridClass}`}
+                >
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.02] rounded-full blur-xl pointer-events-none" />
+                  
+                  {/* Category Header */}
+                  <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-2">
+                    <div className={`p-1 rounded-lg ${cat.color} bg-white/[0.02] border border-white/5`}>
+                      <CategoryIcon size={16} />
+                    </div>
+                    <h3 className="font-bold text-white text-sm font-mono tracking-wider uppercase">
+                      {cat.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, index) => (
+                      <span 
+                        key={index} 
+                        className="inline-flex items-center gap-1.5 bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 font-semibold transition-all duration-200 hover:scale-[1.02]"
+                      >
+                        {skill.logo ? (
+                          <img 
+                            src={skill.logo} 
+                            alt={skill.name} 
+                            className="w-3.5 h-3.5 object-contain"
+                            onError={(e) => {
+                              // Hide broken image link gracefully
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <div className="w-1 h-1 rounded-full bg-blue-400/60" />
+                        )}
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 
@@ -307,7 +405,7 @@ export default function AboutClient() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <Trophy size={22} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Achievements & Badges</h2>
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Honors & Achievements</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -336,6 +434,16 @@ export default function AboutClient() {
               );
             })}
           </div>
+        </section>
+
+        {/* SECTION 5: VERIFIED CREDENTIALS */}
+        <section>
+          <div className="flex items-center gap-3 mb-8">
+            <Award size={22} className="text-blue-400" />
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Verified Badges & Credentials</h2>
+          </div>
+
+          <EarnedBadges />
         </section>
 
       </div>
