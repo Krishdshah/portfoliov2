@@ -152,7 +152,7 @@ export default function ProjectsClient() {
   );
 
   return (
-    <div className="min-h-screen p-4 md:p-12 text-slate-300 pb-32 relative">
+    <div className="min-h-screen p-4 md:p-12 text-slate-700 dark:text-slate-300 pb-32 relative">
       
       {/* Background radial blurs */}
       <div className="absolute top-0 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -160,7 +160,7 @@ export default function ProjectsClient() {
 
       {/* 1. HEADER */}
       <div className="max-w-6xl mx-auto mb-12">
-        <Link href="/" className="inline-flex items-center text-slate-500 hover:text-white mb-8 transition-colors font-mono text-sm">
+        <Link href="/" className="inline-flex items-center text-slate-500 hover:text-slate-900 dark:hover:text-white mb-8 transition-colors font-mono text-sm">
           <ArrowLeft size={16} className="mr-2" />
           BACK_TO_HOME
         </Link>
@@ -171,10 +171,10 @@ export default function ProjectsClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-white mb-4">
-              Engineering <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Log</span>
+            <h1 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-slate-950 dark:text-white mb-4">
+              Engineering <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Log</span>
             </h1>
-            <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
               A comprehensive showcase of production systems, automated workflows, AI integrations, and developer toolkits.
             </p>
           </motion.div>
@@ -184,7 +184,7 @@ export default function ProjectsClient() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="flex flex-wrap gap-2 p-1.5 bg-slate-900/60 backdrop-blur-md border border-white/5 rounded-2xl w-fit self-start md:self-end"
+            className="flex flex-wrap gap-2 p-1.5 bg-slate-200/50 dark:bg-slate-900/60 backdrop-blur-md border border-black/5 dark:border-white/5 rounded-2xl w-fit self-start md:self-end"
           >
             {categories.map((cat) => {
               const isActive = activeFilter === cat.id;
@@ -193,13 +193,13 @@ export default function ProjectsClient() {
                   key={cat.id}
                   onClick={() => setActiveFilter(cat.id)}
                   className={`relative px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 ${
-                    isActive ? 'text-white' : 'text-slate-500 hover:text-slate-300'
+                    isActive ? 'text-slate-950 dark:text-white' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="active-filter-pill"
-                      className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl"
+                      className="absolute inset-0 bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl shadow-sm dark:shadow-none"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -228,7 +228,7 @@ export default function ProjectsClient() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="bg-slate-950/40 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 md:p-10 hover:border-blue-500/20 hover:bg-slate-900/20 transition-all duration-500 relative overflow-hidden group shadow-xl"
+                  className="bg-slate-100/60 dark:bg-slate-950/40 backdrop-blur-xl border border-black/5 dark:border-white/5 rounded-[2rem] p-6 md:p-10 hover:border-blue-500/20 dark:hover:border-blue-500/20 hover:bg-slate-200/40 dark:hover:bg-slate-900/20 transition-all duration-500 relative overflow-hidden group shadow-xl"
                 >
                   {/* Glowing background hint on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -239,27 +239,27 @@ export default function ProjectsClient() {
                     <div className="space-y-6 lg:col-span-7">
                       <div>
                         <div className="flex flex-wrap items-center gap-3 mb-3">
-                          <span className="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 text-[10px] font-mono font-bold tracking-wider uppercase border border-blue-500/15">
+                          <span className="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-500 dark:text-blue-400 text-[10px] font-mono font-bold tracking-wider uppercase border border-blue-500/15">
                             CASE STUDY
                           </span>
-                          <span className="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                          <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                             <Zap size={12} /> {project.stats}
                           </span>
                         </div>
-                        <h2 className="text-2xl md:text-3xl font-display font-extrabold text-white mb-2 leading-tight">
+                        <h2 className="text-2xl md:text-3xl font-display font-extrabold text-slate-950 dark:text-white mb-2 leading-tight">
                           {project.title}
                         </h2>
-                        <p className="text-base text-slate-400 font-medium">{project.tagline}</p>
+                        <p className="text-base text-slate-600 dark:text-slate-400 font-medium">{project.tagline}</p>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
-                          <h3 className="text-[10px] font-mono text-rose-400 uppercase tracking-widest mb-1.5 font-bold">The Challenge</h3>
-                          <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-sans">{project.problem}</p>
+                        <div className="bg-slate-200/40 dark:bg-slate-900/60 p-4 rounded-2xl border border-black/5 dark:border-white/5">
+                          <h3 className="text-[10px] font-mono text-rose-500 dark:text-rose-400 uppercase tracking-widest mb-1.5 font-bold">The Challenge</h3>
+                          <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">{project.problem}</p>
                         </div>
-                        <div className="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
-                          <h3 className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5 font-bold">The Solution</h3>
-                          <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-sans">{project.solution}</p>
+                        <div className="bg-slate-200/40 dark:bg-slate-900/60 p-4 rounded-2xl border border-black/5 dark:border-white/5">
+                          <h3 className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1.5 font-bold">The Solution</h3>
+                          <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">{project.solution}</p>
                         </div>
                       </div>
 
@@ -269,7 +269,7 @@ export default function ProjectsClient() {
                             href={project.links.git} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-5 py-2.5 bg-white text-slate-950 font-bold text-sm rounded-xl hover:bg-blue-500 hover:text-white transition-colors"
+                            className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold text-sm rounded-xl hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition-colors shadow-md"
                           >
                             <Github size={16} /> Codebase
                           </a>
@@ -280,7 +280,7 @@ export default function ProjectsClient() {
                               href={project.links.demo} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-5 py-2.5 bg-white/[0.04] border border-white/10 text-white font-semibold text-sm rounded-xl hover:bg-white/[0.08] hover:border-white/20 transition-all"
+                              className="flex items-center gap-2 px-5 py-2.5 bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm rounded-xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all"
                             >
                               <ExternalLink size={16} /> Live Project <ArrowRight size={14} className="opacity-60" />
                             </a>
@@ -296,7 +296,7 @@ export default function ProjectsClient() {
                     <div className="flex flex-col justify-between space-y-6 lg:col-span-5">
                       
                       {/* Flow Diagram Block */}
-                      <div className="bg-slate-950/80 rounded-2xl p-5 border border-white/5 relative overflow-hidden">
+                      <div className="bg-slate-200/40 dark:bg-slate-950/80 rounded-2xl p-5 border border-black/5 dark:border-white/5 relative overflow-hidden">
                         <h3 className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-5 flex items-center gap-2">
                           <Server size={12} className="text-blue-500" /> SYSTEM ARCHITECTURE PIPELINE
                         </h3>
@@ -304,7 +304,7 @@ export default function ProjectsClient() {
                         <div className="flex items-center justify-between gap-1 relative py-2">
                           
                           {/* Moving gradient connector line behind */}
-                          <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[2px] bg-slate-800 z-0 overflow-hidden">
+                          <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[2px] bg-slate-300 dark:bg-slate-800 z-0 overflow-hidden">
                             <motion.div 
                               animate={{ x: ['-100%', '100%'] }}
                               transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
@@ -316,10 +316,10 @@ export default function ProjectsClient() {
                             const Icon = step.icon;
                             return (
                               <div key={i} className="flex flex-col items-center gap-2 z-10 relative">
-                                <div className="p-3 bg-slate-900 border border-white/10 rounded-xl text-blue-400 group-hover:border-blue-500/40 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
+                                <div className="p-3 bg-slate-100 dark:bg-slate-900 border border-black/10 dark:border-white/10 text-blue-500 dark:text-blue-400 group-hover:border-blue-500/40 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
                                   <Icon size={18} />
                                 </div>
-                                <span className="text-[9px] font-mono text-slate-400 text-center truncate max-w-[70px]">{step.tool}</span>
+                                <span className="text-[9px] font-mono text-slate-600 dark:text-slate-400 text-center truncate max-w-[70px]">{step.tool}</span>
                               </div>
                             );
                           })}
@@ -333,7 +333,7 @@ export default function ProjectsClient() {
                           {project.tech.map((t, i) => (
                             <span 
                               key={i} 
-                              className="px-3 py-1 bg-white/[0.02] border border-white/5 rounded-lg text-xs text-slate-300 font-semibold"
+                              className="px-3 py-1 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-lg text-xs text-slate-700 dark:text-slate-300 font-semibold"
                             >
                               {t}
                             </span>
@@ -357,7 +357,7 @@ export default function ProjectsClient() {
             <motion.section layout className="space-y-6">
               <div className="flex items-center gap-3">
                 <Code2 size={20} className="text-blue-400" />
-                <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">More Experiments</h2>
+                <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">More Experiments</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -374,22 +374,22 @@ export default function ProjectsClient() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.4, delay: index * 0.04 }}
-                      className="group p-6 bg-slate-950/40 backdrop-blur-xl border border-white/5 rounded-2xl hover:bg-slate-900/30 hover:border-white/10 transition-all flex flex-col justify-between shadow-md h-full"
+                      className="group p-6 bg-slate-100/60 dark:bg-slate-950/40 backdrop-blur-xl border border-black/5 dark:border-white/5 rounded-2xl hover:bg-slate-200/40 dark:hover:bg-slate-900/30 hover:border-black/10 dark:hover:border-white/10 transition-all flex flex-col justify-between shadow-md h-full"
                     >
                       <div>
                         <div className="flex justify-between items-start mb-3">
-                          <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors font-display">
+                          <h3 className="text-lg font-bold text-slate-950 dark:text-white group-hover:text-blue-500 transition-colors font-display">
                             {project.title}
                           </h3>
-                          <Icon size={18} className="text-slate-500 group-hover:text-white transition-colors" />
+                          <Icon size={18} className="text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
                         </div>
-                        <p className="text-xs md:text-sm text-slate-400 mb-6 leading-relaxed font-sans">
+                        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed font-sans">
                           {project.desc}
                         </p>
                       </div>
                       <div className="flex flex-wrap gap-1.5 mt-auto">
                         {project.tags.map((tag, i) => (
-                          <span key={i} className="text-[10px] font-mono text-slate-500 bg-slate-900/60 px-2 py-0.5 rounded border border-white/5">
+                          <span key={i} className="text-[10px] font-mono text-slate-500 bg-slate-200/50 dark:bg-slate-900/60 px-2 py-0.5 rounded border border-black/5 dark:border-white/5">
                             {tag}
                           </span>
                         ))}

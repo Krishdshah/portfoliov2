@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import HexMenu from "../components/HexMenu"; 
 import BackgroundGlow from "../components/BackgroundGlow";
 import Background3D from "../components/Background3D";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -53,22 +54,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-brand-dark text-gray-300 flex flex-col min-h-screen font-sans`}>
-        
-        <Background3D />
-        <BackgroundGlow />
-        
-        <Navbar />
-        
-        <main className="flex-grow flex flex-col pt-20"> 
-          {children}
-        </main>
-        
-        <Footer />
-        
-        <HexMenu /> 
-        
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-white dark:bg-brand-dark text-slate-800 dark:text-gray-300 flex flex-col min-h-screen font-sans transition-colors duration-300`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Background3D />
+          <BackgroundGlow />
+          
+          <Navbar />
+          
+          <main className="flex-grow flex flex-col pt-20"> 
+            {children}
+          </main>
+          
+          <Footer />
+          
+          <HexMenu /> 
+        </ThemeProvider>
       </body>
     </html>
   );

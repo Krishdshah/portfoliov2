@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Book, Code, Briefcase, ArrowLeft, Trophy, Award, Star, Crown, Rocket, GitPullRequest, Globe, CheckCircle2, ChevronRight, GraduationCap } from 'lucide-react';
+import { Book, Code, Briefcase, ArrowLeft, Trophy, Award, Star, Crown, Rocket, GitPullRequest, Globe, CheckCircle2, ChevronRight, GraduationCap, Brain, Terminal } from 'lucide-react';
 import Link from 'next/link';
+import EarnedBadges from '@/components/EarnedBadges';
 
 // --- DATA: ACHIEVEMENTS ---
 const achievements = [
@@ -105,22 +106,95 @@ const timelineData = [
 // --- DATA: SKILLS CATEGORIES ---
 const skillCategories = [
   {
-    title: "Languages",
-    skills: ["Python", "C / C++", "Java", "SQL", "JavaScript", "TypeScript"]
+    title: "Programming Languages",
+    icon: Code,
+    color: "text-blue-400 border-blue-500/10",
+    gridClass: "md:col-span-1",
+    skills: [
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+      { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" }
+    ]
   },
   {
-    title: "AI & ML Stack",
-    skills: ["TensorFlow", "ChromaDB", "LangChain", "Google ADK", "Data Modeling"]
+    title: "AI & Machine Learning Stack",
+    icon: Brain,
+    color: "text-purple-400 border-purple-500/10",
+    gridClass: "md:col-span-2 md:row-span-2",
+    skills: [
+      { name: "PyTorch", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+      { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "Scikit-Learn", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
+      { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+      { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+      { name: "OpenCV", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+      { name: "LangChain", logo: null },
+      { name: "LangGraph", logo: null },
+      { name: "LlamaIndex", logo: null },
+      { name: "Hugging Face", logo: null },
+      { name: "Prompt Engineering", logo: null },
+      { name: "RAG Systems", logo: null },
+      { name: "AI Agents", logo: null },
+      { name: "Vector Databases", logo: null }
+    ]
   },
   {
-    title: "Web Technologies",
-    skills: ["React.js", "Next.js", "FastAPI", "Firebase", "MongoDB", "Tailwind CSS"]
+    title: "Tools & Deployment",
+    icon: Terminal,
+    color: "text-blue-400 border-blue-500/10",
+    gridClass: "md:col-span-1",
+    skills: [
+      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitHub Actions", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "Netlify", logo: null },
+      { name: "CI / CD", logo: null },
+      { name: "MLOps", logo: null }
+    ]
+  },
+  {
+    title: "Full Stack Web Development",
+    icon: Globe,
+    color: "text-emerald-400 border-emerald-500/10",
+    gridClass: "md:col-span-3",
+    skills: [
+      { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+      { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "REST APIs", logo: null },
+      { name: "System Design", logo: null }
+    ]
+  },
+  {
+    title: "CS Coursework & Core",
+    icon: Book,
+    color: "text-rose-400 border-rose-500/10",
+    gridClass: "md:col-span-3",
+    skills: [
+      { name: "Data Structures & Algorithms (DSA)", logo: null },
+      { name: "Database Management Systems (DBMS)", logo: null },
+      { name: "Computer Organization & Architecture (COA)", logo: null },
+      { name: "Operating Systems (OS)", logo: null },
+      { name: "Computer Networks (CN)", logo: null },
+      { name: "Object Oriented Programming (OOPs)", logo: null },
+      { name: "Software Engineering (SE)", logo: null }
+    ]
   }
 ];
 
 export default function AboutClient() {
   return (
-    <div className="min-h-screen bg-transparent p-4 md:p-12 text-slate-300 pb-32 relative">
+    <div className="min-h-screen bg-transparent p-4 md:p-12 text-slate-700 dark:text-slate-300 pb-32 relative">
       
       {/* Background blurs */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -128,7 +202,7 @@ export default function AboutClient() {
 
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-16">
-        <Link href="/" className="inline-flex items-center text-slate-500 hover:text-white mb-8 transition-colors font-mono text-sm">
+        <Link href="/" className="inline-flex items-center text-slate-500 hover:text-slate-900 dark:hover:text-white mb-8 transition-colors font-mono text-sm">
           <ArrowLeft size={16} className="mr-2" />
           BACK_TO_HOME
         </Link>
@@ -136,7 +210,7 @@ export default function AboutClient() {
         <motion.h1 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-display font-extrabold text-4xl md:text-5xl text-white mb-6"
+          className="font-display font-extrabold text-4xl md:text-5xl text-slate-950 dark:text-white mb-6"
         >
           About Me
         </motion.h1>
@@ -144,7 +218,7 @@ export default function AboutClient() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-base md:text-lg leading-relaxed text-slate-400 font-sans"
+          className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400 font-sans"
         >
           I am a Computer Science undergraduate with a dual focus on <b>AI/ML Systems</b> and <b>Full Stack Engineering</b>. 
           I engineer robust pipelines that render models useful, clean backend REST services, and high-performance frontend interfaces.
@@ -157,10 +231,10 @@ export default function AboutClient() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <Briefcase size={22} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Experience & Education</h2>
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">Experience & Education</h2>
           </div>
           
-          <div className="relative border-l border-white/10 ml-4 pl-6 md:pl-10 space-y-10">
+          <div className="relative border-l border-black/10 dark:border-white/10 ml-4 pl-6 md:pl-10 space-y-10">
             {timelineData.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -173,21 +247,21 @@ export default function AboutClient() {
                    className="relative group"
                 >
                   {/* Timeline point */}
-                  <div className={`absolute -left-[39px] md:-left-[55px] top-1.5 p-1.5 rounded-full border border-white/10 ${item.color} shadow-lg z-10 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`absolute -left-[39px] md:-left-[55px] top-1.5 p-1.5 rounded-full border border-black/10 dark:border-white/10 ${item.color} shadow-lg z-10 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={16} />
                   </div>
 
-                  <div className="bg-slate-950/40 backdrop-blur-xl border border-white/5 p-6 rounded-2xl group-hover:border-white/10 transition-all duration-300">
+                  <div className="bg-slate-100/60 dark:bg-slate-950/40 backdrop-blur-xl border border-black/5 dark:border-white/5 p-6 rounded-2xl group-hover:border-black/10 dark:group-hover:border-white/10 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                       <div>
-                        <h3 className="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">{item.title}</h3>
-                        <p className="text-slate-400 text-sm">{item.subtitle}</p>
+                        <h3 className="font-bold text-lg text-slate-950 dark:text-white group-hover:text-blue-400 transition-colors">{item.title}</h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm">{item.subtitle}</p>
                       </div>
                       <span className="text-xs font-mono font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/10 self-start sm:self-center">
                         {item.date}
                       </span>
                     </div>
-                    <p className="text-slate-400 text-sm leading-relaxed font-sans">{item.desc}</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-sans">{item.desc}</p>
                   </div>
                 </motion.div>
               );
@@ -199,35 +273,59 @@ export default function AboutClient() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <Code size={22} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Technical Arsenal</h2>
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">Technical Arsenal</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {skillCategories.map((cat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.02] rounded-full blur-xl pointer-events-none" />
-                <h3 className="font-bold text-white text-sm font-mono tracking-wider uppercase mb-4 text-blue-400 border-b border-white/5 pb-2">
-                  {cat.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill, index) => (
-                    <span 
-                      key={index} 
-                      className="bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 rounded-lg px-3 py-1.5 text-xs text-slate-300 font-semibold transition-colors duration-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {skillCategories.map((cat, i) => {
+              const CategoryIcon = cat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className={`bg-slate-100/60 dark:bg-slate-950/40 border border-black/5 dark:border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 ${cat.gridClass}`}
+                >
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.02] rounded-full blur-xl pointer-events-none" />
+                  
+                  {/* Category Header */}
+                  <div className="flex items-center gap-2 mb-4 border-b border-black/5 dark:border-white/5 pb-2">
+                    <div className={`p-1 rounded-lg ${cat.color} bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5`}>
+                      <CategoryIcon size={16} />
+                    </div>
+                    <h3 className="font-bold text-slate-950 dark:text-white text-sm font-mono tracking-wider uppercase">
+                      {cat.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, index) => (
+                      <span 
+                        key={index} 
+                        className="inline-flex items-center gap-1.5 bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] border border-black/5 dark:border-white/5 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-300 font-semibold transition-all duration-200 hover:scale-[1.02]"
+                      >
+                        {skill.logo ? (
+                          <img 
+                            src={skill.logo} 
+                            alt={skill.name} 
+                            className="w-3.5 h-3.5 object-contain"
+                            onError={(e) => {
+                              // Hide broken image link gracefully
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <div className="w-1 h-1 rounded-full bg-blue-400/60" />
+                        )}
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 
@@ -235,10 +333,10 @@ export default function AboutClient() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <GitPullRequest size={22} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Open Source Contributions</h2>
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">Open Source Contributions</h2>
           </div>
 
-          <div className="bg-slate-950/40 border border-white/5 rounded-2xl p-6 md:p-8 relative overflow-hidden">
+          <div className="bg-slate-100/60 dark:bg-slate-950/40 border border-black/5 dark:border-white/5 rounded-2xl p-6 md:p-8 relative overflow-hidden">
             {/* Subtle background glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/[0.02] rounded-full blur-3xl pointer-events-none" />
 
@@ -247,7 +345,7 @@ export default function AboutClient() {
               <h3 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-4">PROGRAMS & EVENTS</h3>
               <div className="flex flex-wrap gap-3">
                 {openSourcePrograms.map((program, i) => (
-                  <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-white/5 text-slate-200 text-xs font-semibold shadow-sm hover:border-blue-500/20 transition-all duration-300">
+                  <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-200/50 dark:bg-slate-900 border border-black/5 dark:border-white/5 text-slate-800 dark:text-slate-200 text-xs font-semibold shadow-sm hover:border-blue-500/20 transition-all duration-300">
                     <CheckCircle2 size={14} className="text-blue-400" />
                     {program}
                   </div>
@@ -265,23 +363,23 @@ export default function AboutClient() {
                     href={item.link}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="group flex flex-col md:flex-row md:items-center justify-between p-5 rounded-xl bg-slate-900/40 border border-white/5 hover:border-blue-500/30 hover:bg-slate-900/60 transition-all duration-300"
+                    className="group flex flex-col md:flex-row md:items-center justify-between p-5 rounded-xl bg-slate-200/20 dark:bg-slate-900/40 border border-black/5 dark:border-white/5 hover:border-blue-500/30 hover:bg-slate-200/40 dark:hover:bg-slate-900/60 transition-all duration-300"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="mt-1 p-2 rounded-lg bg-slate-950 border border-white/10 text-slate-400 group-hover:text-blue-400 group-hover:border-blue-500/20 transition-all">
+                      <div className="mt-1 p-2 rounded-lg bg-slate-100 dark:bg-slate-950 border border-black/10 dark:border-white/10 text-slate-500 dark:text-slate-400 group-hover:text-blue-400 group-hover:border-blue-500/20 transition-all">
                         <GitPullRequest size={18} />
                       </div>
                       <div>
-                        <h4 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
+                        <h4 className="font-bold text-sm text-slate-950 dark:text-white group-hover:text-blue-400 transition-colors">
                           {item.repo} <span className="text-slate-500 font-mono text-xs">by {item.org}</span>
                         </h4>
-                        <p className="text-xs text-slate-400 mt-1.5 max-w-xl leading-relaxed font-sans">
+                        <p className="text-xs text-slate-600 dark:text-slate-400 mt-1.5 max-w-xl leading-relaxed font-sans">
                           {item.description}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="mt-4 md:mt-0 flex items-center gap-1.5 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/15 self-start md:self-center">
+                    <div className="mt-4 md:mt-0 flex items-center gap-1.5 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/15 self-start md:self-center">
                       <Globe size={12} />
                       {item.status.toUpperCase()}
                     </div>
@@ -290,12 +388,12 @@ export default function AboutClient() {
               </div>
             </div>
 
-            <div className="mt-8 text-center border-t border-white/5 pt-5">
+            <div className="mt-8 text-center border-t border-black/5 dark:border-white/5 pt-5">
                <a 
                  href="https://github.com/Krishdshah" 
                  target="_blank" 
                  rel="noopener noreferrer"
-                 className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-white transition-colors font-mono"
+                 className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors font-mono"
                >
                  VIEW_FULL_GRAPH_ON_GITHUB <ChevronRight size={14} />
                </a>
@@ -307,7 +405,7 @@ export default function AboutClient() {
         <section>
           <div className="flex items-center gap-3 mb-8">
             <Trophy size={22} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-display font-extrabold text-white">Achievements & Badges</h2>
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">Honors & Achievements</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -320,22 +418,32 @@ export default function AboutClient() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.04 }}
-                  className={`bg-slate-950/40 border border-white/5 p-6 rounded-2xl hover:border-white/10 transition-all duration-300 group ${item.glow}`}
+                  className={`bg-slate-100/60 dark:bg-slate-950/40 border border-black/5 dark:border-white/5 p-6 rounded-2xl hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 group ${item.glow}`}
                 >
                   <div className={`mb-4 p-2.5 rounded-xl w-fit border ${item.color} group-hover:scale-105 transition-transform`}>
                     <Icon size={20} />
                   </div>
-                  <h3 className="font-bold text-sm text-white mb-1 leading-snug group-hover:text-blue-400 transition-colors">
+                  <h3 className="font-bold text-sm text-slate-950 dark:text-white mb-1 leading-snug group-hover:text-blue-400 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-500 mb-3">{item.org}</p>
-                  <span className="text-[10px] font-mono text-slate-500 bg-slate-900 border border-white/5 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono text-slate-500 bg-slate-200/50 dark:bg-slate-900 border border-black/5 dark:border-white/5 px-2 py-0.5 rounded">
                     {item.date}
                   </span>
                 </motion.div>
               );
             })}
           </div>
+        </section>
+
+        {/* SECTION 5: VERIFIED CREDENTIALS */}
+        <section>
+          <div className="flex items-center gap-3 mb-8">
+            <Award size={22} className="text-blue-400" />
+            <h2 className="text-xl md:text-2xl font-display font-extrabold text-slate-950 dark:text-white">Verified Badges & Credentials</h2>
+          </div>
+
+          <EarnedBadges />
         </section>
 
       </div>
