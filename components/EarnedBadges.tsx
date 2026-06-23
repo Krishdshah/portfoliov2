@@ -36,7 +36,7 @@ export default function EarnedBadges() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className={`group relative flex flex-col items-center justify-center p-4 w-[160px] h-[190px] bg-slate-950/45 backdrop-blur-xl border border-white/5 rounded-[1.8rem] hover:bg-slate-900/40 hover:border-white/10 transition-all duration-300 text-center shadow-lg ${badge.glowBorder}`}
+            className={`group relative flex flex-col items-center justify-center p-4 w-[160px] h-[190px] bg-slate-100/60 dark:bg-slate-950/45 backdrop-blur-xl border border-black/5 dark:border-white/5 rounded-[1.8rem] hover:bg-slate-200/50 dark:hover:bg-slate-900/40 hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 text-center shadow-lg ${badge.glowBorder}`}
           >
             {/* Hover background radial glow */}
             <div 
@@ -51,12 +51,12 @@ export default function EarnedBadges() {
               <img 
                 src={badge.image} 
                 alt={badge.title} 
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300"
               />
             </div>
 
             {/* Title */}
-            <h3 className="text-[10px] font-bold text-slate-300 group-hover:text-white transition-colors leading-tight line-clamp-2 px-1">
+            <h3 className="text-[10px] font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-950 dark:group-hover:text-white transition-colors leading-tight line-clamp-2 px-1">
               {badge.title}
             </h3>
 
