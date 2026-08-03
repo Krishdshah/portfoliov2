@@ -53,6 +53,13 @@ export default function Navbar() {
           );
         })}
 
+        <Link
+          href="/#hire-me"
+          className="relative ml-2 mr-1 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold transition-all duration-300 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg shadow-blue-500/15 hover:shadow-blue-500/25 active:scale-95 whitespace-nowrap z-10"
+        >
+          Hire Me
+        </Link>
+
         <button
           onClick={() => setTheme(isDark ? 'light' : 'dark')}
           className="p-2 md:p-2.5 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all duration-300 ml-1 hover:bg-black/[0.03] dark:hover:bg-white/[0.03] active:scale-95 flex items-center justify-center"

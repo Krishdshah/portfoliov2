@@ -2,6 +2,7 @@
 
 import { ArrowRight, Code2, Rocket, Sparkles, Cpu, Terminal, ArrowUpRight, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
+import HireMeSection from '../components/HireMeSection';
 
 export default function Home() {
   const focusAreas = [
@@ -11,7 +12,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative flex-grow flex flex-col items-center justify-center p-4 md:p-8 overflow-hidden bg-transparent">
+    <div className="relative flex-grow flex flex-col items-center justify-start p-4 md:p-8 bg-transparent gap-16 md:gap-24 overflow-x-hidden pb-20">
       
       {/* Background Blurs */}
       <div className="absolute top-10 left-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none -translate-x-1/3 -translate-y-1/3 animate-pulse-slow" />
@@ -99,8 +100,8 @@ export default function Home() {
               <ArrowRight size={18} />
             </a>
             
-            <a href="/about" className="w-full sm:w-auto px-8 py-4 bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 text-slate-900 dark:text-white font-semibold rounded-2xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
-              About & Contact
+            <a href="#hire-me" className="w-full sm:w-auto px-8 py-4 bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 text-slate-900 dark:text-white font-semibold rounded-2xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+              Hire & Contact
             </a>
 
             <a 
@@ -155,6 +156,8 @@ export default function Home() {
         </div>
 
       </motion.div>
+
+      <HireMeSection />
     </div>
   );
 }
