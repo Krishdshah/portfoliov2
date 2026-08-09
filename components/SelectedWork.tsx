@@ -50,69 +50,109 @@ export default function SelectedWork() {
           Selected Work
         </h2>
         <span className="text-[10px] font-mono font-semibold tracking-widest text-foreground/45 uppercase">
-          2023—2026
+          2023&mdash;2026
         </span>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {projects.map((project, idx) => {
-          // Compute border classes dynamically to avoid double borders
-          const isLeft = idx % 2 === 0;
-
-          // Align padding so outer edges line up with the page padding px-6 md:px-12 lg:px-20
-          const paddingClass = isLeft
-            ? "pl-6 md:pl-12 lg:pl-20 pr-6 md:pr-8"
-            : "pl-6 md:pl-8 pr-6 md:pr-12 lg:pr-20";
-
-          return (
-            <div
-              key={project.title}
-              className={`flex flex-col border-b border-border-custom ${
-                isLeft ? "md:border-r border-border-custom" : ""
-              } bg-background hover:bg-[#FAF8F5] transition-colors duration-300 group`}
-            >
-              {/* Project Card Header */}
-              <div className={`flex justify-between items-center py-4 border-b border-border-custom ${paddingClass}`}>
-                <h3 className="text-lg font-serif font-semibold tracking-tight text-foreground">
-                  {project.title}
-                </h3>
-                <span className="text-[10px] font-mono font-semibold tracking-widest text-foreground/45">
-                  {project.fig}
-                </span>
-              </div>
-
-              {/* Project Image Container */}
-              <div className="relative aspect-[16/10] w-full border-b border-border-custom overflow-hidden bg-[#FAF8F5]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover opacity-90 group-hover:scale-[1.02] transition-transform duration-500 ease-out mix-blend-multiply"
-                />
-              </div>
-
-              {/* Card Footer details */}
-              <div className={`py-6 flex flex-col gap-6 justify-between flex-grow ${paddingClass}`}>
-                <p className="font-serif text-base md:text-[17px] leading-relaxed text-foreground/80 font-medium">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 border border-border-custom text-[9px] font-mono font-bold tracking-widest text-foreground/60 uppercase bg-background rounded-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      {/* Bento Grid */}
+      <div className="px-6 md:px-12 lg:px-20 py-10 md:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <BentoCard project={projects[0]} className="md:col-span-8" imageClass="aspect-[16/9]" />
+          <BentoCard project={projects[1]} className="md:col-span-4 md:row-span-2" tall />
+          <BentoCard project={projects[2]} className="md:col-span-4" imageClass="aspect-[16/9]" />
+          <BentoCard project={projects[3]} className="md:col-span-4" imageClass="aspect-[16/9]" />
+        </div>
       </div>
     </section>
+  );
+}
+
+interface BentoCardProps {
+  project: Project;
+  className?: string;
+  imageClass?: string;
+  tall?: boolean;
+}
+
+function BentoCard({ project, className = "", imageClass = "", tall = false }: BentoCardProps) {
+  return (
+    <div
+      className={[
+        "group relative flex flex-col overflow-hidden rounded-2xl border border-border-custom bg-background cursor-pointer bento-lift",
+        className,
+      ].join(" ")}
+    >
+      {/* Image area */}
+      <div
+        className={[
+          "relative w-full overflow-hidden bg-[#EBE6DE]",
+          tall ? "flex-1 min-h-[240px] md:min-h-[360px]" : imageClass,
+        ].join(" ")}
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover opacity-90 mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-col gap-3 p-5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-lg font-serif font-semibold tracking-tight text-foreground leading-tight">
+            {project.title}
+          </h3>
+          <span className="shrink-0 text-[9px] font-mono font-bold tracking-widest text-foreground/40 uppercase mt-0.5">
+            {project.fig}
+          </span>
+        </div>
+
+        <p className="font-serif text-sm leading-relaxed text-foreground/70">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/55 uppercase bg-[#EBE6DE] rounded-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow hint slides in on hover */}
+      <div
+        aria-hidden
+        className="absolute bottom-5 right-5 w-7 h-7 rounded-full border border-border-custom bg-background flex items-center justify-center opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
+      >
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      <style jsx>{`
+        .bento-lift {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+          transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.28s ease;
+        }
+        .bento-lift:hover {
+          transform: translateY(-7px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05),
+            0 14px 28px rgba(0, 0, 0, 0.09), 0 24px 48px rgba(0, 0, 0, 0.06);
+        }
+      `}</style>
+    </div>
   );
 }
