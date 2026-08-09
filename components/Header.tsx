@@ -71,8 +71,8 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-end h-20 overflow-visible">
-      <Dock className="items-end pb-2 gap-3 px-4 py-2 bg-transparent border-none shadow-none">
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start h-12 overflow-visible">
+      <Dock className="gap-3 px-4 py-2 bg-transparent border-none shadow-none">
         {data.map((item, idx) => (
           <DockItem
             key={idx}

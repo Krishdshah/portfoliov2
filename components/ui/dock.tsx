@@ -103,7 +103,7 @@ function Dock({
         height: height,
         scrollbarWidth: "none",
       }}
-      className="mx-2 flex max-w-full items-end overflow-x-auto"
+      className="mx-2 flex max-w-full items-start overflow-x-auto"
     >
       <motion.div
         onMouseMove={({ pageX }) => {
@@ -115,7 +115,7 @@ function Dock({
           mouseX.set(Infinity);
         }}
         className={cn(
-          "mx-auto flex w-fit gap-4 rounded-2xl px-4",
+          "mx-auto flex w-fit gap-4 rounded-2xl px-4 items-center",
           className
         )}
         style={{ height: panelHeight }}
@@ -196,11 +196,11 @@ function DockLabel({ children, className, ...rest }: DockLabelProps) {
       {isVisible && (
         <motion.div
           initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: -10 }}
+          animate={{ opacity: 1, y: 6 }}
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white",
+            "absolute top-full mt-1.5 left-1/2 w-fit whitespace-pre rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white",
             className
           )}
           role="tooltip"
