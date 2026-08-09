@@ -1,43 +1,90 @@
 "use client";
 
-import Link from "next/link";
+import {
+  Activity,
+  Component,
+  HomeIcon,
+  Mail,
+  Package,
+  ScrollText,
+  SunMoon,
+} from "lucide-react";
+import { Dock, DockIcon, DockItem, DockLabel } from "@/components/ui/dock";
 
 export default function Header() {
+  const toggleTheme = () => {
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.toggle("dark");
+    }
+  };
+
+  const data = [
+    {
+      title: "Home",
+      icon: (
+        <HomeIcon className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Work",
+      icon: (
+        <Package className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "#work",
+    },
+    {
+      title: "Research",
+      icon: (
+        <ScrollText className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "#research",
+    },
+    {
+      title: "About",
+      icon: (
+        <Component className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "#about",
+    },
+    {
+      title: "Now",
+      icon: (
+        <Activity className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "#now",
+    },
+    {
+      title: "Email",
+      icon: (
+        <Mail className="h-full w-full text-[#2B1B10]" />
+      ),
+      href: "mailto:krishdshah@example.com",
+    },
+    {
+      title: "Theme",
+      icon: (
+        <SunMoon className="h-full w-full text-[#2B1B10]" />
+      ),
+      onClick: toggleTheme,
+    },
+  ];
+
   return (
-    <header className="w-full border-b border-border-custom px-6 md:px-12 lg:px-20 py-5 bg-background">
-      <div className="flex items-center justify-between w-full">
-        {/* Logo */}
-        <Link href="/" className="text-3xl font-semibold font-serif tracking-tight text-foreground hover:opacity-80 transition-opacity">
-          KDS.
-        </Link>
-
-        {/* Center Nav */}
-        <nav className="flex items-center gap-8 md:gap-12 text-[11px] font-mono tracking-wider font-semibold text-foreground/50">
-          <div className="relative py-2">
-            <span className="absolute top-0 left-0 right-0 h-[2px] bg-foreground" />
-            <a href="#work" className="text-foreground transition-colors">
-              WORK
-            </a>
-          </div>
-          <a href="#research" className="hover:text-foreground transition-colors">
-            RESEARCH
-          </a>
-          <a href="#about" className="hover:text-foreground transition-colors">
-            ABOUT
-          </a>
-          <a href="#now" className="hover:text-foreground transition-colors">
-            NOW
-          </a>
-        </nav>
-
-        {/* Right Nav */}
-        <a
-          href="#"
-          className="text-[11px] font-mono font-semibold tracking-wider text-foreground hover:opacity-75 transition-opacity flex items-center gap-0.5 uppercase"
-        >
-          Resume <span className="text-[10px]">↗</span>
-        </a>
-      </div>
-    </header>
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-end h-20 overflow-visible">
+      <Dock className="items-end pb-2 gap-3 px-4 py-2 bg-transparent border-none shadow-none">
+        {data.map((item, idx) => (
+          <DockItem
+            key={idx}
+            className="aspect-square rounded-full bg-foreground/5 hover:bg-foreground/10 border border-border-custom/30 flex items-center justify-center"
+            href={item.href}
+            onClick={item.onClick}
+          >
+            <DockLabel>{item.title}</DockLabel>
+            <DockIcon>{item.icon}</DockIcon>
+          </DockItem>
+        ))}
+      </Dock>
+    </div>
   );
 }
