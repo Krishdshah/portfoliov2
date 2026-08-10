@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SkillsTicker from "@/components/SkillsTicker";
 import Quote from "@/components/Quote";
+import BottomGrid from "@/components/BottomGrid";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -14,7 +15,9 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <SkillsTicker />
+
         <Quote />
+        <BottomGrid />
       </main>
       <Footer />
       <ScrollToTop />
