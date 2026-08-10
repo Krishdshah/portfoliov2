@@ -66,9 +66,34 @@ export default function SkillsTicker() {
   const [hoveredName, setHoveredName] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const handleScroll = () => {
+    if (scrollRef.current && isPaused) {
+      const el = scrollRef.current;
+      const halfWidth = el.scrollWidth / 2;
+      if (halfWidth > 0) {
+        if (el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        } else if (el.scrollLeft <= 0) {
+          el.scrollLeft += halfWidth;
+        }
+      }
+    }
+  };
+
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     if (scrollRef.current && isPaused) {
-      scrollRef.current.scrollLeft += e.deltaY + e.deltaX;
+      const el = scrollRef.current;
+      const delta = e.deltaY + e.deltaX;
+      el.scrollLeft += delta;
+
+      const halfWidth = el.scrollWidth / 2;
+      if (halfWidth > 0) {
+        if (el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        } else if (el.scrollLeft <= 0 && delta < 0) {
+          el.scrollLeft += halfWidth;
+        }
+      }
     }
   };
 
@@ -82,8 +107,12 @@ export default function SkillsTicker() {
         onMouseLeave={() => {
           setIsPaused(false);
           setHoveredName(null);
+          if (scrollRef.current) {
+            scrollRef.current.scrollLeft = 0;
+          }
         }}
         onWheel={handleWheel}
+        onScroll={handleScroll}
       >
         <div
           className="animate-marquee flex items-center whitespace-nowrap gap-12"
