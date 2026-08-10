@@ -47,11 +47,11 @@ export default function Header() {
       href: "/work",
     },
     {
-      title: "About",
+      title: "Profiles",
       icon: (
         <Component className="h-full w-full text-foreground" />
       ),
-      href: "/#about",
+      href: "/profiles",
     },
     {
       title: "Now",
