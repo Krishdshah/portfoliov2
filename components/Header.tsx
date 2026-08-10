@@ -65,7 +65,7 @@ export default function Header() {
       icon: (
         <Mail className="h-full w-full text-foreground" />
       ),
-      href: "mailto:krishdshah@example.com",
+      href: "mailto:thekrishdshahbhs@gmail.com",
     },
     {
       title: "Theme",
