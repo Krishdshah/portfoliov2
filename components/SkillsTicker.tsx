@@ -92,7 +92,7 @@ export default function SkillsTicker() {
                 onMouseLeave={() => setHoveredName(null)}
               >
                 <span
-                  className={`flex items-center gap-2 text-xs md:text-sm font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
+                  className={`flex items-center gap-2.5 text-sm sm:text-base md:text-lg font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
                     isHovered ? "text-foreground" : "text-foreground/50"
                   }`}
                 >
@@ -100,15 +100,15 @@ export default function SkillsTicker() {
                   {skill.logo && (
                     <span
                       className={`transition-all duration-200 overflow-hidden ${
-                        isHovered ? "w-4.5 opacity-100" : "w-0 opacity-0"
+                        isHovered ? "w-6 opacity-100" : "w-0 opacity-0"
                       }`}
                     >
                       <img
                         src={skill.logo}
                         alt={skill.name}
-                        width={18}
-                        height={18}
-                        className="w-4.5 h-4.5 object-contain block"
+                        width={24}
+                        height={24}
+                        className="w-5 h-5 md:w-6 md:h-6 object-contain block"
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onError={(e) => ((e.target as HTMLElement).style.display = "none")}
                       />
@@ -116,7 +116,7 @@ export default function SkillsTicker() {
                   )}
                   {skill.name}
                 </span>
-                <span className={`text-xs font-mono transition-colors duration-200 ${isHovered ? "text-foreground/30" : "text-foreground/20"}`}>
+                <span className={`text-sm md:text-base font-mono transition-colors duration-200 ${isHovered ? "text-foreground/30" : "text-foreground/20"}`}>
                   /
                 </span>
               </span>
