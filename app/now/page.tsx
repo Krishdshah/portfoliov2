@@ -7,7 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 export default function NowPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
+    <div className="min-h-screen bg-transparent text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
       <Header />
       <main className="flex-grow pt-20">
         <BottomGrid />

@@ -4,24 +4,22 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SkillsTicker from "@/components/SkillsTicker";
 import Quote from "@/components/Quote";
+import BottomGrid from "@/components/BottomGrid";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import KineticGrid from "@/components/ui/kinetic-grid";
 
 export default function Home() {
   return (
-    <KineticGrid>
-      <div className="min-h-screen bg-transparent text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
-        <Header />
-        <main className="flex-grow">
-          <Hero />
-          <SkillsTicker />
-          <Quote />
-          <BottomGrid />
-        </main>
-        <Footer />
-        <ScrollToTop />
-      </div>
-    </KineticGrid>
+    <div className="min-h-screen bg-transparent text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <SkillsTicker />
+        <Quote />
+        <BottomGrid />
+      </main>
+      <Footer />
+      <ScrollToTop />
+    </div>
   );
 }

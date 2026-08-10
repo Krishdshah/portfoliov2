@@ -210,7 +210,7 @@ export default function Projects() {
   );
 
   return (
-    <section className="w-full bg-background min-h-screen">
+    <section className="w-full bg-transparent min-h-screen">
       {/* Title Header */}
       <div className="border-b border-border-custom px-6 md:px-12 lg:px-20 py-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>

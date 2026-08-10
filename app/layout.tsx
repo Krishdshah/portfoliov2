@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Alex_Brush } from "next/font/google";
 import "./globals.css";
+import KineticGrid from "@/components/ui/kinetic-grid";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +31,16 @@ export const metadata: Metadata = {
   description: "A Portfolio Website",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${alexBrush.variable} antialiased`}
     >
       <body className="relative">
-        {children}
+        <KineticGrid>
+          {children}
+        </KineticGrid>
       </body>
     </html>
   );
