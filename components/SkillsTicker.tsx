@@ -66,7 +66,7 @@ export default function SkillsTicker() {
   const [hoveredName, setHoveredName] = useState<string | null>(null);
 
   return (
-    <section className="w-full border-b border-border-custom bg-background overflow-hidden py-3.5">
+    <section className="w-full border-b border-border-custom bg-transparent overflow-hidden py-3.5">
       <div
         className="flex w-full overflow-hidden select-none"
         onMouseEnter={() => setIsPaused(true)}

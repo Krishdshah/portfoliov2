@@ -2,7 +2,7 @@
 
 export default function Quote() {
   return (
-    <section className="w-full border-b border-border-custom bg-background-muted px-6 py-20 md:py-28 text-center flex flex-col items-center justify-center gap-6">
+    <section className="w-full border-b border-border-custom bg-transparent px-6 py-20 md:py-28 text-center flex flex-col items-center justify-center gap-6">
       {/* Icon/Chevron */}
       <span className="text-xl font-mono text-foreground/45 font-light select-none">
         ∧

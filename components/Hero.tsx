@@ -145,7 +145,7 @@ function NameSignature() {
 
 export default function Hero() {
   return (
-    <section className="w-full border-b border-border-custom bg-background">
+    <section className="w-full border-b border-border-custom bg-transparent">
       {/* Statement & Badge Container */}
       <div className="px-6 md:px-12 lg:px-20 py-16 md:py-28 flex flex-col gap-6 md:gap-8">
         {/* Name signature */}
