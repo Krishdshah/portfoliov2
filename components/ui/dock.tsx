@@ -59,6 +59,7 @@ export type DocContextType = {
   spring: SpringOptions;
   magnification: number;
   distance: number;
+  baseWidth: number;
 };
 
 export type DockProviderProps = {
@@ -123,7 +124,7 @@ function Dock({
         role="toolbar"
         aria-label="Application dock"
       >
-        <DockProvider value={{ mouseX, spring, distance, magnification }}>
+        <DockProvider value={{ mouseX, spring, distance, magnification, baseWidth: panelHeight * 0.625 }}>
           {children}
         </DockProvider>
       </motion.div>
@@ -134,7 +135,7 @@ function Dock({
 function DockItem({ children, className, onClick, href }: DockItemProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { distance, magnification, mouseX, spring } = useDock();
+  const { distance, magnification, mouseX, spring, baseWidth } = useDock();
 
   const isHovered = useMotionValue(0);
 
@@ -143,10 +144,11 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
     return val - domRect.x - domRect.width / 2;
   });
 
+  const activeDistance = distance === 0 ? 1 : distance;
   const widthTransform = useTransform(
     mouseDistance,
-    [-distance, 0, distance],
-    [40, magnification, 40]
+    [-activeDistance, 0, activeDistance],
+    [baseWidth, distance === 0 ? baseWidth : magnification, baseWidth]
   );
 
   const width = useSpring(widthTransform, spring);

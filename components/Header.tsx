@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   Activity,
   Component,
@@ -12,6 +13,16 @@ import {
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/ui/dock";
 
 export default function Header() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const toggleTheme = () => {
     if (typeof window !== "undefined") {
       document.documentElement.classList.toggle("dark");
@@ -71,8 +82,13 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start h-12 overflow-visible">
-      <Dock className="gap-3 px-4 py-2 bg-transparent border-none shadow-none">
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start overflow-visible">
+      <Dock
+        panelHeight={isMobile ? 44 : 64}
+        magnification={isMobile ? 48 : 80}
+        distance={isMobile ? 0 : 150}
+        className={isMobile ? "gap-2 px-3 py-1.5 bg-transparent border-none shadow-none" : "gap-3 px-4 py-2 bg-transparent border-none shadow-none"}
+      >
         {data.map((item, idx) => (
           <DockItem
             key={idx}

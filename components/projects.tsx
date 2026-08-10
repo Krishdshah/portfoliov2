@@ -315,16 +315,16 @@ export default function Projects() {
                           const IconComponent = step.icon;
                           return (
                             <React.Fragment key={idx}>
-                              <div className="flex flex-col items-center gap-2 shrink-0 group">
-                                <div className="w-12 h-12 rounded-full border border-border-custom bg-[#FAF8F5] flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm group-hover:-translate-y-1">
-                                  <IconComponent className="w-5 h-5" />
+                              <div className="flex flex-col items-center gap-1.5 sm:gap-2 shrink-0 group">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-custom bg-[#FAF8F5] flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm group-hover:-translate-y-1">
+                                  <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
-                                <span className="text-[10px] font-mono font-bold text-foreground/60 group-hover:text-foreground transition-colors duration-200 uppercase tracking-wider">
+                                <span className="text-[8px] sm:text-[10px] font-mono font-bold text-foreground/60 group-hover:text-foreground transition-colors duration-200 uppercase tracking-wider">
                                   {step.tool}
                                 </span>
                               </div>
                               {idx < project.stackFlow.length - 1 && (
-                                <ArrowRight className="w-4 h-4 text-foreground/30 animate-pulse shrink-0 self-center -translate-y-3" />
+                                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/30 animate-pulse shrink-0 self-center -translate-y-2.5 sm:-translate-y-3" />
                               )}
                             </React.Fragment>
                           );
@@ -354,7 +354,7 @@ export default function Projects() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex items-center gap-3 flex-wrap pt-2">
                       {project.links.demo && (
                         <a
                           href={project.links.demo}

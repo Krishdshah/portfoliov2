@@ -108,7 +108,7 @@ function NameSignature() {
   return (
     <div className="relative inline-block select-none">
       <span
-        className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground leading-none tracking-wide"
+        className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-foreground leading-none tracking-wide"
         style={{ letterSpacing: "0.01em" }}
       >
         Krish D Shah
