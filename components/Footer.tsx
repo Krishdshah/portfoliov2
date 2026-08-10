@@ -1,54 +1,27 @@
-'use client';
-
-import { Github, Linkedin, Mail } from 'lucide-react';
+"use client";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/5 dark:border-white/5 mt-auto bg-slate-100/60 dark:bg-slate-950/40 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        
-        {/* Copyright */}
-        <div className="text-slate-500 text-xs font-mono">
-          © {new Date().getFullYear()} KRISH D SHAH // COMPUTER SCIENCE UNDERGRADUATE
+    <footer className="w-full bg-transparent px-6 md:px-12 py-6 md:py-8">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-6">
+        {/* Left Side (Logo & Copyright) */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+          <span className="text-2xl font-semibold font-serif tracking-tight text-foreground select-none">
+            KDS.
+          </span>
+          <span className="text-[9px] font-mono font-bold tracking-widest text-foreground/40 uppercase mt-1">
+            © {new Date().getFullYear()} KDS. ENGINEERED PRECISION
+          </span>
         </div>
 
-        {/* Social Links */}
-        <div className="flex items-center gap-6">
-          <a 
-            href="https://github.com/Krishdshah" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-slate-500 hover:text-slate-950 dark:hover:text-white transition-all hover:scale-110 duration-200"
-            aria-label="GitHub"
-          >
-            <Github size={18} />
-          </a>
-          
-          <a 
-            href="https://www.linkedin.com/in/thekrishdshah/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-slate-500 hover:text-[#0A66C2] transition-all hover:scale-110 duration-200"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={18} />
-          </a>
-          
-          <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              const user = "thekrishdshahbhs";
-              const domain = "gmail.com";
-              window.location.href = `mailto:${user}@${domain}`;
-            }}
-            className="text-slate-500 hover:text-[#EF4444] transition-all hover:scale-110 duration-200"
-            aria-label="Email"
-          >
-            <Mail size={18} />
-          </a>
+        {/* Right Side (Disciplines) */}
+        <div className="flex items-center gap-3 text-[10px] font-mono font-bold tracking-widest text-foreground/40 uppercase">
+          <span>AI/ML</span>
+          <span>/</span>
+          <span>SOFTWARE</span>
+          <span>/</span>
+          <span>RESEARCH</span>
         </div>
-
       </div>
     </footer>
   );
