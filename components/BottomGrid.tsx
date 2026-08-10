@@ -54,7 +54,7 @@ export default function BottomGrid() {
   return (
     <section
       id="now"
-      className="w-full border-b border-border-custom grid grid-cols-1 md:grid-cols-2 bg-transparent"
+      className="w-full grid grid-cols-1 md:grid-cols-2 bg-transparent"
     >
       {/* Left Column — Achievements */}
       <div className="p-6 md:py-12 md:pl-12 lg:pl-20 md:pr-12 md:border-r border-border-custom flex flex-col">
