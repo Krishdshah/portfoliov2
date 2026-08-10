@@ -1,20 +1,16 @@
 "use client";
 
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import SkillsTicker from "@/components/SkillsTicker";
-import Quote from "@/components/Quote";
+import BottomGrid from "@/components/BottomGrid";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
-export default function Home() {
+export default function NowPage() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
       <Header />
-      <main className="flex-grow">
-        <Hero />
-        <SkillsTicker />
-        <Quote />
+      <main className="flex-grow pt-20">
+        <BottomGrid />
       </main>
       <Footer />
       <ScrollToTop />

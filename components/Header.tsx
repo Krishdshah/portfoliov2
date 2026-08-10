@@ -66,7 +66,7 @@ export default function Header() {
       icon: (
         <Activity className="h-full w-full text-foreground" />
       ),
-      href: "/#now",
+      href: "/now",
     },
     {
       title: "Email",
