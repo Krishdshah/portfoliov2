@@ -66,7 +66,7 @@ export default function SkillsTicker() {
   const [hoveredName, setHoveredName] = useState<string | null>(null);
 
   return (
-    <section className="w-full border-b border-border-custom bg-transparent overflow-hidden py-3.5">
+    <section className="w-full border-b border-border-custom bg-transparent overflow-hidden py-6 md:py-8">
       <div
         className="flex w-full overflow-hidden select-none"
         onMouseEnter={() => setIsPaused(true)}
@@ -76,7 +76,7 @@ export default function SkillsTicker() {
         }}
       >
         <div
-          className="animate-marquee flex items-center whitespace-nowrap gap-10"
+          className="animate-marquee flex items-center whitespace-nowrap gap-12"
           style={{
             animationPlayState: isPaused ? "paused" : "running",
             animationDuration: "55s",
@@ -87,28 +87,28 @@ export default function SkillsTicker() {
             return (
               <span
                 key={`${index}-${skill.name}`}
-                className="flex items-center gap-10 cursor-default"
+                className="flex items-center gap-12 cursor-default"
                 onMouseEnter={() => setHoveredName(skill.name)}
                 onMouseLeave={() => setHoveredName(null)}
               >
                 <span
-                  className={`flex items-center gap-1.5 text-[10px] font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
-                    isHovered ? "text-foreground" : "text-foreground/40"
+                  className={`flex items-center gap-2 text-xs md:text-sm font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
+                    isHovered ? "text-foreground" : "text-foreground/50"
                   }`}
                 >
                   {/* Logo reveal on hover (if available) */}
                   {skill.logo && (
                     <span
                       className={`transition-all duration-200 overflow-hidden ${
-                        isHovered ? "w-3.5 opacity-100" : "w-0 opacity-0"
+                        isHovered ? "w-4.5 opacity-100" : "w-0 opacity-0"
                       }`}
                     >
                       <img
                         src={skill.logo}
                         alt={skill.name}
-                        width={14}
-                        height={14}
-                        className="w-3.5 h-3.5 object-contain block"
+                        width={18}
+                        height={18}
+                        className="w-4.5 h-4.5 object-contain block"
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onError={(e) => ((e.target as HTMLElement).style.display = "none")}
                       />
@@ -116,7 +116,7 @@ export default function SkillsTicker() {
                   )}
                   {skill.name}
                 </span>
-                <span className={`text-[10px] font-mono transition-colors duration-200 ${isHovered ? "text-foreground/30" : "text-foreground/20"}`}>
+                <span className={`text-xs font-mono transition-colors duration-200 ${isHovered ? "text-foreground/30" : "text-foreground/20"}`}>
                   /
                 </span>
               </span>
