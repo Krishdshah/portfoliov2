@@ -174,7 +174,7 @@ export default function Hero() {
   return (
     <section className="w-full border-b border-border-custom bg-transparent">
       {/* Statement & Badge Container */}
-      <div className="px-6 md:px-12 lg:px-20 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="px-6 md:px-12 lg:px-20 pt-28 pb-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         {/* Left Column - Text Content */}
         <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
           {/* Name signature */}
