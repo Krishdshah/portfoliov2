@@ -7,7 +7,6 @@ import {
   HomeIcon,
   Mail,
   Package,
-  ScrollText,
   SunMoon,
 } from "lucide-react";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/ui/dock";
@@ -46,13 +45,6 @@ export default function Header() {
         <Package className="h-full w-full text-foreground" />
       ),
       href: "/work",
-    },
-    {
-      title: "Research",
-      icon: (
-        <ScrollText className="h-full w-full text-foreground" />
-      ),
-      href: "/#research",
     },
     {
       title: "About",
