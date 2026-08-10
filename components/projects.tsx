@@ -101,7 +101,7 @@ const flagshipProjects: FlagshipProject[] = [
     ],
     tech: ["LangChain", "ChromaDB", "FastAPI", "React"],
     links: { 
-      demo: "https://www.aaruush.org/ava", 
+      demo: "https://ava.aaruush.org/chat", 
       git: "#" 
     },
     stats: "Reduced Support Tix"
@@ -468,7 +468,7 @@ export default function Projects() {
                   );
                 })}
 
-                {/* 6th Card — "And many more" Dark GitHub Callout Box */}
+                {/* 6th Card — "And many more" Inverted Contrast Callout Box */}
                 {(activeCategory === "all" || activeCategory === "dev-tools" || activeCategory === "web-platforms" || activeCategory === "ai-agents") && (
                   <motion.a
                     layout
@@ -479,11 +479,11 @@ export default function Projects() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className="group block relative overflow-hidden rounded-[14px] bg-[#121212] text-white p-6 flex flex-col justify-between h-full min-h-[220px] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
+                    className="group block relative overflow-hidden rounded-[14px] bg-[#121212] dark:bg-[#EFEBE4] text-white dark:text-[#121212] p-6 flex flex-col justify-between h-full min-h-[220px] border border-white/10 dark:border-black/10 hover:border-white/30 dark:hover:border-black/30 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
                   >
                     {/* Background Dot Grid Top Right */}
                     <svg
-                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-25 text-white"
+                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-25 dark:opacity-20 text-white dark:text-[#121212]"
                       viewBox="0 0 40 40"
                       fill="currentColor"
                     >
@@ -501,33 +501,33 @@ export default function Projects() {
                     <div>
                       {/* Top Header Badge */}
                       <div className="flex justify-between items-center mb-5">
-                        <span className="px-2.5 py-1 border border-white/20 text-[9px] font-mono font-bold tracking-widest text-white/80 uppercase rounded-sm bg-white/5">
+                        <span className="px-2.5 py-1 border border-white/20 dark:border-black/20 text-[9px] font-mono font-bold tracking-widest text-white/80 dark:text-[#121212]/80 uppercase rounded-sm bg-white/5 dark:bg-black/5">
                           MORE TO EXPLORE
                         </span>
                       </div>
 
                       {/* Title */}
-                      <h4 className="font-serif text-2xl font-normal text-white leading-tight">
+                      <h4 className="font-serif text-2xl font-normal text-white dark:text-[#121212] leading-tight">
                         And <span className="font-script text-3xl text-[#E86F2D] font-normal italic">many more</span>
                       </h4>
 
                       {/* Description */}
-                      <p className="font-serif text-[13px] text-white/65 mt-2.5 leading-relaxed">
+                      <p className="font-serif text-[13px] text-white/65 dark:text-[#121212]/70 mt-2.5 leading-relaxed">
                         Explore additional projects, experiments, and contributions on GitHub.
                       </p>
                     </div>
 
                     {/* Bottom Footer Action & Loop Arrow */}
                     <div className="flex items-end justify-between mt-6 pt-1">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/30 rounded-md bg-white/5 text-[10px] font-mono font-bold tracking-wider text-white uppercase group-hover:bg-white group-hover:text-black transition-all duration-300">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/30 dark:border-black/30 rounded-md bg-white/5 dark:bg-black/5 text-[10px] font-mono font-bold tracking-wider text-white dark:text-[#121212] uppercase group-hover:bg-white dark:group-hover:bg-[#121212] group-hover:text-black dark:group-hover:text-white transition-all duration-300">
                         <Github className="w-3.5 h-3.5" />
                         <span>VIEW ON GITHUB</span>
                         <span className="text-[12px] ml-0.5">›</span>
                       </div>
 
-                      {/* White Squiggly Loop Arrow */}
+                      {/* Hand-Drawn Squiggly Loop Arrow */}
                       <svg
-                        className="w-16 h-8 text-white/80 overflow-visible"
+                        className="w-16 h-8 text-white/80 dark:text-[#121212]/80 overflow-visible"
                         viewBox="0 0 80 30"
                         fill="none"
                       >
