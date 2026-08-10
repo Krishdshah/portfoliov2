@@ -1,23 +1,15 @@
 "use client";
 
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import SkillsTicker from "@/components/SkillsTicker";
-
-import Quote from "@/components/Quote";
-import BottomGrid from "@/components/BottomGrid";
+import SelectedWork from "@/components/SelectedWork";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function WorkPage(props: PageProps<"/work">) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-foreground selection:text-background relative overflow-x-hidden w-full">
       <Header />
-      <main className="flex-grow">
-        <Hero />
-        <SkillsTicker />
-
-        <Quote />
-        <BottomGrid />
+      <main className="flex-grow pt-20">
+        <SelectedWork />
       </main>
       <Footer />
     </div>

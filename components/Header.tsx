@@ -24,35 +24,35 @@ export default function Header() {
       icon: (
         <HomeIcon className="h-full w-full text-[#2B1B10]" />
       ),
-      href: "#",
+      href: "/",
     },
     {
       title: "Work",
       icon: (
         <Package className="h-full w-full text-[#2B1B10]" />
       ),
-      href: "#work",
+      href: "/work",
     },
     {
       title: "Research",
       icon: (
         <ScrollText className="h-full w-full text-[#2B1B10]" />
       ),
-      href: "#research",
+      href: "/#research",
     },
     {
       title: "About",
       icon: (
         <Component className="h-full w-full text-[#2B1B10]" />
       ),
-      href: "#about",
+      href: "/#about",
     },
     {
       title: "Now",
       icon: (
         <Activity className="h-full w-full text-[#2B1B10]" />
       ),
-      href: "#now",
+      href: "/#now",
     },
     {
       title: "Email",

@@ -20,6 +20,7 @@ import {
   useState,
 } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
@@ -150,7 +151,8 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
 
   const width = useSpring(widthTransform, spring);
 
-  const Element = href ? motion.a : motion.div;
+  const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
+  const Element = href ? (isInternal ? motion(Link) : motion.a) : motion.div;
 
   return (
     <Element
