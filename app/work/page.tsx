@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Projects from "@/components/projects";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function WorkPage(props: PageProps<"/work">) {
   return (
@@ -12,6 +13,7 @@ export default function WorkPage(props: PageProps<"/work">) {
         <Projects />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
