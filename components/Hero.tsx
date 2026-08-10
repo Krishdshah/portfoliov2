@@ -143,7 +143,32 @@ function NameSignature() {
   );
 }
 
+import { FileText } from "lucide-react";
 import ProfileDoodle from "./ProfileDoodle";
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.77a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z" />
+    </svg>
+  );
+}
+
+function GithubIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+    </svg>
+  );
+}
+
+function TwitterIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export default function Hero() {
   return (
@@ -162,11 +187,153 @@ export default function Hero() {
             from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
             <SquigglyArrow />
           </h1>
-          
-          <div>
-            <div className="inline-flex items-center px-3.5 py-1.5 bg-background-muted/40 border border-border-custom rounded-sm text-[10px] font-mono tracking-widest text-foreground font-semibold uppercase">
-              <span className="w-2 h-2 rounded-full bg-[#E54848] animate-pulse mr-2" />
-              AVAILABLE FOR ARCHITECTURE DESIGN
+
+          {/* Resume & Connect Block */}
+          <div className="flex flex-col gap-10 mt-2">
+            {/* Resume button & tooltip arrow */}
+            <div className="flex items-center gap-6 flex-wrap relative">
+              
+              {/* VIEW RESUME button container */}
+              <div className="relative group">
+                {/* Sunburst rays above the top right corner of the button */}
+                <svg
+                  className="absolute -top-3 -right-3 w-6 h-6 text-[#E86F2D] pointer-events-none"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                >
+                  <line x1="12" y1="4" x2="12" y2="8" />
+                  <line x1="18" y1="6" x2="15" y2="9" />
+                  <line x1="6" y1="6" x2="9" y2="9" />
+                </svg>
+
+                <a
+                  href="/resume"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-flex items-center gap-3 px-6 py-4 bg-[#23211F] text-white dark:bg-[#EDE8E1] dark:text-[#23211F] border border-border-custom font-mono text-xs font-bold tracking-widest uppercase rounded-sm shadow-[4px_4px_0px_#E86F2D] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#E86F2D] active:translate-y-1 active:shadow-none transition-all duration-150"
+                >
+                  <FileText className="w-4 h-4 text-[#E86F2D] dark:text-[#E86F2D]" />
+                  <span>VIEW RESUME</span>
+                </a>
+              </div>
+
+              {/* Doodle squiggly loop arrow + Text */}
+              <div className="flex items-center gap-3 select-none">
+                {/* Squiggly dashed loop arrow */}
+                <svg
+                  className="w-16 h-8 text-foreground/45 overflow-visible"
+                  viewBox="0 0 80 30"
+                  fill="none"
+                >
+                  <path
+                    d="M 75,10 C 55,5 45,25 35,15 C 25,5 40,2 25,12 Q 12,20 5,15"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeDasharray="4 3"
+                  />
+                  {/* Arrowhead pointing left */}
+                  <path
+                    d="M 10,12 L 4,16 L 8,22"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+
+                <div className="flex flex-col">
+                  <span className="font-script text-lg text-foreground/80 leading-none">
+                    Click to
+                  </span>
+                  <span className="font-script text-lg text-foreground/80 leading-none relative inline-block">
+                    download
+                    <svg
+                      className="absolute left-0 bottom-[-2px] w-full h-1 text-[#E86F2D]"
+                      viewBox="0 0 100 10"
+                      preserveAspectRatio="none"
+                      fill="none"
+                    >
+                      <path
+                        d="M0,5 Q50,0 100,5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* LET'S CONNECT section */}
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-6">
+                {/* Label with horizontal dashed line and vertical end pipe */}
+                <div className="flex items-center gap-2 select-none">
+                  <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/50 uppercase">
+                    LET'S CONNECT
+                  </span>
+                  <div className="w-12 border-t border-dashed border-border-custom" />
+                  <div className="h-4 border-r border-border-custom" />
+                </div>
+
+                {/* Circle Icon Buttons */}
+                <div className="flex items-center gap-3 relative">
+                  {/* LinkedIn */}
+                  <a
+                    href="https://in.linkedin.com/in/thekrishdshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 border border-border-custom rounded-full flex items-center justify-center bg-transparent text-foreground hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-200"
+                    title="LinkedIn"
+                  >
+                    <LinkedinIcon className="w-4.5 h-4.5" />
+                  </a>
+
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/Krishdshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 border border-border-custom rounded-full flex items-center justify-center bg-transparent text-foreground hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-200"
+                    title="GitHub"
+                  >
+                    <GithubIcon className="w-4.5 h-4.5" />
+                  </a>
+
+                  {/* Twitter / X */}
+                  <a
+                    href="https://x.com/ikrishshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 border border-border-custom rounded-full flex items-center justify-center bg-transparent text-foreground hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-200"
+                    title="Twitter / X"
+                  >
+                    <TwitterIcon className="w-4.5 h-4.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Hand-drawn orange underline under the social icons */}
+              <div className="pl-36 max-w-xs -mt-1 select-none">
+                <svg
+                  className="w-40 h-2 text-[#E86F2D] overflow-visible"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  fill="none"
+                >
+                  <path
+                    d="M 0,3 C 25,6 50,1 75,4 C 85,5 95,2 100,3"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
