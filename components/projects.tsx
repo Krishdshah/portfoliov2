@@ -284,7 +284,10 @@ export default function Projects() {
                         {/* Header */}
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                           <div>
-                            <div className="flex items-center gap-2 flex-wrap">
+                            <div className="flex items-baseline gap-3 flex-wrap">
+                              <span className="font-script text-3xl md:text-4xl text-[#C2410C] dark:text-[#F97316] font-normal select-none">
+                                {String(index + 1).padStart(2, "0")}
+                              </span>
                               <h4 className="text-2xl md:text-3xl font-serif font-bold tracking-tight text-foreground">
                                 {project.title}
                               </h4>
@@ -404,7 +407,7 @@ export default function Projects() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatePresence mode="popLayout">
-                {filteredOther.map((project) => {
+                {filteredOther.map((project, idx) => {
                   const IconComponent = project.icon;
                   return (
                     <motion.a
@@ -435,9 +438,14 @@ export default function Projects() {
                             </div>
 
                             {/* Title & Desc */}
-                            <h4 className="font-serif text-lg font-semibold text-foreground leading-tight group-hover:text-[#A83E2D] transition-colors duration-200">
-                              {project.title}
-                            </h4>
+                            <div className="flex items-baseline gap-2 mb-1">
+                              <span className="font-script text-xl text-[#C2410C] dark:text-[#F97316] font-normal select-none">
+                                {String(idx + 1).padStart(2, "0")}
+                              </span>
+                              <h4 className="font-serif text-lg font-semibold text-foreground leading-tight group-hover:text-[#A83E2D] transition-colors duration-200">
+                                {project.title}
+                              </h4>
+                            </div>
                             <p className="font-serif text-[13px] text-foreground/60 mt-2.5 leading-relaxed">
                               {project.desc}
                             </p>
