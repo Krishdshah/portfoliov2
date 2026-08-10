@@ -65,7 +65,7 @@ export default function BottomGrid() {
       </div>
 
       {/* Right Column (Research Archive) */}
-      <div className="p-6 md:py-12 md:pl-12 md:pr-12 lg:pr-20 flex flex-col bg-[#FAF8F5]/30">
+      <div className="p-6 md:py-12 md:pl-12 md:pr-12 lg:pr-20 flex flex-col bg-card/30">
         <h3 className="text-xl font-serif font-bold tracking-tight text-foreground mb-8">
           Research Archive
         </h3>
@@ -75,7 +75,7 @@ export default function BottomGrid() {
             <a
               key={idx}
               href={item.link}
-              className="border border-border-custom p-5 bg-[#FAF8F5] relative hover:shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:border-foreground/20 transition-all duration-300 flex flex-col group"
+              className="border border-border-custom p-5 bg-card relative hover:shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:border-foreground/20 transition-all duration-300 flex flex-col group"
             >
               {/* Card Header */}
               <div className="flex justify-between items-center">

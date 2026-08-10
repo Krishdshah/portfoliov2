@@ -25,7 +25,10 @@ export default function Header() {
   }, []);
   const toggleTheme = () => {
     if (typeof window !== "undefined") {
-      document.documentElement.classList.toggle("dark");
+      const root = document.documentElement;
+      root.classList.add("transitioning");
+      root.classList.toggle("dark");
+      setTimeout(() => root.classList.remove("transitioning"), 450);
     }
   };
 
@@ -33,49 +36,49 @@ export default function Header() {
     {
       title: "Home",
       icon: (
-        <HomeIcon className="h-full w-full text-[#2B1B10]" />
+        <HomeIcon className="h-full w-full text-foreground" />
       ),
       href: "/",
     },
     {
       title: "Work",
       icon: (
-        <Package className="h-full w-full text-[#2B1B10]" />
+        <Package className="h-full w-full text-foreground" />
       ),
       href: "/work",
     },
     {
       title: "Research",
       icon: (
-        <ScrollText className="h-full w-full text-[#2B1B10]" />
+        <ScrollText className="h-full w-full text-foreground" />
       ),
       href: "/#research",
     },
     {
       title: "About",
       icon: (
-        <Component className="h-full w-full text-[#2B1B10]" />
+        <Component className="h-full w-full text-foreground" />
       ),
       href: "/#about",
     },
     {
       title: "Now",
       icon: (
-        <Activity className="h-full w-full text-[#2B1B10]" />
+        <Activity className="h-full w-full text-foreground" />
       ),
       href: "/#now",
     },
     {
       title: "Email",
       icon: (
-        <Mail className="h-full w-full text-[#2B1B10]" />
+        <Mail className="h-full w-full text-foreground" />
       ),
       href: "mailto:krishdshah@example.com",
     },
     {
       title: "Theme",
       icon: (
-        <SunMoon className="h-full w-full text-[#2B1B10]" />
+        <SunMoon className="h-full w-full text-foreground" />
       ),
       onClick: toggleTheme,
     },

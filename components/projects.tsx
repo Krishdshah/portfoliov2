@@ -272,7 +272,7 @@ export default function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -30 }}
                     transition={{ duration: 0.4 }}
-                    className="border border-border-custom rounded-2xl bg-[#FAF8F5]/30 p-6 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 relative overflow-hidden"
+                    className="border border-border-custom rounded-2xl bg-card/30 p-6 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 relative overflow-hidden"
                   >
                     {/* Header */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -282,7 +282,7 @@ export default function Projects() {
                             {project.title}
                           </h4>
                           {/* Live stat status indicator */}
-                          <span className="inline-flex items-center px-2 py-0.5 border border-border-custom bg-[#EBE6DE]/40 text-[9px] font-mono font-bold tracking-widest text-foreground/60 uppercase rounded-sm">
+                          <span className="inline-flex items-center px-2 py-0.5 border border-border-custom bg-background-muted/40 text-[9px] font-mono font-bold tracking-widest text-foreground/60 uppercase rounded-sm">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#7CB342] animate-pulse mr-1.5" />
                             {project.stats}
                           </span>
@@ -297,7 +297,7 @@ export default function Projects() {
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="px-2.5 py-1 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/55 uppercase bg-[#EBE6DE] rounded-sm"
+                            className="px-2.5 py-1 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/55 uppercase bg-background-muted rounded-sm"
                           >
                             {t}
                           </span>
@@ -316,7 +316,7 @@ export default function Projects() {
                           return (
                             <React.Fragment key={idx}>
                               <div className="flex flex-col items-center gap-1.5 sm:gap-2 shrink-0 group">
-                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-custom bg-[#FAF8F5] flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm group-hover:-translate-y-1">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-custom bg-card flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm group-hover:-translate-y-1">
                                   <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
                                 <span className="text-[8px] sm:text-[10px] font-mono font-bold text-foreground/60 group-hover:text-foreground transition-colors duration-200 uppercase tracking-wider">
@@ -408,12 +408,12 @@ export default function Projects() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
-                      className="group flex flex-col justify-between border border-border-custom p-6 bg-[#FAF8F5]/10 hover:bg-[#FAF8F5]/70 relative hover:shadow-[0_6px_24px_rgba(0,0,0,0.03)] hover:-translate-y-1.5 transition-all duration-300 rounded-xl"
+                      className="group flex flex-col justify-between border border-border-custom p-6 bg-card/10 hover:bg-card/70 relative hover:shadow-[0_6px_24px_rgba(0,0,0,0.03)] hover:-translate-y-1.5 transition-all duration-300 rounded-xl"
                     >
                       <div>
                         {/* Header */}
                         <div className="flex justify-between items-center mb-4">
-                          <span className="px-2.5 py-0.5 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/50 uppercase rounded-sm bg-[#EBE6DE]/40">
+                          <span className="px-2.5 py-0.5 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/50 uppercase rounded-sm bg-background-muted/40">
                             {project.category}
                           </span>
                           <IconComponent className="w-4 h-4 text-foreground/40 group-hover:text-foreground transition-colors duration-200" />
@@ -433,7 +433,7 @@ export default function Projects() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-0.5 border border-border-custom/50 text-[7px] font-mono font-semibold tracking-wider text-foreground/50 uppercase rounded-xs bg-[#FAF8F5]"
+                            className="px-2 py-0.5 border border-border-custom/50 text-[7px] font-mono font-semibold tracking-wider text-foreground/50 uppercase rounded-xs bg-card"
                           >
                             {tag}
                           </span>

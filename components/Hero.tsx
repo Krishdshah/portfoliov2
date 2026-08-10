@@ -160,7 +160,7 @@ export default function Hero() {
         </h1>
         
         <div>
-          <div className="inline-flex items-center px-3.5 py-1.5 bg-[#EBE6DE]/40 border border-border-custom rounded-sm text-[10px] font-mono tracking-widest text-foreground font-semibold uppercase">
+          <div className="inline-flex items-center px-3.5 py-1.5 bg-background-muted/40 border border-border-custom rounded-sm text-[10px] font-mono tracking-widest text-foreground font-semibold uppercase">
             <span className="w-2 h-2 rounded-full bg-[#E54848] animate-pulse mr-2" />
             AVAILABLE FOR ARCHITECTURE DESIGN
           </div>
