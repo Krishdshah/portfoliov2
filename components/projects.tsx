@@ -80,9 +80,9 @@ const flagshipProjects: FlagshipProject[] = [
       { tool: "Fin. Tools", icon: Terminal },
     ],
     tech: ["Python", "Google ADK", "Gemini API"],
-    links: { 
-      demo: "https://genai-mjy8.vercel.app/", 
-      git: "https://github.com/archeeetah/GenAI.git" 
+    links: {
+      demo: "https://genai-mjy8.vercel.app/",
+      git: "https://github.com/archeeetah/GenAI.git"
     },
     stats: "Automated Workflows"
   },
@@ -100,9 +100,9 @@ const flagshipProjects: FlagshipProject[] = [
       { tool: "LLM Inference", icon: Cpu },
     ],
     tech: ["LangChain", "ChromaDB", "FastAPI", "React"],
-    links: { 
-      demo: "https://ava.aaruush.org/chat", 
-      git: "#" 
+    links: {
+      demo: "https://ava.aaruush.org/chat",
+      git: "#"
     },
     stats: "Reduced Support Tix"
   },
@@ -234,9 +234,8 @@ export default function Projects() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`relative px-4 py-2 text-xs font-mono font-bold tracking-widest uppercase rounded-sm transition-colors duration-300 ${
-                isActive ? "text-background" : "text-foreground/60 hover:text-foreground"
-              }`}
+              className={`relative px-4 py-2 text-xs font-mono font-bold tracking-widest uppercase rounded-sm transition-colors duration-300 ${isActive ? "text-background" : "text-foreground/60 hover:text-foreground"
+                }`}
             >
               {isActive && (
                 <motion.span
@@ -468,7 +467,7 @@ export default function Projects() {
                   );
                 })}
 
-                {/* 6th Card — "And many more" Contrast Callout Box (Dark Black in Light Mode, Light Paper in Dark Mode) */}
+                {/* 6th Card — "And many more" Dark GitHub Callout Box */}
                 {(activeCategory === "all" || activeCategory === "dev-tools" || activeCategory === "web-platforms" || activeCategory === "ai-agents") && (
                   <motion.a
                     layout
@@ -479,11 +478,11 @@ export default function Projects() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className="group block relative overflow-hidden rounded-[14px] bg-[#0A0A0A] dark:bg-[#F5F0E7] text-white dark:text-[#0A0A0A] p-6 flex flex-col justify-between h-full min-h-[220px] border border-[#222222] dark:border-black/15 hover:border-white/30 dark:hover:border-black/35 transition-all duration-300 hover:-translate-y-1.5 shadow-xl"
+                    className="group block relative overflow-hidden rounded-[14px] bg-[#121212] text-white p-6 flex flex-col justify-between h-full min-h-[220px] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
                   >
                     {/* Background Dot Grid Top Right */}
                     <svg
-                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-30 dark:opacity-20 text-white dark:text-[#0A0A0A]"
+                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-25 text-white"
                       viewBox="0 0 40 40"
                       fill="currentColor"
                     >
@@ -501,33 +500,33 @@ export default function Projects() {
                     <div>
                       {/* Top Header Badge */}
                       <div className="flex justify-between items-center mb-5">
-                        <span className="px-2.5 py-1 border border-white/20 dark:border-black/25 text-[9px] font-mono font-bold tracking-widest text-white dark:text-[#0A0A0A] uppercase rounded-sm bg-white/10 dark:bg-black/5">
+                        <span className="px-2.5 py-1 border border-white/20 text-[9px] font-mono font-bold tracking-widest text-white/80 uppercase rounded-sm bg-white/5">
                           MORE TO EXPLORE
                         </span>
                       </div>
 
                       {/* Title */}
-                      <h4 className="font-serif text-2xl font-normal text-white dark:text-[#0A0A0A] leading-tight">
+                      <h4 className="font-serif text-2xl font-normal text-white leading-tight">
                         And <span className="font-script text-3xl text-[#E86F2D] font-normal italic">many more</span>
                       </h4>
 
                       {/* Description */}
-                      <p className="font-serif text-[13px] text-white/70 dark:text-[#0A0A0A]/80 mt-2.5 leading-relaxed">
+                      <p className="font-serif text-[13px] text-white/65 mt-2.5 leading-relaxed">
                         Explore additional projects, experiments, and contributions on GitHub.
                       </p>
                     </div>
 
                     {/* Bottom Footer Action & Loop Arrow */}
                     <div className="flex items-end justify-between mt-6 pt-1">
-                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-white/30 dark:border-black/30 rounded-md bg-white/10 dark:bg-black/5 text-[10px] font-mono font-bold tracking-wider text-white dark:text-[#0A0A0A] uppercase group-hover:bg-white dark:group-hover:bg-[#0A0A0A] group-hover:text-black dark:group-hover:text-white transition-all duration-300">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/30 rounded-md bg-white/5 text-[10px] font-mono font-bold tracking-wider text-white uppercase group-hover:bg-white group-hover:text-black transition-all duration-300">
                         <Github className="w-3.5 h-3.5" />
                         <span>VIEW ON GITHUB</span>
                         <span className="text-[12px] ml-0.5">›</span>
                       </div>
 
-                      {/* Hand-Drawn Squiggly Loop Arrow */}
+                      {/* White Squiggly Loop Arrow */}
                       <svg
-                        className="w-16 h-8 text-white dark:text-[#0A0A0A] opacity-90 overflow-visible"
+                        className="w-16 h-8 text-white/80 overflow-visible"
                         viewBox="0 0 80 30"
                         fill="none"
                       >
