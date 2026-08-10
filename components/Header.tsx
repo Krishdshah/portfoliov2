@@ -87,8 +87,8 @@ export default function Header() {
   return (
     <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start overflow-visible">
       <Dock
-        panelHeight={isMobile ? 44 : 64}
-        magnification={isMobile ? 48 : 80}
+        panelHeight={isMobile ? 50 : 64}
+        magnification={isMobile ? 54 : 80}
         distance={isMobile ? 0 : 150}
         className={isMobile ? "gap-2 px-3 py-1.5 bg-transparent border-none shadow-none" : "gap-3 px-4 py-2 bg-transparent border-none shadow-none"}
       >

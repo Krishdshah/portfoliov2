@@ -43,7 +43,6 @@ export type DockItemProps = {
   href?: string;
 };
 
-
 export type DockLabelProps = {
   className?: string;
   children: React.ReactNode;
@@ -153,31 +152,53 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
 
   const width = useSpring(widthTransform, spring);
 
-  const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
-  const Element = href ? (isInternal ? motion(Link) : motion.a) : motion.div;
+  const content = Children.map(children, (child) =>
+    cloneElement(child as React.ReactElement<any>, { width, isHovered } as any)
+  );
+
+  if (href) {
+    return (
+      <motion.div
+        ref={ref}
+        style={{ width }}
+        onHoverStart={() => isHovered.set(1)}
+        onHoverEnd={() => isHovered.set(0)}
+        onFocus={() => isHovered.set(1)}
+        onBlur={() => isHovered.set(0)}
+        className={cn(
+          "relative inline-flex items-center justify-center cursor-pointer",
+          className
+        )}
+        tabIndex={0}
+        role="button"
+        aria-haspopup="true"
+      >
+        <Link href={href} onClick={onClick} className="w-full h-full flex items-center justify-center">
+          {content}
+        </Link>
+      </motion.div>
+    );
+  }
 
   return (
-    <Element
-      ref={ref as any}
+    <motion.div
+      ref={ref}
       style={{ width }}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       className={cn(
-        "relative inline-flex items-center justify-center",
+        "relative inline-flex items-center justify-center cursor-pointer",
         className
       )}
       tabIndex={0}
       role="button"
       aria-haspopup="true"
       onClick={onClick}
-      {...(href ? { href } : {})}
     >
-      {Children.map(children, (child) =>
-        cloneElement(child as React.ReactElement<any>, { width, isHovered } as any)
-      )}
-    </Element>
+      {content}
+    </motion.div>
   );
 }
 
