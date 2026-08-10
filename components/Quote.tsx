@@ -64,7 +64,7 @@ export default function Quote() {
       {/* Background SVG Decorations */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
-        viewBox="0 0 1200 480"
+        viewBox="0 0 1200 520"
         preserveAspectRatio="xMidYMid meet"
         fill="none"
       >
@@ -97,45 +97,45 @@ export default function Quote() {
           <line x1="1124" y1="97" x2="1116" y2="108" />
         </g>
 
-        {/* BOTTOM-LEFT DECORATION (Loopy Hand-Drawn Squiggle) */}
+        {/* BOTTOM-LEFT DECORATION (Loopy Hand-Drawn Squiggle - Shifted below text) */}
         <path
-          d="M 45,355 C 90,340 120,315 140,335 C 155,350 130,365 155,355 C 180,345 190,330 210,350 C 225,365 205,370 230,365 Q 260,360 285,370"
+          d="M 45,430 C 90,415 120,390 140,410 C 155,425 130,440 155,430 C 180,420 190,405 210,425 C 225,440 205,445 230,440 Q 260,435 285,445"
           className="stroke-foreground/70 dark:stroke-foreground/50"
           strokeWidth="1.8"
           strokeLinecap="round"
           fill="none"
         />
         {/* Small orange end-dot */}
-        <circle cx="291" cy="370" r="2.5" fill="#E86F2D" />
+        <circle cx="291" cy="445" r="2.5" fill="#E86F2D" />
 
-        {/* BOTTOM-CENTER DIVIDER */}
+        {/* BOTTOM-CENTER DIVIDER (Shifted below text) */}
         <line
           x1="480"
-          y1="355"
+          y1="440"
           x2="570"
-          y2="355"
+          y2="440"
           className="stroke-foreground/25 dark:stroke-foreground/15"
           strokeWidth="1"
         />
         {/* Center Orange Sparkle Star */}
         <path
-          d="M 600,355 C 601,349 604,346 610,345 C 604,344 601,341 600,335 C 599,341 596,344 590,345 C 596,346 599,349 600,355 Z"
+          d="M 600,440 C 601,434 604,431 610,430 C 604,429 601,426 600,420 C 599,426 596,429 590,430 C 596,431 599,434 600,440 Z"
           fill="#E86F2D"
         />
         <line
           x1="630"
-          y1="355"
+          y1="440"
           x2="720"
-          y2="355"
+          y2="440"
           className="stroke-foreground/25 dark:stroke-foreground/15"
           strokeWidth="1"
         />
 
         {/* BOTTOM-RIGHT DECORATION */}
         {/* Soft circle */}
-        <circle cx="1100" cy="370" r="38" className="fill-[#EBE3D8]/50 dark:fill-white/[0.04]" />
+        <circle cx="1100" cy="430" r="38" className="fill-[#EBE3D8]/50 dark:fill-white/[0.04]" />
         {/* Dot grid */}
-        <rect x="1055" y="330" width="70" height="70" fill="url(#quote-grid-dots)" />
+        <rect x="1055" y="390" width="70" height="70" fill="url(#quote-grid-dots)" />
       </svg>
 
       {/* TOP CENTER QUOTATION MARKS */}
