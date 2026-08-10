@@ -160,7 +160,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
             I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
             from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
-            <SquigglyArrow />.
+            <SquigglyArrow />
           </h1>
           
           <div>

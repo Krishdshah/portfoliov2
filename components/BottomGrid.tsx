@@ -46,7 +46,7 @@ const timeline = [
     title: "B.Tech — CSE (AI & ML)",
     subtitle: "SRM Institute of Science and Technology",
     date: "2024 – 2028",
-    desc: "Focusing on AI/ML systems engineering, algorithms, and full-stack software development. Maintaining a 9.91 GPA.",
+    desc: "Focusing on AI/ML systems engineering, algorithms, and full-stack software development. Maintaining a CGPA of 9.83.",
   },
 ];
 
