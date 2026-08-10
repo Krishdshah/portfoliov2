@@ -143,27 +143,37 @@ function NameSignature() {
   );
 }
 
+import ProfileDoodle from "./ProfileDoodle";
+
 export default function Hero() {
   return (
     <section className="w-full border-b border-border-custom bg-transparent">
       {/* Statement & Badge Container */}
-      <div className="px-6 md:px-12 lg:px-20 py-16 md:py-28 flex flex-col gap-6 md:gap-8">
-        {/* Name signature */}
-        <div>
-          <NameSignature />
+      <div className="px-6 md:px-12 lg:px-20 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Left Column - Text Content */}
+        <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
+          {/* Name signature */}
+          <div>
+            <NameSignature />
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
+            I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
+            from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
+            <SquigglyArrow />.
+          </h1>
+          
+          <div>
+            <div className="inline-flex items-center px-3.5 py-1.5 bg-background-muted/40 border border-border-custom rounded-sm text-[10px] font-mono tracking-widest text-foreground font-semibold uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#E54848] animate-pulse mr-2" />
+              AVAILABLE FOR ARCHITECTURE DESIGN
+            </div>
+          </div>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground max-w-6xl">
-          I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
-          from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
-          <SquigglyArrow />.
-        </h1>
-        
-        <div>
-          <div className="inline-flex items-center px-3.5 py-1.5 bg-background-muted/40 border border-border-custom rounded-sm text-[10px] font-mono tracking-widest text-foreground font-semibold uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#E54848] animate-pulse mr-2" />
-            AVAILABLE FOR ARCHITECTURE DESIGN
-          </div>
+        {/* Right Column - Profile Doodle */}
+        <div className="lg:col-span-5 flex justify-center items-center">
+          <ProfileDoodle />
         </div>
       </div>
     </section>

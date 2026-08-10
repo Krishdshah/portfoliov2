@@ -85,7 +85,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start overflow-visible">
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] pointer-events-auto flex justify-center items-start overflow-visible">
       <Dock
         panelHeight={isMobile ? 44 : 64}
         magnification={isMobile ? 48 : 80}
