@@ -140,7 +140,7 @@ export default function Quote() {
 
       {/* TOP CENTER QUOTATION MARKS */}
       <div className="mb-2 select-none">
-        <span className="font-serif text-6xl md:text-7xl lg:text-8xl leading-none text-[#E5DCD0]/75 dark:text-white/10 tracking-widest font-normal">
+        <span className="font-serif text-6xl md:text-7xl lg:text-8xl leading-none text-[#E5DCD0] dark:text-foreground/35 tracking-widest font-normal">
           “
         </span>
       </div>
