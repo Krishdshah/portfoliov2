@@ -27,7 +27,7 @@ export default function ProfileDoodle() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Decorative SVG provided by user */}
+      {/* Decorative SVG */}
       <svg
         viewBox="0 0 620 620"
         fill="none"
@@ -35,7 +35,7 @@ export default function ProfileDoodle() {
         className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0 overflow-visible"
       >
         <defs>
-          {/* Soft paper texture */}
+          {/* Soft paper shadow filter */}
           <filter id="paperShadow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow
               dx="0"
@@ -46,18 +46,18 @@ export default function ProfileDoodle() {
             />
           </filter>
 
-          {/* Orange blob */}
+          {/* Orange blob shadow filter */}
           <filter id="blobShadow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow
               dx="0"
               dy="8"
               stdDeviation="12"
               floodColor="#E86F2D"
-              floodOpacity="0.15"
+              floodOpacity="0.18"
             />
           </filter>
 
-          {/* Dot pattern */}
+          {/* Dynamic Dot pattern adapting to dark mode */}
           <pattern
             id="dots"
             width="18"
@@ -68,12 +68,11 @@ export default function ProfileDoodle() {
               cx="2"
               cy="2"
               r="1.6"
-              fill="#22201E"
-              fillOpacity="0.22"
+              className="fill-foreground/25 transition-colors duration-300"
             />
           </pattern>
 
-          {/* Arrow */}
+          {/* Dynamic Arrow marker */}
           <marker
             id="arrow"
             markerWidth="10"
@@ -85,12 +84,12 @@ export default function ProfileDoodle() {
             <path
               d="M0 0L10 5L0 10"
               fill="none"
-              stroke="#22201E"
+              className="stroke-foreground transition-colors duration-300"
               strokeWidth="1.5"
             />
           </marker>
 
-          {/* Small orange arrow */}
+          {/* Small orange arrow marker */}
           <marker
             id="orangeArrow"
             markerWidth="9"
@@ -108,22 +107,21 @@ export default function ProfileDoodle() {
           </marker>
         </defs>
 
-        {/* BACKGROUND PAPER CIRCLE */}
+        {/* BACKGROUND PAPER CIRCLE 1 (Adapts smoothly to dark mode) */}
         <circle
           cx="315"
           cy="300"
           r="245"
-          fill="#E9E3D8"
-          fillOpacity="0.45"
+          className="fill-[#E9E3D8]/45 dark:fill-white/[0.04] transition-colors duration-300"
           filter="url(#paperShadow)"
         />
 
+        {/* BACKGROUND PAPER CIRCLE 2 (Adapts smoothly to dark mode) */}
         <circle
           cx="315"
           cy="300"
           r="215"
-          fill="#F5F0E7"
-          fillOpacity="0.85"
+          className="fill-[#F5F0E7]/85 dark:fill-white/[0.07] transition-colors duration-300"
         />
 
         {/* FLUID GEL ORANGE ORGANIC SHAPE */}
@@ -162,8 +160,7 @@ export default function ProfileDoodle() {
         {/* SECONDARY PAPER SHAPE WITH FLUID GEL LAG */}
         <motion.path
           d={secondaryPaperPaths[0]}
-          fill="#FFFDF8"
-          fillOpacity="0.34"
+          className="fill-[#FFFDF8]/34 dark:fill-white/[0.05] transition-colors duration-300"
           animate={{
             d: secondaryPaperPaths,
             scale: isHovered ? 1.03 : 1,
@@ -203,7 +200,7 @@ export default function ProfileDoodle() {
           opacity="0.45"
         />
 
-        {/* BIG HAND-DRAWN ORBIT */}
+        {/* BIG HAND-DRAWN ORBIT (Adapts stroke color in dark mode) */}
         <motion.path
           d="
             M82 321
@@ -212,11 +209,10 @@ export default function ProfileDoodle() {
             C484 466 346 528 221 482
             C127 447 73 385 82 321Z
           "
-          stroke="#24211E"
+          className="stroke-foreground/90 dark:stroke-foreground/80 transition-colors duration-300"
           strokeWidth="2.2"
           strokeLinecap="round"
           fill="none"
-          opacity="0.9"
           animate={{
             rotate: isHovered ? [0, 2, -1, 0] : 0,
           }}
@@ -234,7 +230,7 @@ export default function ProfileDoodle() {
             M158 459
             C255 534 416 500 493 405
           "
-          stroke="#24211E"
+          className="stroke-foreground/80 dark:stroke-foreground/70 transition-colors duration-300"
           strokeWidth="1.6"
           strokeLinecap="round"
           strokeDasharray="5 7"
@@ -275,7 +271,7 @@ export default function ProfileDoodle() {
             L69 227
             L85 221Z
           "
-          fill="#24211E"
+          className="fill-foreground transition-colors duration-300"
         />
 
         {/* SMALL ORANGE STAR */}
@@ -302,10 +298,8 @@ export default function ProfileDoodle() {
             C496 557 468 535 469 505
             C469 491 477 478 492 470Z
           "
-          stroke="#24211E"
+          className="stroke-foreground fill-[#F7F1E7]/90 dark:fill-white/10 transition-colors duration-300"
           strokeWidth="2"
-          fill="#F7F1E7"
-          fillOpacity="0.9"
         />
 
         {/* LITTLE ARROW */}
@@ -321,7 +315,7 @@ export default function ProfileDoodle() {
         {/* BOTTOM DOODLE LOOP ARROW */}
         <path
           d="M 440,515 C 380,540 310,545 270,515 C 235,485 265,455 295,480 C 325,505 250,555 130,525"
-          stroke="#24211E"
+          className="stroke-foreground transition-colors duration-300"
           strokeWidth="2.2"
           strokeLinecap="round"
           strokeDasharray="6 5"
@@ -330,7 +324,7 @@ export default function ProfileDoodle() {
         {/* Arrow head pointing left */}
         <path
           d="M 142,516 L 128,525 L 140,536"
-          stroke="#24211E"
+          className="stroke-foreground transition-colors duration-300"
           strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -339,7 +333,7 @@ export default function ProfileDoodle() {
 
         {/* SMALL CROSS MARK */}
         <g
-          stroke="#24211E"
+          className="stroke-foreground transition-colors duration-300"
           strokeWidth="2"
           strokeLinecap="round"
         >
@@ -356,7 +350,7 @@ export default function ProfileDoodle() {
         />
       </svg>
 
-      {/* Centered Cutout Profile Image with subtle gel float */}
+      {/* Centered Cutout Profile Image */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
         animate={{
@@ -388,7 +382,7 @@ export default function ProfileDoodle() {
           damping: 15,
         }}
       >
-        <div className="relative bg-[#EFEBE4] dark:bg-[#2A2724] border border-[#E0D8CE] dark:border-[#3D3833] rounded-xl p-4 sm:p-4.5 shadow-xl text-[#2B2926] dark:text-[#EDE8E1]">
+        <div className="relative bg-[#EFEBE4] dark:bg-[#25221F] border border-[#E0D8CE] dark:border-[#3D3833] rounded-xl p-4 sm:p-4.5 shadow-xl text-[#2B2926] dark:text-[#EDE8E1] transition-colors duration-300">
           {/* Pink Washi Tape at top center */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-[#E88FA2]/70 dark:bg-[#E88FA2]/60 backdrop-blur-[1px] rotate-[-2deg] shadow-xs rounded-xs pointer-events-none" />
 
