@@ -65,6 +65,11 @@ type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
 export function IconCloud({ iconSlugs, iconItems }: DynamicCloudProps) {
   const [data, setData] = useState<IconData | null>(null);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (iconSlugs && iconSlugs.length > 0) {
@@ -90,6 +95,10 @@ export function IconCloud({ iconSlugs, iconItems }: DynamicCloudProps) {
     }
     return null;
   }, [data, isDark]);
+
+  if (!mounted) {
+    return <div className="w-full h-full min-h-[300px]" />;
+  }
 
   if (iconItems && iconItems.length > 0) {
     return (

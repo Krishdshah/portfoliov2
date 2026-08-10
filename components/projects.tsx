@@ -467,6 +467,87 @@ export default function Projects() {
                     </motion.a>
                   );
                 })}
+
+                {/* 6th Card — "And many more" Dark GitHub Callout Box */}
+                {(activeCategory === "all" || activeCategory === "dev-tools" || activeCategory === "web-platforms" || activeCategory === "ai-agents") && (
+                  <motion.a
+                    layout
+                    href="https://github.com/Krishdshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="group block relative overflow-hidden rounded-[14px] bg-[#121212] text-white p-6 flex flex-col justify-between h-full min-h-[220px] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
+                  >
+                    {/* Background Dot Grid Top Right */}
+                    <svg
+                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-25 text-white"
+                      viewBox="0 0 40 40"
+                      fill="currentColor"
+                    >
+                      <circle cx="5" cy="5" r="1.5" />
+                      <circle cx="18" cy="5" r="1.5" />
+                      <circle cx="31" cy="5" r="1.5" />
+                      <circle cx="5" cy="18" r="1.5" />
+                      <circle cx="18" cy="18" r="1.5" />
+                      <circle cx="31" cy="18" r="1.5" />
+                      <circle cx="5" cy="31" r="1.5" />
+                      <circle cx="18" cy="31" r="1.5" />
+                      <circle cx="31" cy="31" r="1.5" />
+                    </svg>
+
+                    <div>
+                      {/* Top Header Badge */}
+                      <div className="flex justify-between items-center mb-5">
+                        <span className="px-2.5 py-1 border border-white/20 text-[9px] font-mono font-bold tracking-widest text-white/80 uppercase rounded-sm bg-white/5">
+                          MORE TO EXPLORE
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h4 className="font-serif text-2xl font-normal text-white leading-tight">
+                        And <span className="font-script text-3xl text-[#E86F2D] font-normal italic">many more</span>
+                      </h4>
+
+                      {/* Description */}
+                      <p className="font-serif text-[13px] text-white/65 mt-2.5 leading-relaxed">
+                        Explore additional projects, experiments, and contributions on GitHub.
+                      </p>
+                    </div>
+
+                    {/* Bottom Footer Action & Loop Arrow */}
+                    <div className="flex items-end justify-between mt-6 pt-1">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/30 rounded-md bg-white/5 text-[10px] font-mono font-bold tracking-wider text-white uppercase group-hover:bg-white group-hover:text-black transition-all duration-300">
+                        <Github className="w-3.5 h-3.5" />
+                        <span>VIEW ON GITHUB</span>
+                        <span className="text-[12px] ml-0.5">›</span>
+                      </div>
+
+                      {/* White Squiggly Loop Arrow */}
+                      <svg
+                        className="w-16 h-8 text-white/80 overflow-visible"
+                        viewBox="0 0 80 30"
+                        fill="none"
+                      >
+                        <path
+                          d="M 5,20 C 25,25 35,5 45,15 C 55,25 40,28 50,15 Q 65,0 75,5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M 68,2 L 76,5 L 72,12"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </motion.a>
+                )}
               </AnimatePresence>
             </div>
           </div>
