@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { IconCloud } from "@/components/ui/interactive-icon-cloud";
-import { Code2 } from "lucide-react";
+import { Code2, Code, Database, BookOpen, FileText, Puzzle, Mail } from "lucide-react";
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -49,6 +49,72 @@ const skillLogos = [
   { name: "MONGODB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   { name: "FIREBASE", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" },
   { name: "TAILWIND CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+];
+
+const profiles = [
+  {
+    name: "GitHub",
+    handle: "@Krishdshah",
+    url: "https://github.com/Krishdshah",
+    sub: "Code & OSS",
+    icon: Code2,
+  },
+  {
+    name: "LinkedIn",
+    handle: "/in/thekrishdshah",
+    url: "https://in.linkedin.com/in/thekrishdshah",
+    sub: "Network",
+    icon: LinkedinIcon,
+  },
+  {
+    name: "LeetCode",
+    handle: "thekdshah",
+    url: "https://leetcode.com/u/thekdshah/",
+    sub: "DSA & Problem Solving",
+    icon: Code,
+  },
+  {
+    name: "Kaggle",
+    handle: "krishdshah",
+    url: "https://www.kaggle.com/krishdshah",
+    sub: "AI | ML Models & Datasets",
+    icon: Database,
+  },
+  {
+    name: "Medium",
+    handle: "@thekrishdshahbhs",
+    url: "https://medium.com/@thekrishdshahbhs",
+    sub: "Tech Writing",
+    icon: BookOpen,
+  },
+  {
+    name: "Dev.to",
+    handle: "@thekrishdshah",
+    url: "https://dev.to/thekrishdshah",
+    sub: "Developer Insights",
+    icon: FileText,
+  },
+  {
+    name: "VS Marketplace",
+    handle: "krishdshah",
+    url: "https://marketplace.visualstudio.com/publishers/krishdshah",
+    sub: "VS Code Tooling",
+    icon: Puzzle,
+  },
+  {
+    name: "X (Twitter)",
+    handle: "@ikrishshah",
+    url: "https://x.com/ikrishshah",
+    sub: "Tech Discussions",
+    icon: TwitterIcon,
+  },
+  {
+    name: "Email",
+    handle: "thekrishdshahbhs [at] gmail.com",
+    url: "mailto:thekrishdshahbhs@gmail.com",
+    sub: "Collaboration & Inquiries",
+    icon: Mail,
+  },
 ];
 
 // Handwritten Box Component for "Tech Stack"
@@ -108,8 +174,8 @@ export default function ProfilesPage() {
       <main className="flex-grow pt-28 md:pt-36 pb-16 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column — Text Statement & Connect Links */}
-          <div className="lg:col-span-6 flex flex-col gap-6 md:gap-8">
+          {/* Left Column — Text Statement & All Profiles */}
+          <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
             {/* Main Statement Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-[58px] font-serif leading-[1.18] tracking-tight font-bold text-foreground">
               Building <WavyUnderline>systems</WavyUnderline> <br />
@@ -117,7 +183,7 @@ export default function ProfilesPage() {
             </h1>
 
             {/* Subtext */}
-            <p className="font-serif text-lg md:text-xl text-foreground/70 leading-relaxed max-w-lg">
+            <p className="font-serif text-lg md:text-xl text-foreground/70 leading-relaxed max-w-xl">
               I bridge the gap between creative architecture and robust development, drafting digital experiences with precision and intent.
             </p>
 
@@ -127,59 +193,45 @@ export default function ProfilesPage() {
             {/* CONNECT Section */}
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs font-bold tracking-widest text-foreground/45 uppercase">
-                CONNECT
+                CONNECT &amp; PROFILES
               </span>
 
-              <div className="flex flex-col gap-3 max-w-xs">
-                {/* GitHub */}
-                <a
-                  href="https://github.com/Krishdshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 px-3.5 py-2.5 bg-background border border-border-custom rounded-sm hover:border-foreground/40 transition-colors duration-200 group"
-                >
-                  <div className="w-8 h-8 border border-border-custom rounded-xs flex items-center justify-center bg-card text-foreground group-hover:border-foreground/40 transition-colors">
-                    <Code2 className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-xs font-bold tracking-wide text-foreground">
-                    GitHub
-                  </span>
-                </a>
-
-                {/* LinkedIn */}
-                <a
-                  href="https://linkedin.com/in/krishdshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 px-3.5 py-2.5 bg-background border border-border-custom rounded-sm hover:border-foreground/40 transition-colors duration-200 group"
-                >
-                  <div className="w-8 h-8 border border-border-custom rounded-xs flex items-center justify-center bg-card text-foreground group-hover:border-foreground/40 transition-colors">
-                    <LinkedinIcon className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-xs font-bold tracking-wide text-foreground">
-                    LinkedIn
-                  </span>
-                </a>
-
-                {/* Twitter / X */}
-                <a
-                  href="https://x.com/krishdshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 px-3.5 py-2.5 bg-background border border-border-custom rounded-sm hover:border-foreground/40 transition-colors duration-200 group"
-                >
-                  <div className="w-8 h-8 border border-border-custom rounded-xs flex items-center justify-center bg-card text-foreground group-hover:border-foreground/40 transition-colors">
-                    <TwitterIcon className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-xs font-bold tracking-wide text-foreground">
-                    Twitter
-                  </span>
-                </a>
+              {/* Profiles Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                {profiles.map((p) => {
+                  const IconComp = p.icon;
+                  return (
+                    <a
+                      key={p.name}
+                      href={p.url}
+                      target={p.url.startsWith("http") ? "_blank" : undefined}
+                      rel={p.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 p-3 bg-background border border-border-custom rounded-md hover:border-foreground/40 hover:shadow-xs transition-all duration-200 group"
+                    >
+                      <div className="w-9 h-9 border border-border-custom rounded-sm flex items-center justify-center bg-card text-foreground group-hover:border-foreground/40 group-hover:bg-foreground group-hover:text-background transition-colors shrink-0">
+                        <IconComp className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-mono text-xs font-bold tracking-wide text-foreground truncate">
+                            {p.name}
+                          </span>
+                          <span className="font-mono text-[10px] text-foreground/40 truncate">
+                            {p.handle}
+                          </span>
+                        </div>
+                        <span className="font-serif text-[11px] text-foreground/50 truncate">
+                          {p.sub}
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
             {/* Status Badge */}
-            <div className="mt-4">
+            <div className="mt-2">
               <div className="inline-flex items-center px-3.5 py-2 bg-foreground text-background rounded-xs text-[11px] font-mono font-bold tracking-wider">
                 Status: Always building
               </div>
@@ -187,7 +239,7 @@ export default function ProfilesPage() {
           </div>
 
           {/* Right Column — Tech Stack Header & Interactive Icon Cloud */}
-          <div className="lg:col-span-6 flex flex-col items-end w-full">
+          <div className="lg:col-span-5 flex flex-col items-end w-full">
             {/* Tech Stack Header Badge */}
             <div className="flex flex-col items-end text-right mb-6">
               <SketchyBox>Tech Stack</SketchyBox>
