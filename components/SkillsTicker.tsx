@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface Skill {
   name: string;
@@ -64,16 +64,26 @@ const tickerItems = [...skills, ...skills];
 export default function SkillsTicker() {
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredName, setHoveredName] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (scrollRef.current && isPaused) {
+      scrollRef.current.scrollLeft += e.deltaY + e.deltaX;
+    }
+  };
 
   return (
     <section className="w-full border-b border-border-custom bg-transparent overflow-hidden py-6 md:py-8">
       <div
-        className="flex w-full overflow-hidden select-none"
+        ref={scrollRef}
+        className="flex w-full overflow-x-auto scrollbar-none select-none cursor-grab active:cursor-grabbing"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => {
           setIsPaused(false);
           setHoveredName(null);
         }}
+        onWheel={handleWheel}
       >
         <div
           className="animate-marquee flex items-center whitespace-nowrap gap-12"
