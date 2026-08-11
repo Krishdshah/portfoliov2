@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import {
   Activity,
   Component,
@@ -14,6 +15,7 @@ import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,20 +93,31 @@ export default function Header() {
         distance={isMobile ? 0 : 150}
         className={isMobile ? "gap-2 px-3 py-1.5 bg-transparent border-none shadow-none" : "gap-3 px-4 py-2 bg-transparent border-none shadow-none"}
       >
-        {data.map((item, idx) => (
-          <DockItem
-            key={idx}
-            className={cn(
-              "aspect-square rounded-full border flex items-center justify-center transition-colors duration-200",
-              item.colorClass
-            )}
-            href={item.href}
-            onClick={item.onClick}
-          >
-            <DockLabel>{item.title}</DockLabel>
-            <DockIcon>{item.icon}</DockIcon>
-          </DockItem>
-        ))}
+        {data.map((item, idx) => {
+          const isActive = item.href
+            ? item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href)
+            : false;
+          return (
+            <DockItem
+              key={idx}
+              className={cn(
+                "relative aspect-square rounded-full border flex items-center justify-center transition-all duration-200",
+                isActive && "scale-110 shadow-sm",
+                item.colorClass
+              )}
+              href={item.href}
+              onClick={item.onClick}
+            >
+              <DockLabel>{item.title}</DockLabel>
+              <DockIcon>{item.icon}</DockIcon>
+              {isActive && (
+                <span className="absolute -bottom-1.5 w-1 h-1 rounded-full bg-current opacity-70" />
+              )}
+            </DockItem>
+          );
+        })}
       </Dock>
     </div>
   );
