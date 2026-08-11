@@ -113,7 +113,6 @@
   }
   html {
     @apply font-sans overflow-x-hidden;
-    scroll-behavior: smooth;
   }
 
   /* Applied only during the ~400ms theme toggle — does not affect hover/motion transitions */
