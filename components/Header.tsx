@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import {
   Activity,
   Component,
@@ -15,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,6 +24,30 @@ export default function Header() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const handleScrollSpy = () => {
+      const sections = ["hero", "work", "profiles", "now"];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollSpy);
+    handleScrollSpy();
+    return () => window.removeEventListener("scroll", handleScrollSpy);
+  }, []);
+
   const toggleTheme = () => {
     if (typeof window !== "undefined") {
       const root = document.documentElement;
@@ -40,7 +63,7 @@ export default function Header() {
       icon: (
         <HomeIcon className="h-full w-full text-[#4F46E5] dark:text-[#818CF8]" />
       ),
-      href: "/",
+      href: "#hero",
       colorClass: "bg-[#EEF2FF] border-[#C7D2FE] dark:bg-[#312E81]/30 dark:border-[#3730A3]/50 hover:bg-[#E0E7FF] dark:hover:bg-[#312E81]/50",
     },
     {
@@ -48,7 +71,7 @@ export default function Header() {
       icon: (
         <Package className="h-full w-full text-[#0284C7] dark:text-[#38BDF8]" />
       ),
-      href: "/work",
+      href: "#work",
       colorClass: "bg-[#F0F9FF] border-[#BAE6FD] dark:bg-[#0C4A6E]/30 dark:border-[#075985]/50 hover:bg-[#E0F2FE] dark:hover:bg-[#0C4A6E]/50",
     },
     {
@@ -56,7 +79,7 @@ export default function Header() {
       icon: (
         <Component className="h-full w-full text-[#15803D] dark:text-[#34D399]" />
       ),
-      href: "/profiles",
+      href: "#profiles",
       colorClass: "bg-[#F0FDF4] border-[#BBF7D0] dark:bg-[#064E3B]/30 dark:border-[#065F46]/50 hover:bg-[#D1FAE5] dark:hover:bg-[#064E3B]/50",
     },
     {
@@ -64,7 +87,7 @@ export default function Header() {
       icon: (
         <Activity className="h-full w-full text-[#1A1A1A] dark:text-[#E2E8F0]" />
       ),
-      href: "/now",
+      href: "#now",
       colorClass: "bg-[#FFF9E6] border-[#FDE68A] dark:bg-[#78350F]/20 dark:border-[#92400E]/40 hover:bg-[#FEF3C7] dark:hover:bg-[#78350F]/30",
     },
     {
@@ -94,11 +117,7 @@ export default function Header() {
         className={isMobile ? "gap-2 px-3 py-1.5 bg-transparent border-none shadow-none" : "gap-3 px-4 py-2 bg-transparent border-none shadow-none"}
       >
         {data.map((item, idx) => {
-          const isActive = item.href
-            ? item.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(item.href)
-            : false;
+          const isActive = item.href === `#${activeSection}`;
           return (
             <DockItem
               key={idx}
