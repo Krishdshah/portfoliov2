@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import KineticGrid from "@/components/ui/kinetic-grid";
+import CustomCursor from "@/components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${alexBrush.variable} antialiased`}
     >
       <body className="relative">
+        <CustomCursor />
         <KineticGrid>
           {children}
         </KineticGrid>
