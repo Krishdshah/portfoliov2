@@ -213,9 +213,9 @@ function DockLabel({ children, className, ...rest }: DockLabelProps) {
 
   useEffect(() => {
     if (!isHovered) return;
-    const unsubscribe = isHovered.onChange
-      ? isHovered.onChange((latest) => setIsVisible(latest === 1))
-      : isHovered.on("change", (latest) => setIsVisible(latest === 1));
+    const unsubscribe = isHovered.on
+      ? isHovered.on("change", (latest) => setIsVisible(latest === 1))
+      : isHovered.onChange((latest) => setIsVisible(latest === 1));
 
     return () => unsubscribe();
   }, [isHovered]);
