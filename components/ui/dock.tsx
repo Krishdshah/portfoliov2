@@ -18,6 +18,7 @@ import {
   useMemo,
   useRef,
   useState,
+  isValidElement,
 } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -152,9 +153,16 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
 
   const width = useSpring(widthTransform, spring);
 
-  const content = Children.map(children, (child) =>
-    cloneElement(child as React.ReactElement<any>, { width, isHovered } as any)
-  );
+  const content = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      // Only clone props onto React custom components, not native DOM elements like 'span' or 'div'
+      if (typeof child.type === "string") {
+        return child;
+      }
+      return cloneElement(child as React.ReactElement<any>, { width, isHovered } as any);
+    }
+    return child;
+  });
 
   if (href) {
     return (
@@ -209,9 +217,9 @@ function DockLabel({ children, className, ...rest }: DockLabelProps) {
 
   useEffect(() => {
     if (!isHovered) return;
-    const unsubscribe = isHovered.onChange
-      ? isHovered.onChange((latest) => setIsVisible(latest === 1))
-      : isHovered.on("change", (latest) => setIsVisible(latest === 1));
+    const unsubscribe = isHovered.on
+      ? isHovered.on("change", (latest) => setIsVisible(latest === 1))
+      : isHovered.onChange((latest) => setIsVisible(latest === 1));
 
     return () => unsubscribe();
   }, [isHovered]);
@@ -225,7 +233,7 @@ function DockLabel({ children, className, ...rest }: DockLabelProps) {
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "absolute top-full mt-1.5 left-1/2 w-fit whitespace-pre rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white",
+            "absolute top-full mt-1.5 left-1/2 w-fit whitespace-pre rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white hidden sm:block",
             className
           )}
           role="tooltip"

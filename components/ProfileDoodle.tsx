@@ -371,7 +371,7 @@ export default function ProfileDoodle() {
 
       {/* Sticky Note Card (bottom-right) */}
       <motion.div
-        className="absolute bottom-[2%] right-[-1%] z-20 max-w-[210px] sm:max-w-[235px] pointer-events-auto"
+        className="absolute bottom-[2%] right-0 sm:right-[-1%] z-20 max-w-[150px] sm:max-w-[210px] md:max-w-[235px] pointer-events-auto hidden sm:block"
         animate={{
           rotate: isHovered ? 0 : 3,
           scale: isHovered ? 1.04 : 1,
@@ -382,12 +382,12 @@ export default function ProfileDoodle() {
           damping: 15,
         }}
       >
-        <div className="relative bg-[#EFEBE4] dark:bg-[#25221F] border border-[#E0D8CE] dark:border-[#3D3833] rounded-xl p-4 sm:p-4.5 shadow-xl text-[#2B2926] dark:text-[#EDE8E1] transition-colors duration-300">
+        <div className="relative bg-[#EFEBE4] dark:bg-[#25221F] border border-[#E0D8CE] dark:border-[#3D3833] rounded-xl p-3 sm:p-4.5 shadow-xl text-[#2B2926] dark:text-[#EDE8E1] transition-colors duration-300">
           {/* Pink Washi Tape at top center */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-[#E88FA2]/70 dark:bg-[#E88FA2]/60 backdrop-blur-[1px] rotate-[-2deg] shadow-xs rounded-xs pointer-events-none" />
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-9 sm:w-12 h-4 sm:h-5 bg-[#E88FA2]/70 dark:bg-[#E88FA2]/60 backdrop-blur-[1px] rotate-[-2deg] shadow-xs rounded-xs pointer-events-none" />
 
           {/* Mono font text lines */}
-          <div className="font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase leading-tight space-y-1 opacity-90">
+          <div className="font-mono text-[8px] sm:text-[10px] md:text-[11px] font-bold tracking-wider uppercase leading-tight space-y-0.5 sm:space-y-1 opacity-90">
             <div>AI/ML ENTHUSIAST</div>
             <div>FULL-STACK BUILDER</div>
             <div>PROBLEM SOLVER</div>
@@ -395,7 +395,7 @@ export default function ProfileDoodle() {
 
           {/* Cursive script text + double underline */}
           <div className="mt-2.5 relative inline-block">
-            <span className="font-script text-xl sm:text-2xl text-[#E86F2D] font-normal leading-none">
+            <span className="font-script text-base sm:text-xl md:text-2xl text-[#E86F2D] font-normal leading-none">
               Always building.
             </span>
             {/* Hand-drawn double underline */}
