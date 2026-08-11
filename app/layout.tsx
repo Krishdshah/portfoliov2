@@ -41,7 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="relative">
         <CustomCursor />
         <KineticGrid>
-          {children}
+          <div className="max-w-[1440px] mx-auto w-full relative">
+            {children}
+          </div>
         </KineticGrid>
       </body>
     </html>
