@@ -108,10 +108,12 @@ function NameSignature() {
   return (
     <div className="relative inline-block select-none">
       <span
-        className="font-script text-[32px] sm:text-5xl md:text-7xl lg:text-[84px] text-foreground leading-none tracking-wide"
+        className="font-script text-[32px] sm:text-5xl md:text-7xl lg:text-[84px] leading-none tracking-wide"
         style={{ letterSpacing: "0.01em" }}
       >
-        Krish D Shah
+        <span className="text-[#7C3AED] dark:text-[#A78BFA]">Krish</span>{" "}
+        <span className="text-[#E86F2D]">D</span>{" "}
+        <span className="text-foreground">Shah</span>
       </span>
       {/* Curvy sketchy underline */}
       <svg
@@ -184,7 +186,7 @@ export default function Hero() {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
             I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
-            from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
+            from <SketchyBox><span className="text-[#7C3AED] dark:text-[#A78BFA]">idea</span></SketchyBox> · <WavyUnderline><span className="text-[#1B5E20] dark:text-[#4ADE80]">system</span></WavyUnderline> · <span className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-[#E11D48] dark:text-[#FB7185] font-normal leading-none pr-1">product</span>
             <SquigglyArrow />
           </h1>
 
