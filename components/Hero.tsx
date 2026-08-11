@@ -1,6 +1,31 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+};
 
 // Handwritten Circle Highlight Component
 function SketchyCircle({ children }: { children: React.ReactNode }) {
@@ -178,20 +203,28 @@ export default function Hero() {
       {/* Statement & Badge Container */}
       <div className="px-4 sm:px-8 md:px-12 lg:px-20 pt-24 pb-12 sm:pt-28 sm:pb-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center">
         {/* Left Column - Text Content */}
-        <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
+        <motion.div
+          className="lg:col-span-7 flex flex-col gap-6 md:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Name signature */}
-          <div>
+          <motion.div variants={itemVariants}>
             <NameSignature />
-          </div>
+          </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
+          <motion.h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground"
+            variants={itemVariants}
+          >
             I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
             from <SketchyBox><span className="text-[#7C3AED] dark:text-[#A78BFA]">idea</span></SketchyBox> · <WavyUnderline><span className="text-[#1B5E20] dark:text-[#4ADE80]">system</span></WavyUnderline> · <span className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-[#E11D48] dark:text-[#FB7185] font-normal leading-none pr-1">product</span>
             <SquigglyArrow />
-          </h1>
+          </motion.h1>
 
           {/* Resume & Connect Block */}
-          <div className="flex flex-col gap-8 mt-2">
+          <motion.div className="flex flex-col gap-8 mt-2" variants={itemVariants}>
             {/* Resume action */}
             <div className="flex items-center gap-3 sm:gap-5 flex-nowrap">
               <div className="relative group">
@@ -346,13 +379,18 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Column - Profile Doodle */}
-        <div className="lg:col-span-5 flex justify-center items-center">
+        <motion.div
+          className="lg:col-span-5 flex justify-center items-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
+        >
           <ProfileDoodle />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
