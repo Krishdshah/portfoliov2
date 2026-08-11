@@ -167,6 +167,7 @@ export default function SkillsTicker() {
           })}
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
