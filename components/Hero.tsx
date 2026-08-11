@@ -5,8 +5,8 @@ import React from "react";
 // Handwritten Circle Highlight Component
 function SketchyCircle({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block px-3 py-1 align-baseline">
-      <span className="relative z-10 font-script text-5xl md:text-7xl lg:text-[84px] text-[#C2410C] font-normal leading-none pr-1">
+    <span className="relative inline-block px-2 sm:px-3 py-1 align-baseline">
+      <span className="relative z-10 font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-[#C2410C] font-normal leading-none pr-1">
         {children}
       </span>
       <svg
@@ -30,7 +30,7 @@ function SketchyCircle({ children }: { children: React.ReactNode }) {
 // Handwritten Box Highlight Component
 function SketchyBox({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block px-3 py-1 align-baseline">
+    <span className="relative inline-block px-2 sm:px-3 py-1 align-baseline">
       <span className="relative z-10 font-serif font-semibold">
         {children}
       </span>
@@ -55,7 +55,7 @@ function SketchyBox({ children }: { children: React.ReactNode }) {
 // Handwritten Underline Highlight Component
 function WavyUnderline({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block pb-2 px-1 align-baseline">
+    <span className="relative inline-block pb-1.5 sm:pb-2 px-1 align-baseline">
       <span className="relative z-10 font-serif font-semibold">
         {children}
       </span>
@@ -108,7 +108,7 @@ function NameSignature() {
   return (
     <div className="relative inline-block select-none">
       <span
-        className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-foreground leading-none tracking-wide"
+        className="font-script text-[32px] sm:text-5xl md:text-7xl lg:text-[84px] text-foreground leading-none tracking-wide"
         style={{ letterSpacing: "0.01em" }}
       >
         Krish D Shah
@@ -174,7 +174,7 @@ export default function Hero() {
   return (
     <section className="w-full border-b border-border-custom bg-transparent">
       {/* Statement & Badge Container */}
-      <div className="px-6 md:px-12 lg:px-20 pt-28 pb-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="px-4 sm:px-8 md:px-12 lg:px-20 pt-24 pb-12 sm:pt-28 sm:pb-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center">
         {/* Left Column - Text Content */}
         <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
           {/* Name signature */}
@@ -182,16 +182,16 @@ export default function Hero() {
             <NameSignature />
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[68px] xl:text-[76px] font-serif leading-[1.25] md:leading-[1.2] tracking-tight font-medium text-foreground">
             I build things that <SketchyCircle>move</SketchyCircle> <br className="hidden lg:inline" />
-            from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
+            from <SketchyBox>idea</SketchyBox> · <WavyUnderline>system</WavyUnderline> · <span className="font-script text-4xl sm:text-5xl md:text-7xl lg:text-[84px] text-foreground font-normal leading-none pr-1">product</span>
             <SquigglyArrow />
           </h1>
 
           {/* Resume & Connect Block */}
           <div className="flex flex-col gap-8 mt-2">
             {/* Resume action */}
-            <div className="flex items-center gap-5 flex-wrap">
+            <div className="flex items-center gap-3 sm:gap-5 flex-nowrap">
               <div className="relative group">
                 {/* playful rays */}
                 <svg
@@ -213,18 +213,18 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="View resume"
-                  className="relative inline-flex items-center gap-3 px-7 py-4 bg-[#23211F] text-white dark:bg-[#EDE8E1] dark:text-[#23211F] border border-[#23211F] dark:border-[#EDE8E1] font-mono text-[11px] font-bold tracking-[0.16em] uppercase rounded-[3px] shadow-[5px_5px_0px_#E86F2D] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0px_#E86F2D] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none transition-all duration-150"
+                  className="relative inline-flex items-center gap-1.5 sm:gap-3 px-4 sm:px-7 py-2.5 sm:py-4 bg-[#23211F] text-white dark:bg-[#EDE8E1] dark:text-[#23211F] border border-[#23211F] dark:border-[#EDE8E1] font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase rounded-[3px] shadow-[3px_3px_0px_#E86F2D] sm:shadow-[5px_5px_0px_#E86F2D] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#E86F2D] sm:hover:shadow-[3px_3px_0px_#E86F2D] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none transition-all duration-150"
                 >
-                  <FileText className="w-4 h-4 text-[#E86F2D]" />
+                  <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E86F2D]" />
                   <span>VIEW RESUME</span>
-                  <span className="ml-1 text-[#E86F2D] text-base leading-none">↗</span>
+                  <span className="ml-0.5 text-[#E86F2D] text-sm sm:text-base leading-none">↗</span>
                 </a>
               </div>
 
               {/* handwritten annotation */}
-              <div className="relative flex items-center gap-2 select-none">
+              <div className="relative flex items-center gap-1 sm:gap-2 select-none shrink-0">
                 <svg
-                  className="w-16 h-9 text-foreground/45 overflow-visible"
+                  className="w-10 sm:w-16 h-6 sm:h-9 text-foreground/45 overflow-visible"
                   viewBox="0 0 80 36"
                   fill="none"
                 >
@@ -245,13 +245,13 @@ export default function Hero() {
                 </svg>
 
                 <div className="flex flex-col -rotate-2">
-                  <span className="font-script text-lg text-foreground/75 leading-none">
+                  <span className="font-script text-[13px] sm:text-lg text-foreground/75 leading-none">
                     click to
                   </span>
-                  <span className="font-script text-lg text-foreground/75 leading-none relative inline-block">
+                  <span className="font-script text-[13px] sm:text-lg text-foreground/75 leading-none relative inline-block">
                     download
                     <svg
-                      className="absolute left-0 -bottom-1 w-full h-2 text-[#E86F2D]"
+                      className="absolute left-0 -bottom-1 w-full h-1.5 sm:h-2 text-[#E86F2D]"
                       viewBox="0 0 100 10"
                       preserveAspectRatio="none"
                       fill="none"
@@ -269,78 +269,80 @@ export default function Hero() {
             </div>
 
             {/* Social / connect row */}
-            <div className="flex items-center gap-5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
               <div className="flex items-center gap-2 select-none shrink-0">
                 <span className="font-mono text-[10px] font-bold tracking-[0.18em] text-foreground/50 uppercase">
                   LET'S CONNECT
                 </span>
-                <div className="w-10 border-t border-dashed border-border-custom" />
-                <div className="h-5 border-r border-border-custom" />
+                <div className="w-6 sm:w-10 border-t border-dashed border-border-custom" />
+                <div className="h-5 border-r border-border-custom hidden sm:block" />
               </div>
 
-              <div className="flex items-center gap-3">
-                {/* LinkedIn */}
-                <a
-                  href="https://in.linkedin.com/in/thekrishdshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  title="LinkedIn"
-                  className="group relative w-11 h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]"
-                >
-                  <LinkedinIcon className="w-[18px] h-[18px]" />
-                  <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
-                    LI
-                  </span>
-                </a>
+              <div className="relative flex flex-col items-start w-fit">
+                <div className="flex items-center gap-3">
+                  {/* LinkedIn */}
+                  <a
+                    href="https://in.linkedin.com/in/thekrishdshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    title="LinkedIn"
+                    className="group relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]"
+                  >
+                    <LinkedinIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
+                      LI
+                    </span>
+                  </a>
 
-                {/* GitHub */}
-                <a
-                  href="https://github.com/Krishdshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  title="GitHub"
-                  className="group relative w-11 h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-foreground hover:text-background hover:border-foreground"
-                >
-                  <GithubIcon className="w-[18px] h-[18px]" />
-                  <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
-                    GH
-                  </span>
-                </a>
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/Krishdshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    title="GitHub"
+                    className="group relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-foreground hover:text-background hover:border-foreground"
+                  >
+                    <GithubIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
+                      GH
+                    </span>
+                  </a>
 
-                {/* X */}
-                <a
-                  href="https://x.com/ikrishshah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X / Twitter"
-                  title="X / Twitter"
-                  className="group relative w-11 h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-foreground hover:text-background hover:border-foreground"
-                >
-                  <TwitterIcon className="w-[17px] h-[17px]" />
-                  <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
-                    X
-                  </span>
-                </a>
+                  {/* X */}
+                  <a
+                    href="https://x.com/ikrishshah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X / Twitter"
+                    title="X / Twitter"
+                    className="group relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border-custom bg-background/40 text-foreground flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:bg-foreground hover:text-background hover:border-foreground"
+                  >
+                    <TwitterIcon className="w-3.5 h-3.5 sm:w-[17px] sm:h-[17px]" />
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-wider opacity-0 group-hover:opacity-60 transition-opacity">
+                      X
+                    </span>
+                  </a>
+                </div>
+
+                {/* hand-drawn underline */}
+                <div className="w-full px-1.5 mt-1.5 pointer-events-none select-none">
+                  <svg
+                    className="w-full h-2.5 text-[#E86F2D]"
+                    viewBox="0 0 100 10"
+                    preserveAspectRatio="none"
+                    fill="none"
+                  >
+                    <path
+                      d="M1 4C22 7 45 1 65 4C80 6 91 2 99 4"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
               </div>
-            </div>
-
-            {/* hand-drawn underline */}
-            <div className="ml-[148px] -mt-3 pointer-events-none select-none">
-              <svg
-                className="w-44 h-3 text-[#E86F2D]"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-                fill="none"
-              >
-                <path
-                  d="M1 4C22 7 45 1 65 4C80 6 91 2 99 4"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
             </div>
           </div>
         </div>
