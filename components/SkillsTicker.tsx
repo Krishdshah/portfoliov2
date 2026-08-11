@@ -98,43 +98,51 @@ export default function SkillsTicker() {
   };
 
   return (
-    <section className="w-full border-b border-border-custom bg-transparent overflow-hidden py-6 md:py-8">
-      <div
-        ref={scrollRef}
-        className="flex w-full overflow-x-auto scrollbar-none select-none cursor-grab active:cursor-grabbing"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => {
-          setIsPaused(false);
-          setHoveredName(null);
-          if (scrollRef.current) {
-            scrollRef.current.scrollLeft = 0;
-          }
-        }}
-        onWheel={handleWheel}
-        onScroll={handleScroll}
-      >
+    <section className="w-full border-b border-border-custom bg-transparent py-6 md:py-8">
+      {/* Section Label */}
+      <div className="px-6 md:px-12 lg:px-20 mb-4 select-none">
+        <span className="font-mono text-[9px] font-bold tracking-[0.2em] text-foreground/45 uppercase">
+          TECH STACK & CAPABILITIES
+        </span>
+      </div>
+
+      {/* Fade Overlay Container */}
+      <div className="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-12 sm:before:w-24 before:bg-gradient-to-r before:from-background before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-12 sm:after:w-24 after:bg-gradient-to-l after:from-background after:to-transparent after:content-['']">
         <div
-          className="animate-marquee flex items-center whitespace-nowrap gap-12"
-          style={{
-            animationPlayState: isPaused ? "paused" : "running",
-            animationDuration: "55s",
+          ref={scrollRef}
+          className="flex w-full overflow-x-auto scrollbar-none select-none cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => {
+            setIsPaused(false);
+            setHoveredName(null);
+            if (scrollRef.current) {
+              scrollRef.current.scrollLeft = 0;
+            }
           }}
+          onWheel={handleWheel}
+          onScroll={handleScroll}
         >
-          {tickerItems.map((skill, index) => {
-            const isHovered = hoveredName === skill.name;
-            return (
-              <span
-                key={`${index}-${skill.name}`}
-                className="flex items-center gap-12 cursor-default"
-                onMouseEnter={() => setHoveredName(skill.name)}
-                onMouseLeave={() => setHoveredName(null)}
-              >
+          <div
+            className="animate-marquee-responsive flex items-center whitespace-nowrap gap-8 md:gap-12"
+            style={{
+              animationPlayState: isPaused ? "paused" : "running",
+            }}
+          >
+            {tickerItems.map((skill, index) => {
+              const isHovered = hoveredName === skill.name;
+              return (
                 <span
-                  className={`flex items-center gap-2.5 text-sm sm:text-base md:text-lg font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
-                    isHovered ? "text-foreground" : "text-foreground/50"
-                  }`}
+                  key={`${index}-${skill.name}`}
+                  className="flex items-center gap-8 md:gap-12 cursor-default"
+                  onMouseEnter={() => setHoveredName(skill.name)}
+                  onMouseLeave={() => setHoveredName(null)}
                 >
+                  <span
+                    className={`flex items-center gap-2.5 text-sm sm:text-base md:text-lg font-mono font-bold tracking-widest uppercase transition-all duration-200 ${
+                      isHovered ? "text-foreground" : "text-foreground/50"
+                    }`}
+                  >
                   {/* Logo is always visible to engage mobile and desktop users alike */}
                   {skill.logo && (
                     <span className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center shrink-0">
