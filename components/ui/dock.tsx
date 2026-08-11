@@ -18,6 +18,7 @@ import {
   useMemo,
   useRef,
   useState,
+  isValidElement,
 } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -152,9 +153,12 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
 
   const width = useSpring(widthTransform, spring);
 
-  const content = Children.map(children, (child) =>
-    cloneElement(child as React.ReactElement<any>, { width, isHovered } as any)
-  );
+  const content = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child as React.ReactElement<any>, { width, isHovered } as any);
+    }
+    return child;
+  });
 
   if (href) {
     return (
