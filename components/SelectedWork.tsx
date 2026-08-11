@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Project {
   fig: string;
@@ -57,10 +58,42 @@ export default function SelectedWork() {
       {/* Bento Grid */}
       <div className="px-6 md:px-12 lg:px-20 py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <BentoCard project={projects[0]} className="md:col-span-8" imageClass="aspect-[16/9]" />
-          <BentoCard project={projects[1]} className="md:col-span-4 md:row-span-2" tall />
-          <BentoCard project={projects[2]} className="md:col-span-4" imageClass="aspect-[16/9]" />
-          <BentoCard project={projects[3]} className="md:col-span-4" imageClass="aspect-[16/9]" />
+          <motion.div
+            className="md:col-span-8"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+          >
+            <BentoCard project={projects[0]} className="w-full" imageClass="aspect-[16/9]" />
+          </motion.div>
+          <motion.div
+            className="md:col-span-4 md:row-span-2"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+          >
+            <BentoCard project={projects[1]} className="w-full h-full" tall />
+          </motion.div>
+          <motion.div
+            className="md:col-span-4"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
+          >
+            <BentoCard project={projects[2]} className="w-full" imageClass="aspect-[16/9]" />
+          </motion.div>
+          <motion.div
+            className="md:col-span-4"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
+          >
+            <BentoCard project={projects[3]} className="w-full" imageClass="aspect-[16/9]" />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -99,7 +132,7 @@ function BentoCard({ project, className = "", imageClass = "", tall = false }: B
       </div>
 
       {/* Body */}
-      <div className="flex flex-col gap-3 p-5">
+      <div className="flex flex-col gap-2.5 p-5">
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-lg font-serif font-semibold tracking-tight text-foreground leading-tight">
             {project.title}
@@ -109,7 +142,7 @@ function BentoCard({ project, className = "", imageClass = "", tall = false }: B
           </span>
         </div>
 
-        <p className="font-serif text-sm leading-relaxed text-foreground/70">
+        <p className="font-sans text-xs sm:text-[13px] leading-relaxed text-foreground/60">
           {project.description}
         </p>
 
@@ -117,7 +150,7 @@ function BentoCard({ project, className = "", imageClass = "", tall = false }: B
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/55 uppercase bg-[#EBE6DE] rounded-sm"
+              className="px-2.5 py-0.5 border border-border-custom/50 text-[8px] font-mono font-bold tracking-widest text-foreground/50 uppercase bg-foreground/5 rounded-full"
             >
               {tag}
             </span>
@@ -125,10 +158,10 @@ function BentoCard({ project, className = "", imageClass = "", tall = false }: B
         </div>
       </div>
 
-      {/* Arrow hint slides in on hover */}
+      {/* Arrow hint slides in on hover, visible by default on mobile */}
       <div
         aria-hidden
-        className="absolute bottom-5 right-5 w-7 h-7 rounded-full border border-border-custom bg-background flex items-center justify-center opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
+        className="absolute bottom-5 right-5 w-7 h-7 rounded-full border border-border-custom bg-background flex items-center justify-center opacity-100 sm:opacity-0 translate-y-0 sm:translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
       >
         <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
           <path
