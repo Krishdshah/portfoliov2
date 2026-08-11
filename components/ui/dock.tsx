@@ -155,6 +155,10 @@ function DockItem({ children, className, onClick, href }: DockItemProps) {
 
   const content = Children.map(children, (child) => {
     if (isValidElement(child)) {
+      // Only clone props onto React custom components, not native DOM elements like 'span' or 'div'
+      if (typeof child.type === "string") {
+        return child;
+      }
       return cloneElement(child as React.ReactElement<any>, { width, isHovered } as any);
     }
     return child;
