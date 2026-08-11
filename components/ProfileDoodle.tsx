@@ -371,7 +371,7 @@ export default function ProfileDoodle() {
 
       {/* Sticky Note Card (bottom-right) */}
       <motion.div
-        className="absolute bottom-[2%] right-0 sm:right-[-1%] z-20 max-w-[150px] sm:max-w-[210px] md:max-w-[235px] pointer-events-auto"
+        className="absolute bottom-[2%] right-0 sm:right-[-1%] z-20 max-w-[150px] sm:max-w-[210px] md:max-w-[235px] pointer-events-auto hidden sm:block"
         animate={{
           rotate: isHovered ? 0 : 3,
           scale: isHovered ? 1.04 : 1,
