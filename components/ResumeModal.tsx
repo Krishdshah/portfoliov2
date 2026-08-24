@@ -54,7 +54,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     DOCUMENT VIEWER
                   </span>
                   <h3 className="font-serif text-lg font-bold tracking-tight text-foreground">
-                    Krish D Shah — Curriculum Vitae
+                    Krish D Shah
                   </h3>
                 </div>
               </div>
