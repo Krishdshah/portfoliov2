@@ -22,8 +22,8 @@ export default function Home() {
           <Quote />
         </section>
 
-        {/* Work / Projects Section */}
-        <section id="work" className="pt-12 md:pt-16 scroll-mt-20">
+        {/* Projects Section */}
+        <section id="projects" className="pt-12 md:pt-16 scroll-mt-20">
           <Projects />
         </section>
 

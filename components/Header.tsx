@@ -26,7 +26,7 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = ["home", "work", "profiles", "now"];
+    const sections = ["home", "projects", "profiles", "now"];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
       for (const sectionId of [...sections].reverse()) {
@@ -74,13 +74,13 @@ export default function Header() {
       colorClass: "bg-[#EEF2FF] border-[#C7D2FE] dark:bg-[#312E81]/30 dark:border-[#3730A3]/50 hover:bg-[#E0E7FF] dark:hover:bg-[#312E81]/50",
     },
     {
-      id: "work",
-      title: "Work",
+      id: "projects",
+      title: "Projects",
       icon: (
         <Package className="h-full w-full text-[#0284C7] dark:text-[#38BDF8]" />
       ),
-      href: "#work",
-      onClick: () => scrollToSection("work"),
+      href: "#projects",
+      onClick: () => scrollToSection("projects"),
       colorClass: "bg-[#F0F9FF] border-[#BAE6FD] dark:bg-[#0C4A6E]/30 dark:border-[#075985]/50 hover:bg-[#E0F2FE] dark:hover:bg-[#0C4A6E]/50",
     },
     {
