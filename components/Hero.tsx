@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import ResumeModal from "@/components/ResumeModal";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -198,6 +199,8 @@ function TwitterIcon({ className }: { className?: string }) {
 }
 
 export default function Hero() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
     <section className="w-full border-b border-border-custom bg-transparent">
       {/* Statement & Badge Container */}
@@ -243,17 +246,16 @@ export default function Hero() {
                   <line x1="29" y1="17" x2="24" y2="17" />
                 </svg>
 
-                <a
-                  href="/resume"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setIsResumeOpen(true)}
                   aria-label="View resume"
-                  className="relative inline-flex items-center gap-1.5 sm:gap-3 px-4 sm:px-7 py-2.5 sm:py-4 bg-[#23211F] text-white dark:bg-[#EDE8E1] dark:text-[#23211F] border border-[#23211F] dark:border-[#EDE8E1] font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase rounded-[3px] shadow-[3px_3px_0px_#E86F2D] sm:shadow-[5px_5px_0px_#E86F2D] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#E86F2D] sm:hover:shadow-[3px_3px_0px_#E86F2D] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none transition-all duration-150"
+                  className="relative inline-flex items-center gap-1.5 sm:gap-3 px-4 sm:px-7 py-2.5 sm:py-4 bg-[#23211F] text-white dark:bg-[#EDE8E1] dark:text-[#23211F] border border-[#23211F] dark:border-[#EDE8E1] font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase rounded-[3px] shadow-[3px_3px_0px_#E86F2D] sm:shadow-[5px_5px_0px_#E86F2D] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#E86F2D] sm:hover:shadow-[3px_3px_0px_#E86F2D] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none transition-all duration-150 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E86F2D]" />
                   <span>VIEW RESUME</span>
                   <span className="ml-0.5 text-[#E86F2D] text-sm sm:text-base leading-none">↗</span>
-                </a>
+                </button>
               </div>
 
               {/* handwritten annotation */}
@@ -392,6 +394,8 @@ export default function Hero() {
           <ProfileDoodle />
         </motion.div>
       </div>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 }
