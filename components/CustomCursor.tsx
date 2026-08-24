@@ -17,15 +17,29 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Only enable custom cursor on non-touch devices
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    // Only disable custom cursor on touch-only devices without a fine pointer mouse
+    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+    const isTouchOnly = !hasFinePointer && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
-    setIsVisible(true);
+    if (isTouchOnly) return;
 
     const moveCursor = (e: MouseEvent) => {
+      if (!isVisible) {
+        setIsVisible(true);
+        document.documentElement.classList.add("custom-cursor-active");
+      }
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+    };
+
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+      document.documentElement.classList.remove("custom-cursor-active");
+    };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+      document.documentElement.classList.add("custom-cursor-active");
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -44,12 +58,17 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", moveCursor);
     window.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.documentElement.classList.remove("custom-cursor-active");
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isVisible]);
 
   if (!isVisible) return null;
 
