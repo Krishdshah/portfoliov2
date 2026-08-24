@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BorderGlow from "@/components/ui/BorderGlow";
 import {
@@ -15,9 +15,15 @@ import {
   Puzzle,
   ArrowRight,
   Sparkles,
+  X,
+  Compass,
+  CheckCircle2,
+  Activity,
+  Maximize2,
+  GitBranch,
 } from "lucide-react";
 
-const Github = (props: React.SVGProps<SVGSVGElement>) => (
+const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -39,209 +45,382 @@ interface StackStep {
   icon: React.ComponentType<any>;
 }
 
-interface FlagshipProject {
+interface ProjectArtifact {
   id: string;
+  number: string;
+  slug: string;
   title: string;
   tagline: string;
-  category: string;
+  category: "AI" | "WEB" | "COMPUTER VISION" | "DEV TOOLS" | "EXPERIMENTS";
+  statusLabel: string;
+  statusColor: string;
+  tags: string[];
   problem: string;
   solution: string;
   stackFlow: StackStep[];
   tech: string[];
   links: {
-    demo: string;
-    git: string;
+    demo?: string;
+    git?: string;
   };
   stats: string;
+  desktopSpatial: {
+    left: string; // percentage or px
+    top: string;  // px offset in spatial canvas
+    rotation: number; // degrees
+    width: string; // card width style
+    accentColor: string;
+  };
 }
 
-interface OtherProject {
-  title: string;
-  desc: string;
-  category: string;
-  tags: string[];
-  link: string;
-  icon: React.ComponentType<any>;
-}
-
-// --- Data ---
-const flagshipProjects: FlagshipProject[] = [
+// --- Spatial Projects Data Archive ---
+const projectArtifacts: ProjectArtifact[] = [
   {
     id: "fintech-agent",
-    title: "FinTech Agent Bot",
-    tagline: "Enterprise Financial AI Agent",
-    category: "ai-agents",
-    problem: "Static LLMs hallucinate on real-time financial data and cannot execute secure banking transactions.",
-    solution: "Engineered an agentic workflow using Google ADK to route queries. The agent intelligently selects tools (Stock API, Transaction Engine) based on user intent.",
+    number: "01",
+    slug: "fintech-agent-bot",
+    title: "FINTECH AGENT BOT",
+    tagline: "Enterprise Financial AI Agent & Tool Execution Workflow",
+    category: "AI",
+    statusLabel: "SYSTEM ONLINE",
+    statusColor: "#10B981", // Emerald
+    tags: ["RAG", "LLM", "AGENTS", "ADK"],
+    problem: "Static LLMs hallucinate on real-time financial market data and cannot safely execute transactional banking commands.",
+    solution: "Engineered an autonomous agentic workflow using Google ADK to route queries. The agent dynamically binds financial API tools (Stock Feeds, Ledger Operations) based on intent verification.",
     stackFlow: [
-      { tool: "User", icon: Globe },
+      { tool: "User Input", icon: Globe },
       { tool: "Google ADK", icon: Cpu },
-      { tool: "Gemini API", icon: Zap },
-      { tool: "Fin. Tools", icon: Terminal },
+      { tool: "Gemini 1.5", icon: Zap },
+      { tool: "Tool Execution", icon: Terminal },
     ],
-    tech: ["Python", "Google ADK", "Gemini API"],
+    tech: ["Python", "Google ADK", "Gemini API", "FastAPI", "Financial APIs"],
     links: {
       demo: "https://genai-mjy8.vercel.app/",
-      git: "https://github.com/archeeetah/GenAI.git"
+      git: "https://github.com/archeeetah/GenAI.git",
     },
-    stats: "Automated Workflows"
+    stats: "Automated Workflows",
+    desktopSpatial: {
+      left: "8%",
+      top: "60px",
+      rotation: -2,
+      width: "420px",
+      accentColor: "#E86F2D",
+    },
   },
   {
-    id: "ava-bot",
-    title: "Aaruush Virtual Assistant",
-    tagline: "RAG-Powered Event Support",
-    category: "ai-agents",
-    problem: "Tech fest attendees struggled to find specific event details buried in massive PDF schedules and websites.",
-    solution: "Built a Retrieval-Augmented Generation (RAG) pipeline. It embeds event docs into ChromaDB, allowing the LLM to answer context-aware queries instantly.",
+    id: "aarush-va",
+    number: "02",
+    slug: "aarush-virtual-assistant",
+    title: "AARUSH VIRTUAL ASSISTANT",
+    tagline: "RAG-Powered Intelligent Event Knowledge System",
+    category: "AI",
+    statusLabel: "RETRIEVAL ACTIVE",
+    statusColor: "#38BDF8", // Sky
+    tags: ["LANGCHAIN", "CHROMADB", "FASTAPI", "RAG"],
+    problem: "Over 20,000 tech fest attendees struggled to retrieve event schedules, venue maps, and rules buried in static PDFs.",
+    solution: "Architected a hybrid vector-search RAG pipeline embedding multi-document PDFs into ChromaDB with semantic reranking for instant context response.",
     stackFlow: [
       { tool: "React UI", icon: Layers },
-      { tool: "FastAPI", icon: Code2 },
+      { tool: "FastAPI Engine", icon: Code2 },
       { tool: "ChromaDB", icon: Database },
       { tool: "LLM Inference", icon: Cpu },
     ],
-    tech: ["LangChain", "ChromaDB", "FastAPI", "React"],
+    tech: ["LangChain", "ChromaDB", "FastAPI", "React", "Python"],
     links: {
       demo: "https://ava.aaruush.org/chat",
-      git: "#"
     },
-    stats: "Reduced Support Tix"
+    stats: "Reduced Support Tix",
+    desktopSpatial: {
+      left: "54%",
+      top: "20px",
+      rotation: 2.5,
+      width: "390px",
+      accentColor: "#0284C7",
+    },
   },
   {
     id: "janrakshak",
-    title: "JanRakshak",
-    tagline: "AI-Powered Public Safety & Emergency Response Platform",
-    category: "web-platforms",
-    problem: "Citizens often face delays in reporting emergencies, accessing public safety resources, and receiving timely assistance during critical situations.",
-    solution: "Developed a digital public-safety platform that streamlines incident reporting, emergency communication, and citizen-authority coordination through a centralized and accessible interface.",
+    number: "03",
+    slug: "janrakshak",
+    title: "JANRAKSHAK",
+    tagline: "AI-Powered Public Safety & Emergency Dispatch Platform",
+    category: "COMPUTER VISION",
+    statusLabel: "PIPELINE ACTIVE",
+    statusColor: "#F59E0B", // Amber
+    tags: ["COMPUTER VISION", "FIREBASE", "REACT", "DISPATCH"],
+    problem: "Citizens experience crucial delays reporting emergencies and dispatchers lack real-time visual crisis analysis.",
+    solution: "Built an integrated emergency response platform featuring incident reporting, vision-assisted hazard tagging, and automated dispatch routing.",
     stackFlow: [
-      { tool: "Citizen", icon: Globe },
-      { tool: "Web Platform", icon: Cpu },
+      { tool: "Citizen Node", icon: Globe },
+      { tool: "Incident Portal", icon: Cpu },
       { tool: "AI Processing", icon: Zap },
-      { tool: "Response System", icon: Terminal },
+      { tool: "Dispatch Matrix", icon: Terminal },
     ],
     tech: ["React", "Firebase", "JavaScript", "Cloud Functions", "Firestore"],
     links: {
       demo: "https://janrakshak.web.app/",
-      git: "#"
     },
-    stats: "Safety Automation"
+    stats: "Safety Automation",
+    desktopSpatial: {
+      left: "58%",
+      top: "430px",
+      rotation: -1.8,
+      width: "410px",
+      accentColor: "#D97706",
+    },
   },
   {
     id: "loksetu",
-    title: "LokSetu",
-    tagline: "Citizen-Government Digital Bridge",
-    category: "web-platforms",
-    problem: "Millions of citizens struggle to access government schemes, submit grievances, understand eligibility requirements, and navigate bureaucratic processes.",
-    solution: "Built a citizen engagement platform that centralizes government scheme discovery, grievance registration, volunteer participation, document assistance, and public-service communication into a single digital ecosystem.",
+    number: "04",
+    slug: "loksetu",
+    title: "LOKSETU",
+    tagline: "Citizen-Government Public Service Bridge",
+    category: "WEB",
+    statusLabel: "PWA ONLINE",
+    statusColor: "#10B981", // Emerald
+    tags: ["GOVERNANCE", "PWA", "REACT", "FIRESTORE"],
+    problem: "Citizens encounter bureaucratic barriers identifying eligible government schemes and tracking grievance statuses.",
+    solution: "Designed a centralized civic tech portal streamlining scheme discovery through algorithmic eligibility matching and direct grievance tracking.",
     stackFlow: [
       { tool: "Citizen", icon: Globe },
       { tool: "LokSetu Portal", icon: Cpu },
-      { tool: "Scheme & Grievance Engine", icon: Zap },
-      { tool: "Government Authorities", icon: Terminal },
+      { tool: "Grievance Engine", icon: Zap },
+      { tool: "Government Node", icon: Terminal },
     ],
     tech: ["React", "Firebase", "JavaScript", "Firestore", "Progressive Web App"],
     links: {
       demo: "https://loksetu.web.app/",
-      git: "#"
     },
-    stats: "Digital Governance"
-  }
+    stats: "Digital Governance",
+    desktopSpatial: {
+      left: "6%",
+      top: "480px",
+      rotation: 1.8,
+      width: "400px",
+      accentColor: "#059669",
+    },
+  },
+  {
+    id: "sign-sync",
+    number: "05",
+    slug: "sign-sync",
+    title: "SIGN SYNC",
+    tagline: "Real-Time Sign Language Translation & Speech Synthesis",
+    category: "COMPUTER VISION",
+    statusLabel: "CV MODEL READY",
+    statusColor: "#8B5CF6", // Purple
+    tags: ["OPENCV", "TENSORFLOW", "PYTHON", "ACCESSIBILITY"],
+    problem: "Mute and speech-impaired individuals face continuous communication barriers in daily public interactions.",
+    solution: "Engineered a real-time computer vision sign language pipeline detecting gesture keypoints and translating them instantly into text-to-speech audio.",
+    stackFlow: [
+      { tool: "Camera Stream", icon: Globe },
+      { tool: "OpenCV Pipeline", icon: Cpu },
+      { tool: "TensorFlow Model", icon: Zap },
+      { tool: "Speech Output", icon: Terminal },
+    ],
+    tech: ["Python", "OpenCV", "TensorFlow", "MediaPipe", "PyTTSx3"],
+    links: {
+      git: "https://github.com/Laksh718/SignLang-To-Text-And-Speech",
+    },
+    stats: "Realtime Vision",
+    desktopSpatial: {
+      left: "14%",
+      top: "900px",
+      rotation: -2.2,
+      width: "380px",
+      accentColor: "#7C3AED",
+    },
+  },
+  {
+    id: "folder-structure",
+    number: "06",
+    slug: "see-my-folder-structure",
+    title: "SEE MY FOLDER STRUCTURE",
+    tagline: "VS Code Extension for Workspace Architecture Visualization",
+    category: "DEV TOOLS",
+    statusLabel: "PUBLISHED TOOL",
+    statusColor: "#6366F1", // Indigo
+    tags: ["VS CODE API", "TYPESCRIPT", "TOOLING", "MARKETPLACE"],
+    problem: "Developers lacked a clean, customizable tool to export structured directory trees for documentation and code reviews.",
+    solution: "Built and published an official VS Code extension that generates clean ASCII and Markdown tree visualizers directly from the workspace sidebar.",
+    stackFlow: [
+      { tool: "VS Code Core", icon: Layers },
+      { tool: "Extension API", icon: Code2 },
+      { tool: "Tree Generator", icon: Database },
+      { tool: "Markdown Export", icon: Cpu },
+    ],
+    tech: ["TypeScript", "VS Code Extension API", "Node.js", "npm"],
+    links: {
+      demo: "https://marketplace.visualstudio.com/items?itemName=Krishdshah.see-my-folder-structure",
+    },
+    stats: "Marketplace Published",
+    desktopSpatial: {
+      left: "56%",
+      top: "870px",
+      rotation: 1.5,
+      width: "410px",
+      accentColor: "#4F46E5",
+    },
+  },
+  {
+    id: "portfolio-v2",
+    number: "07",
+    slug: "portfolio-v2",
+    title: "PORTFOLIO V2",
+    tagline: "Spatial Digital Archive & Modern Web Architecture",
+    category: "WEB",
+    statusLabel: "LIVE DEPLOY",
+    statusColor: "#E11D48", // Rose
+    tags: ["NEXT.JS", "TAILWIND", "FRAMER MOTION", "TYPESCRIPT"],
+    problem: "Traditional portfolio web layouts feel flat, linear, and uninspiring.",
+    solution: "Designed a spatial 2D archive featuring custom kinetic grids, interactive dock navigation, theme transitions, and case study overlays.",
+    stackFlow: [
+      { tool: "Next.js App", icon: Globe },
+      { tool: "Tailwind CSS", icon: Cpu },
+      { tool: "Framer Motion", icon: Zap },
+      { tool: "Vercel Edge", icon: Terminal },
+    ],
+    tech: ["Next.js 15", "React 19", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    links: {
+      git: "https://github.com/Krishdshah/portfoliov2",
+    },
+    stats: "Spatial UX",
+    desktopSpatial: {
+      left: "50%",
+      top: "1280px",
+      rotation: -1.4,
+      width: "400px",
+      accentColor: "#E11D48",
+    },
+  },
+  {
+    id: "airline-booking",
+    number: "08",
+    slug: "airline-ticket-booking",
+    title: "AIRLINE BOOKING SYSTEM",
+    tagline: "Transactional Desktop Flight Management System",
+    category: "EXPERIMENTS",
+    statusLabel: "ARCHIVED SYSTEM",
+    statusColor: "#64748B", // Slate
+    tags: ["PYTHON", "TKINTER", "MYSQL", "DATABASE"],
+    problem: "Complex flight reservation engines require robust ACID transaction handling and relational integrity across seats and tickets.",
+    solution: "Built a Python desktop app integrated with a custom MySQL schema to manage real-time seat assignments, passenger records, and ticket generation.",
+    stackFlow: [
+      { tool: "Tkinter GUI", icon: Layers },
+      { tool: "Python Logic", icon: Code2 },
+      { tool: "MySQL Engine", icon: Database },
+      { tool: "Ticket Output", icon: Cpu },
+    ],
+    tech: ["Python", "Tkinter", "MySQL", "Relational Database Design"],
+    links: {
+      git: "https://github.com/Krishdshah/Airline-ticket-booking",
+    },
+    stats: "ACID Database",
+    desktopSpatial: {
+      left: "8%",
+      top: "1310px",
+      rotation: 2.1,
+      width: "390px",
+      accentColor: "#475569",
+    },
+  },
 ];
 
-const otherProjects: OtherProject[] = [
-  {
-    title: "Sign Sync",
-    desc: "ML system converting sign language to text/speech for the speech-impaired. Real-time CV pipeline.",
-    category: "ai-agents",
-    tags: ["Python", "OpenCV", "TensorFlow"],
-    link: "https://github.com/Laksh718/SignLang-To-Text-And-Speech",
-    icon: ExternalLink
-  },
-  {
-    title: "See My Folder Structure",
-    desc: "VS Code extension to visualize and export project directory trees. Published on Marketplace.",
-    category: "dev-tools",
-    tags: ["VS Code API", "TypeScript", "Tooling"],
-    link: "https://marketplace.visualstudio.com/items?itemName=Krishdshah.see-my-folder-structure",
-    icon: Puzzle
-  },
-  {
-    title: "Portfolio V2",
-    desc: "High-performance personal site with 3D elements and smooth framer motion animations.",
-    category: "web-platforms",
-    tags: ["React", "Next.js", "Tailwind", "Framer Motion"],
-    link: "https://github.com/Krishdshah/portfoliov2",
-    icon: Github
-  },
-  {
-    title: "Airline Ticket Booking",
-    desc: "Desktop app for flight management with a robust MySQL backend for transaction handling.",
-    category: "web-platforms",
-    tags: ["Python", "Tkinter", "MySQL"],
-    link: "https://github.com/Krishdshah/Airline-ticket-booking",
-    icon: Github
-  },
-  {
-    title: "Sudoku Checker",
-    desc: "Algorithmic tool to validate Sudoku puzzles using efficient row/column/grid checking logic.",
-    category: "dev-tools",
-    tags: ["Python", "Algorithms"],
-    link: "https://github.com/Krishdshah/SUDOKU-CHECKER",
-    icon: Github
-  }
-];
-
-const categories = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'ai-agents', label: 'AI & Agents' },
-  { id: 'web-platforms', label: 'Web Platforms' },
-  { id: 'dev-tools', label: 'Developer Tools' }
+const categoryFilters = [
+  { id: "ALL", label: "ALL OBJECTS" },
+  { id: "AI", label: "AI & AGENTS" },
+  { id: "WEB", label: "WEB PLATFORMS" },
+  { id: "COMPUTER VISION", label: "COMPUTER VISION" },
+  { id: "DEV TOOLS", label: "DEV TOOLS" },
+  { id: "EXPERIMENTS", label: "EXPERIMENTS" },
 ];
 
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState<string>("ALL");
+  const [selectedArtifact, setSelectedArtifact] = useState<ProjectArtifact | null>(null);
 
-  const filteredFlagship = flagshipProjects.filter(
-    (p) => activeCategory === "all" || p.category === activeCategory
-  );
+  // Esc key listener to close modal and preserve scroll position
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedArtifact(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-  const filteredOther = otherProjects.filter(
-    (p) => activeCategory === "all" || p.category === activeCategory
+  const filteredArtifacts = projectArtifacts.filter(
+    (item) => activeCategory === "ALL" || item.category === activeCategory
   );
 
   return (
-    <section className="w-full bg-transparent min-h-screen">
-      {/* Title Header */}
-      <div className="border-b border-border-custom px-6 md:px-12 lg:px-20 py-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <div>
-          <h2 className="text-3xl md:text-5xl font-serif font-medium tracking-tight text-foreground">
-            Works & Systems
-          </h2>
-          <p className="text-sm font-serif text-foreground/60 mt-2 max-w-lg">
-            A showcase of agentic workflows, distributed web systems, and utility tools engineered for reliability and scale.
-          </p>
+    <div className="relative w-full bg-transparent text-foreground overflow-hidden min-h-screen">
+      
+      {/* --- BACKGROUND SPATIAL BLUEPRINT & GRID --- */}
+      <div className="absolute inset-0 pointer-events-none opacity-35 dark:opacity-20 z-0 overflow-hidden">
+        {/* Fine Dot Grid */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
+            backgroundSize: `32px 32px`,
+          }}
+        />
+        {/* Subtle Faint Crosshair Marks */}
+        <div className="absolute top-24 left-12 font-mono text-[10px] text-foreground/40 uppercase tracking-widest">
+          SYS_CANVAS // 48° 12&apos; N 16° 22&apos; E
         </div>
-        <span className="text-[10px] font-mono font-semibold tracking-widest text-foreground/45 uppercase">
-          2022&mdash;2026
-        </span>
+        <div className="absolute top-24 right-12 font-mono text-[10px] text-foreground/40 uppercase tracking-widest hidden md:block">
+          SCALE: 1:1 // SPATIAL ARCHIVE
+        </div>
       </div>
 
-      {/* Interactive Tabs */}
-      <div className="px-6 md:px-12 lg:px-20 py-6 border-b border-border-custom bg-background/50 backdrop-blur-md sticky top-14 z-30 flex items-center overflow-x-auto scrollbar-none gap-2">
-        {categories.map((cat) => {
+      {/* --- TOP HEADER & SPATIAL CONTROL BAR --- */}
+      <div className="relative z-20 border-b border-border-custom px-6 md:px-12 lg:px-20 py-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 bg-background/80 backdrop-blur-md">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#E86F2D] animate-pulse" />
+            <span className="font-mono text-xs font-bold tracking-widest uppercase text-foreground/60">
+              SPATIAL WORKSPACE ARCHIVE
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-foreground">
+            Works &amp; Systems
+          </h2>
+          <p className="text-sm font-serif text-foreground/70 mt-2 max-w-xl">
+            Explore Krish&apos;s digital workspace. Projects exist as individual technical artifacts distributed across a 2D spatial canvas.
+          </p>
+        </div>
+
+        <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
+          <div className="font-mono text-xs font-bold tracking-widest text-foreground/50 uppercase">
+            ARCHIVE COUNT:{" "}
+            <span className="text-foreground font-bold">{filteredArtifacts.length} OBJECTS</span>
+          </div>
+          <div className="text-[11px] font-mono text-foreground/40 uppercase tracking-wider">
+            SCROLL TO EXPLORE ARCHIVE
+          </div>
+        </div>
+      </div>
+
+      {/* --- CATEGORY FILTER TABS --- */}
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 py-4 border-b border-border-custom bg-background/70 backdrop-blur-md sticky top-16 flex items-center overflow-x-auto scrollbar-none gap-2">
+        {categoryFilters.map((cat) => {
           const isActive = activeCategory === cat.id;
           return (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`relative px-4 py-2 text-xs font-mono font-bold tracking-widest uppercase rounded-sm transition-colors duration-300 ${isActive ? "text-background" : "text-foreground/60 hover:text-foreground"
-                }`}
+              className={`relative px-3.5 py-1.5 text-[11px] font-mono font-bold tracking-wider uppercase rounded-xs transition-colors duration-200 shrink-0 ${
+                isActive ? "text-background" : "text-foreground/70 hover:text-foreground"
+              }`}
             >
               {isActive && (
                 <motion.span
-                  layoutId="activeCategoryHighlight"
+                  layoutId="activeSpatialCategory"
                   className="absolute inset-0 bg-foreground rounded-xs"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
                 />
               )}
               <span className="relative z-10">{cat.label}</span>
@@ -250,308 +429,352 @@ export default function Projects() {
         })}
       </div>
 
-      {/* Showcase Content */}
-      <div className="px-6 md:px-12 lg:px-20 py-10 md:py-16 flex flex-col gap-16 md:gap-24">
-        {/* Flagship Projects Section */}
-        {filteredFlagship.length > 0 && (
-          <div className="flex flex-col gap-8 md:gap-12">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#A83E2D]" />
-              <h3 className="text-xs font-mono font-bold tracking-widest text-foreground/40 uppercase">
-                Flagship Implementations
-              </h3>
-            </div>
+      {/* --- DESKTOP 2D SPATIAL CANVAS (lg screens) --- */}
+      <div className="hidden lg:block relative z-10 w-full min-h-[1750px] px-8 py-12">
+        <AnimatePresence>
+          {filteredArtifacts.map((artifact) => {
+            const pos = artifact.desktopSpatial;
 
-            <div className="flex flex-col gap-12 md:gap-20">
-              <AnimatePresence mode="popLayout">
-                {filteredFlagship.map((project, index) => (
-                  <motion.div
-                    layout
-                    key={project.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -30 }}
-                    transition={{ duration: 0.4 }}
-                    className="relative overflow-visible"
-                  >
-                    <BorderGlow
-                      borderRadius={16}
-                      backgroundColor="var(--card)"
-                      className="w-full"
-                    >
-                      <div className="p-6 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8">
-                        {/* Header */}
-                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                          <div>
-                            <div className="flex items-baseline gap-3 flex-wrap">
-                              <span className="font-script text-3xl md:text-4xl text-[#C2410C] dark:text-[#F97316] font-normal select-none">
-                                {String(index + 1).padStart(2, "0")}
-                              </span>
-                              <h4 className="text-2xl md:text-3xl font-serif font-bold tracking-tight text-foreground">
-                                {project.title}
-                              </h4>
-                              {/* Live stat status indicator */}
-                              <span className="inline-flex items-center px-2 py-0.5 border border-border-custom bg-background-muted/40 text-[9px] font-mono font-bold tracking-widest text-foreground/60 uppercase rounded-sm">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#7CB342] animate-pulse mr-1.5" />
-                                {project.stats}
-                              </span>
-                            </div>
-                            <p className="text-xs font-mono font-semibold tracking-wider text-foreground/50 mt-1 uppercase">
-                              {project.tagline}
-                            </p>
-                          </div>
-
-                          {/* Tech Badges */}
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.tech.map((t) => (
-                              <span
-                                key={t}
-                                className="px-2.5 py-1 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/55 uppercase bg-background-muted rounded-sm"
-                              >
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Stack Flow Diagram */}
-                        <div className="border-y border-border-custom py-6 flex flex-col gap-3">
-                          <span className="text-[9px] font-mono font-bold tracking-widest text-foreground/40 uppercase">
-                            Architecture Flow
-                          </span>
-                          <div className="flex items-center gap-2 md:gap-4 overflow-x-auto scrollbar-none py-2 px-1">
-                            {project.stackFlow.map((step, idx) => {
-                              const IconComponent = step.icon;
-                              return (
-                                <React.Fragment key={idx}>
-                                  <div className="flex flex-col items-center gap-1.5 sm:gap-2 shrink-0 group">
-                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-custom bg-card flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-sm group-hover:-translate-y-1">
-                                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    </div>
-                                    <span className="text-[8px] sm:text-[10px] font-mono font-bold text-foreground/60 group-hover:text-foreground transition-colors duration-200 uppercase tracking-wider">
-                                      {step.tool}
-                                    </span>
-                                  </div>
-                                  {idx < project.stackFlow.length - 1 && (
-                                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/30 animate-pulse shrink-0 self-center -translate-y-2.5 sm:-translate-y-3" />
-                                  )}
-                                </React.Fragment>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {/* Problem & Solution Split Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="border-l-2 border-[#A83E2D]/55 pl-4 flex flex-col gap-2">
-                            <span className="text-[10px] font-mono font-bold tracking-widest text-[#A83E2D] uppercase">
-                              The Challenge
-                            </span>
-                            <p className="font-serif text-sm leading-relaxed text-foreground/80">
-                              {project.problem}
-                            </p>
-                          </div>
-
-                          <div className="border-l-2 border-[#7CB342]/65 pl-4 flex flex-col gap-2">
-                            <span className="text-[10px] font-mono font-bold tracking-widest text-[#7CB342] uppercase">
-                              The Solution
-                            </span>
-                            <p className="font-serif text-sm leading-relaxed text-foreground/80">
-                              {project.solution}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Actions */}
-                        <div className="flex items-center gap-3 flex-wrap pt-2">
-                          {project.links.demo && (
-                            <a
-                              href={project.links.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-4 py-2 border border-foreground bg-foreground text-background text-xs font-mono font-bold uppercase tracking-widest hover:bg-background hover:text-foreground transition-all duration-300 rounded-sm"
-                            >
-                              Live Demo ↗
-                            </a>
-                          )}
-                          {project.links.git !== "#" && (
-                            <a
-                              href={project.links.git}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-4 py-2 border border-border-custom bg-transparent text-foreground text-xs font-mono font-bold uppercase tracking-widest hover:border-foreground transition-all duration-300 rounded-sm"
-                            >
-                              <Github className="w-3.5 h-3.5" /> Repository
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </BorderGlow>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
-        )}
-
-        {/* Other Projects Section */}
-        {filteredOther.length > 0 && (
-          <div className="flex flex-col gap-8">
-            <div className="flex items-center gap-2">
-              <Terminal className="w-4 h-4 text-foreground/45" />
-              <h3 className="text-xs font-mono font-bold tracking-widest text-foreground/40 uppercase">
-                Research & Tools Archive
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <AnimatePresence mode="popLayout">
-                {filteredOther.map((project, idx) => {
-                  const IconComponent = project.icon;
-                  return (
-                    <motion.a
-                      layout
-                      key={project.title}
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                      className="group block relative overflow-visible hover:-translate-y-1.5 transition-all duration-300"
-                    >
-                      <BorderGlow
-                        borderRadius={12}
-                        backgroundColor="var(--card)"
-                        className="w-full h-full"
-                      >
-                        <div className="p-6 flex flex-col justify-between h-full min-h-[220px]">
-                          <div>
-                            {/* Header */}
-                            <div className="flex justify-between items-center mb-4">
-                              <span className="px-2.5 py-0.5 border border-border-custom text-[8px] font-mono font-bold tracking-widest text-foreground/50 uppercase rounded-sm bg-background-muted/40">
-                                {project.category}
-                              </span>
-                              <IconComponent className="w-4 h-4 text-foreground/40 group-hover:text-foreground transition-colors duration-200" />
-                            </div>
-
-                            {/* Title & Desc */}
-                            <div className="flex items-baseline gap-2 mb-1">
-                              <span className="font-script text-xl text-[#C2410C] dark:text-[#F97316] font-normal select-none">
-                                {String(idx + 1).padStart(2, "0")}
-                              </span>
-                              <h4 className="font-serif text-lg font-semibold text-foreground leading-tight group-hover:text-[#A83E2D] transition-colors duration-200">
-                                {project.title}
-                              </h4>
-                            </div>
-                            <p className="font-serif text-[13px] text-foreground/60 mt-2.5 leading-relaxed">
-                              {project.desc}
-                            </p>
-                          </div>
-
-                          {/* Footer tags */}
-                          <div className="flex flex-wrap gap-1 mt-6">
-                            {project.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="px-2 py-0.5 border border-border-custom/50 text-[7px] font-mono font-semibold tracking-wider text-foreground/50 uppercase rounded-xs bg-card"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </BorderGlow>
-                    </motion.a>
-                  );
-                })}
-
-                {/* 6th Card — "And many more" Dark GitHub Callout Box */}
-                {(activeCategory === "all" || activeCategory === "dev-tools" || activeCategory === "web-platforms" || activeCategory === "ai-agents") && (
-                  <motion.a
-                    layout
-                    href="https://github.com/Krishdshah"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="group block relative overflow-hidden rounded-[14px] bg-[#121212] text-white p-6 flex flex-col justify-between h-full min-h-[220px] border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
-                  >
-                    {/* Background Dot Grid Top Right */}
-                    <svg
-                      className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-25 text-white"
-                      viewBox="0 0 40 40"
-                      fill="currentColor"
-                    >
-                      <circle cx="5" cy="5" r="1.5" />
-                      <circle cx="18" cy="5" r="1.5" />
-                      <circle cx="31" cy="5" r="1.5" />
-                      <circle cx="5" cy="18" r="1.5" />
-                      <circle cx="18" cy="18" r="1.5" />
-                      <circle cx="31" cy="18" r="1.5" />
-                      <circle cx="5" cy="31" r="1.5" />
-                      <circle cx="18" cy="31" r="1.5" />
-                      <circle cx="31" cy="31" r="1.5" />
-                    </svg>
-
-                    <div>
-                      {/* Top Header Badge */}
-                      <div className="flex justify-between items-center mb-5">
-                        <span className="px-2.5 py-1 border border-white/20 text-[9px] font-mono font-bold tracking-widest text-white/80 uppercase rounded-sm bg-white/5">
-                          MORE TO EXPLORE
+            return (
+              <motion.div
+                key={artifact.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.85 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="absolute pointer-events-auto"
+                style={{
+                  left: pos.left,
+                  top: pos.top,
+                  width: pos.width,
+                  transform: `rotate(${pos.rotation}deg)`,
+                }}
+              >
+                <motion.div
+                  whileHover={{
+                    scale: 1.04,
+                    rotate: 0,
+                    y: -6,
+                    transition: { duration: 0.25, ease: "easeOut" },
+                  }}
+                  onClick={() => setSelectedArtifact(artifact)}
+                  className="cursor-pointer group"
+                >
+                  <BorderGlow borderRadius={8} className="p-6 transition-all duration-300 shadow-md hover:shadow-xl bg-card border border-border-custom/80">
+                    
+                    {/* Top Artifact Badge & Status Indicator */}
+                    <div className="flex items-center justify-between pb-4 border-b border-border-custom/40">
+                      <div className="flex items-center gap-2.5">
+                        <span className="font-mono text-sm font-bold px-2 py-0.5 rounded-xs bg-foreground/10 text-foreground">
+                          {artifact.number}
+                        </span>
+                        <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-foreground/60">
+                          [{artifact.category}]
                         </span>
                       </div>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="w-2 h-2 rounded-full animate-ping"
+                          style={{ backgroundColor: artifact.statusColor }}
+                        />
+                        <span className="font-mono text-[9px] font-bold tracking-widest text-foreground/50">
+                          {artifact.statusLabel}
+                        </span>
+                      </div>
+                    </div>
 
-                      {/* Title */}
-                      <h4 className="font-serif text-2xl font-normal text-white leading-tight">
-                        And <span className="font-script text-3xl text-[#E86F2D] font-normal italic">many more</span>
-                      </h4>
-
-                      {/* Description */}
-                      <p className="font-serif text-[13px] text-white/65 mt-2.5 leading-relaxed">
-                        Explore additional projects, experiments, and contributions on GitHub.
+                    {/* Title & Tagline */}
+                    <div className="py-4">
+                      <h3 className="font-serif text-2xl font-bold tracking-tight text-foreground group-hover:text-[#E86F2D] transition-colors duration-200">
+                        {artifact.title}
+                      </h3>
+                      <p className="font-serif text-sm text-foreground/75 mt-1.5 leading-snug">
+                        {artifact.tagline}
                       </p>
                     </div>
 
-                    {/* Bottom Footer Action & Loop Arrow */}
-                    <div className="flex items-end justify-between mt-6 pt-1">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/30 rounded-md bg-white/5 text-[10px] font-mono font-bold tracking-wider text-white uppercase group-hover:bg-white group-hover:text-black transition-all duration-300">
-                        <Github className="w-3.5 h-3.5" />
-                        <span>VIEW ON GITHUB</span>
-                        <span className="text-[12px] ml-0.5">›</span>
-                      </div>
-
-                      {/* White Squiggly Loop Arrow */}
-                      <svg
-                        className="w-16 h-8 text-white/80 overflow-visible"
-                        viewBox="0 0 80 30"
-                        fill="none"
-                      >
-                        <path
-                          d="M 5,20 C 25,25 35,5 45,15 C 55,25 40,28 50,15 Q 65,0 75,5"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M 68,2 L 76,5 L 72,12"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                    {/* Tech Stack Chips */}
+                    <div className="flex items-center flex-wrap gap-1.5 py-2">
+                      {artifact.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 bg-background border border-border-custom/60 rounded-xs text-foreground/70"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  </motion.a>
-                )}
-              </AnimatePresence>
-            </div>
+
+                    {/* Footer Action */}
+                    <div className="pt-4 mt-2 border-t border-dashed border-border-custom/40 flex items-center justify-between">
+                      <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/45 group-hover:text-foreground transition-colors">
+                        METRIC: {artifact.stats}
+                      </span>
+                      <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#E86F2D] group-hover:translate-x-1 transition-transform duration-200">
+                        <span>EXPLORE ARTIFACT</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+
+                  </BorderGlow>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* --- MOBILE / TABLET RESPONSIVE SPATIAL STACK (< lg screens) --- */}
+      <div className="lg:hidden relative z-10 px-6 py-8 flex flex-col gap-6">
+        <AnimatePresence>
+          {filteredArtifacts.map((artifact, index) => {
+            const isOdd = index % 2 !== 0;
+            return (
+              <motion.div
+                key={artifact.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setSelectedArtifact(artifact)}
+                className={`cursor-pointer ${isOdd ? "rotate-1 md:ml-6" : "-rotate-1 md:mr-6"}`}
+              >
+                <BorderGlow borderRadius={8} className="p-5 bg-card border border-border-custom">
+                  {/* Top Header */}
+                  <div className="flex items-center justify-between pb-3 border-b border-border-custom/40">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-xs bg-foreground/10 text-foreground">
+                        {artifact.number}
+                      </span>
+                      <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/60">
+                        [{artifact.category}]
+                      </span>
+                    </div>
+                    <span className="font-mono text-[9px] font-bold tracking-widest text-foreground/50">
+                      {artifact.statusLabel}
+                    </span>
+                  </div>
+
+                  {/* Title & Tagline */}
+                  <div className="py-3">
+                    <h3 className="font-serif text-xl font-bold tracking-tight text-foreground">
+                      {artifact.title}
+                    </h3>
+                    <p className="font-serif text-xs text-foreground/75 mt-1 leading-relaxed">
+                      {artifact.tagline}
+                    </p>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex items-center flex-wrap gap-1.5 py-1">
+                    {artifact.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[9px] font-bold px-2 py-0.5 bg-background border border-border-custom/60 rounded-xs text-foreground/70"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Footer Action */}
+                  <div className="pt-3 mt-2 border-t border-dashed border-border-custom/40 flex items-center justify-between">
+                    <span className="font-mono text-[10px] text-foreground/50">
+                      {artifact.stats}
+                    </span>
+                    <div className="flex items-center gap-1 font-mono text-xs font-bold text-[#E86F2D]">
+                      <span>EXPLORE</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+                </BorderGlow>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* --- LEVEL 2: EXPANDED CASE STUDY WORKSPACE MODAL --- */}
+      <AnimatePresence>
+        {selectedArtifact && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 pointer-events-auto">
+            
+            {/* Darkened Blurred Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedArtifact(null)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-lg"
+            />
+
+            {/* Modal Drawer Container */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ type: "spring", stiffness: 320, damping: 28 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-card border-2 border-border-custom rounded-lg shadow-2xl flex flex-col overflow-hidden z-10"
+            >
+              
+              {/* Modal Header Bar */}
+              <div className="px-6 py-5 border-b border-border-custom bg-background/90 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-sm font-bold px-2.5 py-1 bg-foreground text-background rounded-xs">
+                    {selectedArtifact.number}
+                  </span>
+                  <div>
+                    <span className="font-mono text-xs font-bold tracking-widest text-foreground/50 uppercase block">
+                      [{selectedArtifact.category}] // {selectedArtifact.statusLabel}
+                    </span>
+                    <h2 className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground">
+                      {selectedArtifact.title}
+                    </h2>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setSelectedArtifact(null)}
+                  className="flex items-center gap-2 px-3 py-1.5 font-mono text-xs font-bold tracking-wider uppercase border border-border-custom rounded-xs bg-background hover:bg-foreground hover:text-background transition-colors duration-200"
+                >
+                  <span>RETURN TO ARCHIVE</span>
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Scrollable Case Study Body */}
+              <div className="p-6 md:p-10 overflow-y-auto space-y-8 scrollbar-thin">
+                
+                {/* Tagline & Stat Banner */}
+                <div className="p-5 border border-dashed border-border-custom rounded-sm bg-background/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                  <div>
+                    <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/50 uppercase">
+                      SYSTEM OVERVIEW
+                    </span>
+                    <p className="font-serif text-lg font-medium text-foreground mt-1">
+                      {selectedArtifact.tagline}
+                    </p>
+                  </div>
+                  <div className="px-3.5 py-2 bg-foreground text-background font-mono text-xs font-bold tracking-wider rounded-xs shrink-0">
+                    METRIC: {selectedArtifact.stats}
+                  </div>
+                </div>
+
+                {/* Problem & Solution Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-6 border border-border-custom rounded-sm bg-background/60 flex flex-col gap-3">
+                    <div className="flex items-center gap-2 font-mono text-xs font-bold text-red-500 uppercase tracking-wider">
+                      <Activity className="w-4 h-4" />
+                      <span>THE CHALLENGE</span>
+                    </div>
+                    <p className="font-serif text-base text-foreground/80 leading-relaxed">
+                      {selectedArtifact.problem}
+                    </p>
+                  </div>
+
+                  <div className="p-6 border border-border-custom rounded-sm bg-background/60 flex flex-col gap-3">
+                    <div className="flex items-center gap-2 font-mono text-xs font-bold text-emerald-500 uppercase tracking-wider">
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>THE ARCHITECTURAL SOLUTION</span>
+                    </div>
+                    <p className="font-serif text-base text-foreground/80 leading-relaxed">
+                      {selectedArtifact.solution}
+                    </p>
+                  </div>
+                </div>
+
+                {/* System Architecture Flow Diagram */}
+                <div className="p-6 border border-border-custom rounded-sm bg-background/40 space-y-4">
+                  <div className="flex items-center justify-between border-b border-border-custom/40 pb-3">
+                    <span className="font-mono text-xs font-bold tracking-widest uppercase text-foreground/60">
+                      SYSTEM ARCHITECTURE FLOW
+                    </span>
+                    <span className="font-mono text-[10px] text-foreground/40">
+                      DATA PIPELINE MODEL
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                    {selectedArtifact.stackFlow.map((step, idx) => {
+                      const IconComp = step.icon;
+                      return (
+                        <div
+                          key={idx}
+                          className="relative p-4 border border-border-custom rounded-xs bg-card flex flex-col items-center justify-center text-center gap-2 group"
+                        >
+                          <div className="w-8 h-8 rounded-xs border border-border-custom bg-background flex items-center justify-center text-[#E86F2D]">
+                            <IconComp className="w-4 h-4" />
+                          </div>
+                          <span className="font-mono text-xs font-bold text-foreground">
+                            {step.tool}
+                          </span>
+                          <span className="font-mono text-[9px] text-foreground/40 uppercase">
+                            STEP 0{idx + 1}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Full Stack Badges */}
+                <div className="space-y-3">
+                  <span className="font-mono text-xs font-bold tracking-widest uppercase text-foreground/60">
+                    TECHNOLOGY &amp; SYSTEM STACK
+                  </span>
+                  <div className="flex items-center flex-wrap gap-2">
+                    {selectedArtifact.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1.5 font-mono text-xs font-bold tracking-wider bg-background border border-border-custom rounded-xs text-foreground"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* External Action Links */}
+                <div className="pt-6 border-t border-border-custom flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    {selectedArtifact.links.demo && (
+                      <a
+                        href={selectedArtifact.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-3 bg-foreground text-background font-mono text-xs font-bold tracking-wider uppercase rounded-xs hover:opacity-90 transition-opacity"
+                      >
+                        <span>EXPLORE DEMO</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                    {selectedArtifact.links.git && selectedArtifact.links.git !== "#" && (
+                      <a
+                        href={selectedArtifact.links.git}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-3 border border-border-custom bg-background text-foreground font-mono text-xs font-bold tracking-wider uppercase rounded-xs hover:border-foreground transition-colors"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                        <span>SOURCE REPO</span>
+                      </a>
+                    )}
+                  </div>
+
+                  <span className="font-mono text-[10px] text-foreground/40">
+                    SYSTEM ID: {selectedArtifact.id}
+                  </span>
+                </div>
+
+              </div>
+
+            </motion.div>
           </div>
         )}
-      </div>
-    </section>
+      </AnimatePresence>
+
+    </div>
   );
 }
